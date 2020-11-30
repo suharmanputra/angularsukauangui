@@ -1,14 +1,23 @@
 <form>
-	<mat-form-field appearance="fill" class="full-width">
-		<mat-label>User ID</mat-label>
-		<input matInput placeholder="Type Your User ID">
-  </mat-form-field>
+	<div class="pagecontainer">
+		<div style="text-align:center;">
+			<p>Welcome to Suka Uang</p>
+			<p>Lets make your dream come true!</p>
+		</div>
 		<mat-form-field appearance="fill" class="full-width">
-			<mat-label>Enter your password</mat-label>
-			<input matInput [type]="hide ? 'password' : 'text'">
-			<button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+			<mat-label>User ID</mat-label>
+			<input matInput placeholder="Type Your User ID">
+  </mat-form-field>
+			<mat-form-field appearance="fill" class="full-width">
+				<mat-label>Enter your password</mat-label>
+				<input matInput [type]="hide ? 'password' : 'text'">
+				<button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
     <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
     </button>
-		</mat-form-field>
-		<button mat-raised-button color="primary">Primary</button>
+			</mat-form-field>
+			<div style="text-align:center;">
+				<button style="display:inline-block;" mat-raised-button>Login</button>
+				<p>Don't Have Account?Register <a href="">here</a>.</p>
+			</div>
+	</div>
 </form>
