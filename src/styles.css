@@ -1,0 +1,27 @@
+/* Add application styles & imports to this file! */
+@import "@angular/material/prebuilt-themes/deeppurple-amber.css";
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+.pagecontainer {
+  padding: 10px;
+  /* background-color: #efefef; */
+}
+.mybutton {
+  display: inline-block;
+}
+.form {
+  min-width: 150px;
+  max-width: 500px;
+  width: 100%;
+}
+
+.full-width {
+  width: 100%;
+}
