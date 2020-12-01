@@ -1,53 +1,65 @@
 <form>
 	<div class="pagecontainer">
-		<mat-card>Welcome User</mat-card>
-		<table>
-			<tr>
-				<td>
-					<mat-icon aria-hidden="false">account_circle</mat-icon>
-				</td>
-				<td>Account Status</td>
-				<td>:</td>
-				<td>@status</td>
-			</tr>
-			<tr>
-				<td>
-					<mat-icon aria-hidden="false">how_to_reg</mat-icon>
-				</td>
-				<td>Level</td>
-				<td>:</td>
-				<td>@level</td>
-			</tr>
-			<tr>
-				<td>
-					<mat-icon aria-hidden="false">people</mat-icon>
-				</td>
-				<td>Member</td>
-				<td>:</td>
-				<td>@member</td>
-			</tr>
-			<tr>
-				<td>
-					<mat-icon aria-hidden="false">monetization_on</mat-icon>
-				</td>
-				<td>Payable Bonus</td>
-				<td>:</td>
-				<td>Rp. @balance</td>
-			</tr>
-			<tr>
-				<td>
-					<mat-icon aria-hidden="false">monetization_on</mat-icon>
-				</td>
-				<td>Total Bonus Collected</td>
-				<td>:</td>
-				<td>Rp. @balance</td>
-			</tr>
-		</table>
+		<mat-card>Welcome @User
+			<br>
+			<p>Your Refferal Code: @refferal</p>
+		</mat-card>
+		<mat-divider></mat-divider>
+		<mat-card>
+			<table>
+				<tr>
+					<td>
+						<mat-icon aria-hidden="false">account_circle</mat-icon>
+					</td>
+					<td>Account Status</td>
+					<td>:</td>
+					<td>@status</td>
+					<td><button style="display:inline-block;width:100%;" mat-raised-button color="accent">Activate</button>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<mat-icon aria-hidden="false">how_to_reg</mat-icon>
+					</td>
+					<td>Level</td>
+					<td>:</td>
+					<td>@level</td>
+					<td></td>
+				</tr>
+				<tr>
+					<td>
+						<mat-icon aria-hidden="false">people</mat-icon>
+					</td>
+					<td>Member</td>
+					<td>:</td>
+					<td>@member</td>
+					<td></td>
+				</tr>
+				<tr>
+					<td>
+						<mat-icon aria-hidden="false">monetization_on</mat-icon>
+					</td>
+					<td>Payable Bonus</td>
+					<td>:</td>
+					<td>Rp. @balance</td>
+					<td><button style="display:inline-block;width:100%;" mat-raised-button color="accent">Withdraw</button>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<mat-icon aria-hidden="false">monetization_on</mat-icon>
+					</td>
+					<td>Total Bonus Collected</td>
+					<td>:</td>
+					<td>Rp. @balance</td>
+					<td></td>
+				</tr>
+			</table>
+		</mat-card>
 		<div style="text-align:center;">
 			<p id="lblcekin">Check In to get your daily bonus!</p>
 			<p id="lblcekindone">You already got your daily bonus for today.</p>
 			<button style="display:inline-block;" mat-raised-button>Check In</button>
-
 		</div>
 	</div>
 </form>
