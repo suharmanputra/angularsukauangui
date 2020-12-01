@@ -11,6 +11,8 @@ body {
 }
 .pagecontainer {
   padding: 10px;
+  max-width: 500px;
+  margin: auto;
   /* background-color: #efefef; */
 }
 .mybutton {
