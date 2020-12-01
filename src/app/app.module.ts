@@ -50,6 +50,7 @@ import { MatToolbarModule } from "@angular/material/toolbar";
 import { MatTooltipModule } from "@angular/material/tooltip";
 import { MatTreeModule } from "@angular/material/tree";
 import { LoginPageComponent } from "./login-page/login-page.component";
+import { DashboardPageComponent } from './dashboard-page/dashboard-page.component';
 
 @NgModule({
   imports: [
@@ -103,7 +104,7 @@ import { LoginPageComponent } from "./login-page/login-page.component";
     MatTreeModule
   ],
 
-  declarations: [AppComponent, LoginPageComponent],
+  declarations: [AppComponent, LoginPageComponent, DashboardPageComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
