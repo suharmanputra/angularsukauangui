@@ -1,15 +1,15 @@
 <form>
 	<div class="pagecontainer">
 		<div style="text-align:center;">
-			<p>Welcome to Suka Uang</p>
-			<p>Lets make your dream come true!</p>
+			<p>Selamat datang di Suka Uang</p>
+			<p>Mari wujudkan mimpi bersama!</p>
 		</div>
 		<mat-form-field appearance="fill" class="full-width">
 			<mat-label>User ID</mat-label>
-			<input matInput placeholder="Type Your User ID">
+			<input matInput placeholder="Masukan User Id Anda">
   </mat-form-field>
 			<mat-form-field appearance="fill" class="full-width">
-				<mat-label>Enter your password</mat-label>
+				<mat-label>Password</mat-label>
 				<input matInput [type]="hide ? 'password' : 'text'">
 				<button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
     <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
@@ -17,7 +17,7 @@
 			</mat-form-field>
 			<div style="text-align:center;">
 				<button style="display:inline-block;" mat-raised-button>Login</button>
-				<p>Don't Have Account?Register <a href="">here</a>.</p>
+				<p>Belum punya akun? silahkan daftar di <a href="">sini</a>.</p>
 			</div>
 	</div>
 </form>
