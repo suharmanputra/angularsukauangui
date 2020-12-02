@@ -50,8 +50,8 @@ import { MatToolbarModule } from "@angular/material/toolbar";
 import { MatTooltipModule } from "@angular/material/tooltip";
 import { MatTreeModule } from "@angular/material/tree";
 import { LoginPageComponent } from "./login-page/login-page.component";
-import { DashboardPageComponent } from './dashboard-page/dashboard-page.component';
-import { RegistrationPageComponent } from './registration-page/registration-page.component';
+import { DashboardPageComponent } from "./dashboard-page/dashboard-page.component";
+import { RegistrationPageComponent } from "./registration-page/registration-page.component";
 
 @NgModule({
   imports: [
@@ -105,7 +105,12 @@ import { RegistrationPageComponent } from './registration-page/registration-page
     MatTreeModule
   ],
 
-  declarations: [AppComponent, LoginPageComponent, DashboardPageComponent, RegistrationPageComponent],
+  declarations: [
+    AppComponent,
+    LoginPageComponent,
+    DashboardPageComponent,
+    RegistrationPageComponent
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
