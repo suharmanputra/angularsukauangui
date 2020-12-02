@@ -51,6 +51,7 @@ import { MatTooltipModule } from "@angular/material/tooltip";
 import { MatTreeModule } from "@angular/material/tree";
 import { LoginPageComponent } from "./login-page/login-page.component";
 import { DashboardPageComponent } from './dashboard-page/dashboard-page.component';
+import { RegistrationPageComponent } from './registration-page/registration-page.component';
 
 @NgModule({
   imports: [
@@ -104,7 +105,7 @@ import { DashboardPageComponent } from './dashboard-page/dashboard-page.componen
     MatTreeModule
   ],
 
-  declarations: [AppComponent, LoginPageComponent, DashboardPageComponent],
+  declarations: [AppComponent, LoginPageComponent, DashboardPageComponent, RegistrationPageComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
