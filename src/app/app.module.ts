@@ -123,6 +123,7 @@ import { MemberPageComponent } from "./member-page/member-page.component";
     ProfilPageComponent,
     MemberPageComponent
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [LoginWarningSnackbarComponent]
 })
 export class AppModule {}
