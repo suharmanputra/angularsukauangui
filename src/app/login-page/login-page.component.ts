@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute, Router, RoutesRecognized } from "@angular/router";
-import loginWarningSnackbarComponent from "./login-warning.snackbar.component.html";
+import { MatSnackBar } from "@angular/material/snack-bar";
+
 @Component({
   selector: "app-login-page",
   templateUrl: "./login-page.component.html",
@@ -8,8 +9,12 @@ import loginWarningSnackbarComponent from "./login-warning.snackbar.component.ht
 })
 export class LoginPageComponent implements OnInit {
   hide = true;
-
-  constructor(private actRouter: ActivatedRoute, private router: Router) {}
+  durationInSeconds = 5;
+  constructor(
+    private actRouter: ActivatedRoute,
+    private router: Router,
+    private snackBar: MatSnackBar
+  ) {}
 
   ngOnInit() {}
   openSnackBar() {
