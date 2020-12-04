@@ -18,7 +18,7 @@ export class LoginPageComponent implements OnInit {
 
   ngOnInit() {}
   openSnackBar() {
-    this.snackBar.openFromComponent(loginWarningSnackbarComponent, {
+    this.snackBar.openFromComponent(LoginWarningSnackbarComponent, {
       duration: this.durationInSeconds * 1000
     });
   }
@@ -32,4 +32,4 @@ export class LoginPageComponent implements OnInit {
   templateUrl: "login-warning-snackbar.component.html",
   styleUrls: ["./login-page.component.css"]
 })
-export class loginWarningSnackbarComponent {}
+export class LoginWarningSnackbarComponent {}
