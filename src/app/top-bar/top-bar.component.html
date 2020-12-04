@@ -1,17 +1,32 @@
-<button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+<div class="myMenu">
+	<button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Menu">
   <mat-icon>more_vert</mat-icon>
 </button>
-<mat-menu #menu="matMenu">
-	<button mat-menu-item>
+	<mat-menu #menu="matMenu">
+		<button mat-menu-item>
     <mat-icon>home</mat-icon>
     <span>Home</span>
   </button>
-	<button mat-menu-item disabled>
-    <mat-icon>voicemail</mat-icon>
-    <span>Check voice mail</span>
+		<button mat-menu-item>
+    <mat-icon>account_circle</mat-icon>
+    <span>Profil</span>
   </button>
-	<button mat-menu-item>
-    <mat-icon>notifications_off</mat-icon>
-    <span>Disable alerts</span>
+		<button mat-menu-item>
+    <mat-icon>people</mat-icon>
+    <span>List Member</span>
   </button>
-</mat-menu>
+		<button mat-menu-item>
+    <mat-icon>credit_card</mat-icon>
+    <span>Sejarah Transaksi</span>
+  </button>
+		<button mat-menu-item>
+    <mat-icon>business_center</mat-icon>
+    <span>Admin Panel</span>
+  </button>
+		<button mat-menu-item>
+    <mat-icon>info</mat-icon>
+    <span>Tentang Kami</span>
+  </button>
+	</mat-menu>
+</div>
+<!-- <div>Suka Uang</div> -->
