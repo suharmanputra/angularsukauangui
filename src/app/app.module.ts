@@ -52,6 +52,7 @@ import { MatTreeModule } from "@angular/material/tree";
 import { LoginPageComponent } from "./login-page/login-page.component";
 import { DashboardPageComponent } from "./dashboard-page/dashboard-page.component";
 import { RegistrationPageComponent } from "./registration-page/registration-page.component";
+import { TopBarComponent } from './top-bar/top-bar.component';
 
 @NgModule({
   imports: [
@@ -109,7 +110,8 @@ import { RegistrationPageComponent } from "./registration-page/registration-page
     AppComponent,
     LoginPageComponent,
     DashboardPageComponent,
-    RegistrationPageComponent
+    RegistrationPageComponent,
+    TopBarComponent
   ],
   bootstrap: [AppComponent]
 })
