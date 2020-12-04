@@ -26,4 +26,9 @@ export class LoginPageComponent implements OnInit {
     this.router.navigateByUrl("/registration");
   }
 }
+@Component({
+  selector: "login-warning",
+  templateUrl: "loginWarningSnackbarComponent.html",
+  styleUrls: ["./login-page.component.css"]
+})
 export class loginWarningSnackbarComponent {}

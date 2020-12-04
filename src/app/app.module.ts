@@ -49,13 +49,16 @@ import { MatTabsModule } from "@angular/material/tabs";
 import { MatToolbarModule } from "@angular/material/toolbar";
 import { MatTooltipModule } from "@angular/material/tooltip";
 import { MatTreeModule } from "@angular/material/tree";
-import { LoginPageComponent } from "./login-page/login-page.component";
+import {
+  LoginPageComponent,
+  loginWarningSnackbarComponent
+} from "./login-page/login-page.component";
 import { DashboardPageComponent } from "./dashboard-page/dashboard-page.component";
 import { RegistrationPageComponent } from "./registration-page/registration-page.component";
-import { TopBarComponent } from './top-bar/top-bar.component';
-import { AboutPageComponent } from './about-page/about-page.component';
-import { ProfilPageComponent } from './profil-page/profil-page.component';
-import { MemberPageComponent } from './member-page/member-page.component';
+import { TopBarComponent } from "./top-bar/top-bar.component";
+import { AboutPageComponent } from "./about-page/about-page.component";
+import { ProfilPageComponent } from "./profil-page/profil-page.component";
+import { MemberPageComponent } from "./member-page/member-page.component";
 
 @NgModule({
   imports: [
