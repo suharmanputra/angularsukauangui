@@ -27,8 +27,8 @@ export class LoginPageComponent implements OnInit {
   }
 }
 @Component({
-  selector: "login-warning",
-  templateUrl: "loginWarningSnackbarComponent.html",
+  selector: "app-login-warning",
+  templateUrl: "login-warning-snackbarComponent.html",
   styleUrls: ["./login-page.component.css"]
 })
 export class loginWarningSnackbarComponent {}
