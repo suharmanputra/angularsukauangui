@@ -53,6 +53,7 @@ import { LoginPageComponent } from "./login-page/login-page.component";
 import { DashboardPageComponent } from "./dashboard-page/dashboard-page.component";
 import { RegistrationPageComponent } from "./registration-page/registration-page.component";
 import { TopBarComponent } from './top-bar/top-bar.component';
+import { AboutPageComponent } from './about-page/about-page.component';
 
 @NgModule({
   imports: [
@@ -111,7 +112,8 @@ import { TopBarComponent } from './top-bar/top-bar.component';
     LoginPageComponent,
     DashboardPageComponent,
     RegistrationPageComponent,
-    TopBarComponent
+    TopBarComponent,
+    AboutPageComponent
   ],
   bootstrap: [AppComponent]
 })
