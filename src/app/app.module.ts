@@ -55,6 +55,7 @@ import { RegistrationPageComponent } from "./registration-page/registration-page
 import { TopBarComponent } from './top-bar/top-bar.component';
 import { AboutPageComponent } from './about-page/about-page.component';
 import { ProfilPageComponent } from './profil-page/profil-page.component';
+import { MemberPageComponent } from './member-page/member-page.component';
 
 @NgModule({
   imports: [
@@ -115,7 +116,8 @@ import { ProfilPageComponent } from './profil-page/profil-page.component';
     RegistrationPageComponent,
     TopBarComponent,
     AboutPageComponent,
-    ProfilPageComponent
+    ProfilPageComponent,
+    MemberPageComponent
   ],
   bootstrap: [AppComponent]
 })

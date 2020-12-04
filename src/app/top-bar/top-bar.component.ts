@@ -12,6 +12,12 @@ export class TopBarComponent implements OnInit {
   redirect_home() {
     this.router.navigateByUrl("/dashboard");
   }
+  redirect_profil() {
+    this.router.navigateByUrl("/profil");
+  }
+  redirect_member() {
+    this.router.navigateByUrl("/member");
+  }
   logout() {
     this.router.navigateByUrl("/login");
   }
