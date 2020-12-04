@@ -26,3 +26,4 @@ export class LoginPageComponent implements OnInit {
     this.router.navigateByUrl("/registration");
   }
 }
+export class loginWarningSnackbarComponent {}
