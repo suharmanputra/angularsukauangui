@@ -38,9 +38,11 @@ body {
 }
 .myFooter {
   position: fixed;
-  bottom: 10px;
+  bottom: 0px;
   left: 10px;
   z-index: 2;
   text-align: center;
   width: 100%;
+  background-color: #ffffff;
+  height: 20px;
 }
