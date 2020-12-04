@@ -1,6 +1,6 @@
 <div class="myMenu">
 	<button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Menu">
-  <mat-icon>more_vert</mat-icon>
+  <mat-icon>menu</mat-icon>
 </button>
 	<mat-menu #menu="matMenu">
 		<button mat-menu-item>
@@ -17,7 +17,7 @@
   </button>
 		<button mat-menu-item>
     <mat-icon>credit_card</mat-icon>
-    <span>Sejarah Transaksi</span>
+    <span>List Transaksi</span>
   </button>
 		<button mat-menu-item>
     <mat-icon>business_center</mat-icon>
@@ -26,6 +26,10 @@
 		<button mat-menu-item>
     <mat-icon>info</mat-icon>
     <span>Tentang Kami</span>
+  </button>
+		<button mat-menu-item>
+    <mat-icon>exit_to_app</mat-icon>
+    <span>Log Out</span>
   </button>
 	</mat-menu>
 </div>
