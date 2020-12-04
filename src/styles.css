@@ -36,3 +36,11 @@ body {
   left: 10px;
   z-index: 2;
 }
+.myFooter {
+  position: fixed;
+  bottom: 10px;
+  left: 10px;
+  z-index: 2;
+  text-align: center;
+  width: 100%;
+}
