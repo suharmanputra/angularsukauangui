@@ -12,4 +12,7 @@ export class TopBarComponent implements OnInit {
   redirect_home() {
     this.router.navigateByUrl("/dashboard");
   }
+  logout() {
+    this.router.navigateByUrl("/login");
+  }
 }
