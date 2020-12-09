@@ -4,7 +4,7 @@ import { BehaviorSubject } from "rxjs";
 @Injectable()
 export class MenuBarService {
   private btnMenu = new BehaviorSubject("menu");
-  sharedBackButton = this.btnMenu;
+  globalBtnMenu = this.btnMenu;
   constructor(private router: Router) {}
 
   setMenuVisible(isonloginpage: boolean) {
