@@ -16,7 +16,8 @@
     </button>
 			</mat-form-field>
 			<div style="text-align:center;">
-				<button style="display:inline-block;" mat-raised-button (click)="this.openSnackBar();" >Login</button>
+				<button style="display:inline-block;" mat-raised-button
+        (click)="checkLogin(usernameInput.value, passwordInput.value);">Login</button>
 				<p>Belum punya akun? silahkan daftar di <a style="cursor:pointer"
 						(click)="redirect_register()"><b>sini</b></a>.</p>
 			</div>

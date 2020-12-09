@@ -22,7 +22,13 @@ export class LoginPageComponent implements OnInit {
     this.menuBarService.setMenuVisible(false);
   }
 
-  checkLogin() {}
+  checkLogin(username: string, password: string) {
+    if ((username = "test")) {
+      this.router.navigateByUrl("/registration");
+    } else {
+      this.openSnackBar();
+    }
+  }
 
   openSnackBar() {
     this.snackBar.openFromComponent(LoginWarningSnackbarComponent, {
