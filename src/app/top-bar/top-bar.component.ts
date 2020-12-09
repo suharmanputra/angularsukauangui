@@ -1,5 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute, Router, RoutesRecognized } from "@angular/router";
+import { MenuBarService } from "../shared/menu-bar.service";
+
 @Component({
   selector: "app-top-bar",
   templateUrl: "./top-bar.component.html",
@@ -8,9 +10,17 @@ import { ActivatedRoute, Router, RoutesRecognized } from "@angular/router";
 export class TopBarComponent implements OnInit {
   btnmenu: string;
 
-  constructor(private actRouter: ActivatedRoute, private router: Router) {}
+  constructor(
+    private actRouter: ActivatedRoute,
+    private router: Router,
+    private menuBarService: MenuBarService
+  ) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.menuBarService.globalBtnMenu.subscribe(result => {
+      this.btnmenu = result;
+    });
+  }
   redirect_home() {
     this.router.navigateByUrl("/dashboard");
   }

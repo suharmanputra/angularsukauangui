@@ -14,10 +14,13 @@ export class LoginPageComponent implements OnInit {
   constructor(
     private actRouter: ActivatedRoute,
     private router: Router,
-    private snackBar: MatSnackBar
+    private snackBar: MatSnackBar,
+    private menuBarService: MenuBarService
   ) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.menuBarService.setMenuVisible(false);
+  }
   openSnackBar() {
     this.snackBar.openFromComponent(LoginWarningSnackbarComponent, {
       duration: this.durationInSeconds * 1000
