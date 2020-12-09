@@ -2,6 +2,12 @@ import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute, Router, RoutesRecognized } from "@angular/router";
 import { MatSnackBar } from "@angular/material/snack-bar";
 import { MenuBarService } from "../shared/menu-bar.service";
+import { AknutmanWsService } from "../shared/aknutman-ws.service";
+
+export interface wsResponseType {
+  Status: string;
+  IsAuthenticated: boolean;
+}
 
 @Component({
   selector: "app-login-page",
@@ -15,7 +21,8 @@ export class LoginPageComponent implements OnInit {
     private actRouter: ActivatedRoute,
     private router: Router,
     private snackBar: MatSnackBar,
-    private menuBarService: MenuBarService
+    private menuBarService: MenuBarService,
+    private aknutman: AknutmanWsService
   ) {}
 
   ngOnInit() {
@@ -25,14 +32,20 @@ export class LoginPageComponent implements OnInit {
   }
 
   checkLogin(username: string, password: string) {
-    if (username == "test" && password == "test") {
-      this.router.navigateByUrl("/dashboard");
-
-      this.menuBarService.setIsAuthenticated(true);
-    } else {
-      this.openSnackBar();
-    }
-    // alert(username);
+    // if (username == "test" && password == "test") {
+    //   this.router.navigateByUrl("/dashboard");
+    //   this.menuBarService.setIsAuthenticated(true);
+    // } else {
+    //   this.openSnackBar();
+    // }
+    this.aknutman.getLogin(username, password).subscribe(resp => {
+      if (resp.IsAuthenticated === true) {
+        this.router.navigateByUrl("/dashboard");
+        this.menuBarService.setIsAuthenticated(true);
+      } else {
+        this.openSnackBar();
+      }
+    });
   }
 
   openSnackBar() {
