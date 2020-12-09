@@ -12,8 +12,10 @@ export class AknutmanWsService {
 
   getLogin(username: string, password: string) {
     const url = "https://us-central1-sb-sukauang.cloudfunctions.net/UserLogin";
-    const body =
-      '{"Username":"' + username + '", "Password":"' + password + '"}';
-    return this.http.post<wsResponseType>(url, body);
+    const body = {
+      Username: username,
+      Password: password
+    };
+    return this.http.post<string>(url, body);
   }
 }
