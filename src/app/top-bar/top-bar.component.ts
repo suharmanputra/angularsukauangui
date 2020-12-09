@@ -6,6 +6,8 @@ import { ActivatedRoute, Router, RoutesRecognized } from "@angular/router";
   styleUrls: ["./top-bar.component.css"]
 })
 export class TopBarComponent implements OnInit {
+  btnmenu: string;
+
   constructor(private actRouter: ActivatedRoute, private router: Router) {}
 
   ngOnInit() {}
