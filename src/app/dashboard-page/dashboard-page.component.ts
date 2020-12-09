@@ -11,4 +11,7 @@ export class DashboardPageComponent implements OnInit {
   ngOnInit() {
     this.menuBarService.setMenuVisible(true);
   }
+  checkin() {
+    alert("Check In berhasil");
+  }
 }
