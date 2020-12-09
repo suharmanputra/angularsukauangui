@@ -3,7 +3,7 @@ import { BrowserModule } from "@angular/platform-browser";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { FormsModule } from "@angular/forms";
 import { AppRoutingModule } from "./app-routing.module";
-
+import { HttpClientModule } from "@angular/common/http";
 import { AppComponent } from "./app.component";
 
 import { A11yModule } from "@angular/cdk/a11y";
@@ -60,7 +60,7 @@ import { AboutPageComponent } from "./about-page/about-page.component";
 import { ProfilPageComponent } from "./profil-page/profil-page.component";
 import { MemberPageComponent } from "./member-page/member-page.component";
 import { MenuBarService } from "./shared/menu-bar.service";
-import { AknutmanWsService } from './shared/aknutman-ws.service';
+import { AknutmanWsService } from "./shared/aknutman-ws.service";
 
 @NgModule({
   imports: [
@@ -76,6 +76,7 @@ import { AknutmanWsService } from './shared/aknutman-ws.service';
     ScrollingModule,
     DragDropModule,
     AppRoutingModule,
+    HttpClientModule,
 
     MatAutocompleteModule,
     MatBadgeModule,
