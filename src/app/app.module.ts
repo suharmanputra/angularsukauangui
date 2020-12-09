@@ -59,6 +59,7 @@ import { TopBarComponent } from "./top-bar/top-bar.component";
 import { AboutPageComponent } from "./about-page/about-page.component";
 import { ProfilPageComponent } from "./profil-page/profil-page.component";
 import { MemberPageComponent } from "./member-page/member-page.component";
+import { MenuBarService } from "./shared/menu-bar.service";
 
 @NgModule({
   imports: [
@@ -124,6 +125,7 @@ import { MemberPageComponent } from "./member-page/member-page.component";
     MemberPageComponent
   ],
   bootstrap: [AppComponent],
-  entryComponents: [LoginWarningSnackbarComponent]
+  entryComponents: [LoginWarningSnackbarComponent],
+  providers: [MenuBarService]
 })
 export class AppModule {}
