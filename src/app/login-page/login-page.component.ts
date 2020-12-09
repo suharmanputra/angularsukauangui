@@ -20,6 +20,7 @@ export class LoginPageComponent implements OnInit {
 
   ngOnInit() {
     this.menuBarService.setMenuVisible(false);
+    
   }
 
   checkLogin(username: string, password: string) {

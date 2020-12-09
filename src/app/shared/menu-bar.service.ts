@@ -5,6 +5,10 @@ import { BehaviorSubject } from "rxjs";
 export class MenuBarService {
   private btnMenu = new BehaviorSubject("menu");
   globalBtnMenu = this.btnMenu;
+
+  private isAuthenticated = new BehaviorSubject(false);
+  globalIsAuthenticated = this.isAuthenticated;
+
   constructor(private router: Router) {}
 
   setMenuVisible(isonloginpage: boolean) {
@@ -13,5 +17,9 @@ export class MenuBarService {
     } else {
       this.btnMenu.next("myMenuHide");
     }
+  }
+
+  setIsAuthenticated(isAuth: boolean){
+    this.isAuthenticated.next(isAuth);
   }
 }
