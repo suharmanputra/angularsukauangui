@@ -9,9 +9,9 @@ export class MenuBarService {
 
   setMenuVisible(isonloginpage: boolean) {
     if (isonloginpage) {
-      this.btnMenu.next("menu");
+      this.btnMenu.next("myMenu");
     } else {
-      this.btnMenu.next("");
+      this.btnMenu.next("myMenuHide");
     }
   }
 }
