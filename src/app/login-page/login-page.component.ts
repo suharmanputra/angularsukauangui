@@ -21,6 +21,9 @@ export class LoginPageComponent implements OnInit {
   ngOnInit() {
     this.menuBarService.setMenuVisible(false);
   }
+
+  checkLogin() {}
+
   openSnackBar() {
     this.snackBar.openFromComponent(LoginWarningSnackbarComponent, {
       duration: this.durationInSeconds * 1000

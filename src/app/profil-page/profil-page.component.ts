@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { MenuBarService } from "../shared/menu-bar.service";
+
 @Component({
   selector: "app-profil-page",
   templateUrl: "./profil-page.component.html",

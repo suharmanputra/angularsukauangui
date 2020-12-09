@@ -1,15 +1,14 @@
-import { Component, OnInit } from '@angular/core';
-
+import { Component, OnInit } from "@angular/core";
+import { MenuBarService } from "../shared/menu-bar.service";
 @Component({
-  selector: 'app-member-page',
-  templateUrl: './member-page.component.html',
-  styleUrls: ['./member-page.component.css']
+  selector: "app-member-page",
+  templateUrl: "./member-page.component.html",
+  styleUrls: ["./member-page.component.css"]
 })
 export class MemberPageComponent implements OnInit {
-
-  constructor() { }
+  constructor(private menuBarService: MenuBarService) {}
 
   ngOnInit() {
+    this.menuBarService.setMenuVisible(true);
   }
-
 }
