@@ -23,11 +23,12 @@ export class LoginPageComponent implements OnInit {
   }
 
   checkLogin(username: string, password: string) {
-    if ((username = "test")) {
-      this.router.navigateByUrl("/registration");
+    if (username == "test" && password == "test") {
+      this.router.navigateByUrl("/dashboard");
     } else {
       this.openSnackBar();
     }
+    // alert(username);
   }
 
   openSnackBar() {
