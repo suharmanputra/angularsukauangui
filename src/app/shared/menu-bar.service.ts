@@ -19,7 +19,7 @@ export class MenuBarService {
     }
   }
 
-  setIsAuthenticated(isAuth: boolean){
+  setIsAuthenticated(isAuth: boolean) {
     this.isAuthenticated.next(isAuth);
   }
 }

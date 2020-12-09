@@ -20,12 +20,15 @@ export class LoginPageComponent implements OnInit {
 
   ngOnInit() {
     this.menuBarService.setMenuVisible(false);
-    
+
+    this.menuBarService.setIsAuthenticated(false);
   }
 
   checkLogin(username: string, password: string) {
     if (username == "test" && password == "test") {
       this.router.navigateByUrl("/dashboard");
+
+      this.menuBarService.setIsAuthenticated(true);
     } else {
       this.openSnackBar();
     }

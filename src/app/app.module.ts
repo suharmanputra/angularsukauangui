@@ -60,6 +60,7 @@ import { AboutPageComponent } from "./about-page/about-page.component";
 import { ProfilPageComponent } from "./profil-page/profil-page.component";
 import { MemberPageComponent } from "./member-page/member-page.component";
 import { MenuBarService } from "./shared/menu-bar.service";
+import { AknutmanWsService } from './shared/aknutman-ws.service';
 
 @NgModule({
   imports: [
@@ -126,6 +127,6 @@ import { MenuBarService } from "./shared/menu-bar.service";
   ],
   bootstrap: [AppComponent],
   entryComponents: [LoginWarningSnackbarComponent],
-  providers: [MenuBarService]
+  providers: [MenuBarService, AknutmanWsService]
 })
 export class AppModule {}
