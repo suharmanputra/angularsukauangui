@@ -8,7 +8,11 @@ import { TermConditionDialogComponent } from "./term-condition-dialog/term-condi
   styleUrls: ["./dashboard-page.component.css"]
 })
 export class DashboardPageComponent implements OnInit {
-  constructor(private menuBarService: MenuBarService, private router: Router) {}
+  constructor(
+    private menuBarService: MenuBarService,
+    private router: Router,
+    public dialog: TermConditionDialogComponent
+  ) {}
 
   ngOnInit() {
     this.menuBarService.setMenuVisible(true);
