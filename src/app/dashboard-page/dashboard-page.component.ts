@@ -1,7 +1,7 @@
 import { Component, OnInit } from "@angular/core";
+import { MatDialog } from "@angular/material/dialog";
 import { MenuBarService } from "../shared/menu-bar.service";
 import { ActivatedRoute, Router, RoutesRecognized } from "@angular/router";
-import { MatDialog } from "@angular/material/dialog";
 import { TermConditionDialogComponent } from "../term-condition-dialog/term-condition-dialog.component";
 @Component({
   selector: "app-dashboard-page",
