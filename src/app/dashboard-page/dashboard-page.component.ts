@@ -25,4 +25,11 @@ export class DashboardPageComponent implements OnInit {
   checkin() {
     alert("Check In berhasil");
   }
+
+  openDialog() {
+    const dialogRef = this.dialog.open(TermConditionDialogComponent);
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
+  }
 }
