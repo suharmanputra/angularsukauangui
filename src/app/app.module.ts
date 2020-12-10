@@ -61,6 +61,7 @@ import { ProfilPageComponent } from "./profil-page/profil-page.component";
 import { MemberPageComponent } from "./member-page/member-page.component";
 import { MenuBarService } from "./shared/menu-bar.service";
 import { AknutmanWsService } from "./shared/aknutman-ws.service";
+import { TermConditionDialogComponent } from './term-condition-dialog/term-condition-dialog.component';
 
 @NgModule({
   imports: [
@@ -124,7 +125,8 @@ import { AknutmanWsService } from "./shared/aknutman-ws.service";
     TopBarComponent,
     AboutPageComponent,
     ProfilPageComponent,
-    MemberPageComponent
+    MemberPageComponent,
+    TermConditionDialogComponent
   ],
   bootstrap: [AppComponent],
   entryComponents: [LoginWarningSnackbarComponent],

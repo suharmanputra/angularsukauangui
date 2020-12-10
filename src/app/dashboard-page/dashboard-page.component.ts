@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { MenuBarService } from "../shared/menu-bar.service";
 import { ActivatedRoute, Router, RoutesRecognized } from "@angular/router";
+import { TermConditionDialogComponent } from "./term-condition-dialog/term-condition-dialog.component";
 @Component({
   selector: "app-dashboard-page",
   templateUrl: "./dashboard-page.component.html",
@@ -15,7 +16,6 @@ export class DashboardPageComponent implements OnInit {
       if (result === false) {
         this.router.navigateByUrl("/");
       }
-      
     });
   }
   checkin() {
