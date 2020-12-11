@@ -7,7 +7,11 @@ export class MenuBarService {
   globalBtnMenu = this.btnMenu;
 
   private isAuthenticated = new BehaviorSubject(false);
-  globalIsAuthenticated = this.isAuthenticated;
+
+  // globalIsAuthenticated = this.isAuthenticated;
+
+  //debug mode
+  globalIsAuthenticated = true;
 
   constructor(private router: Router) {}
 
@@ -21,5 +25,6 @@ export class MenuBarService {
 
   setIsAuthenticated(isAuth: boolean) {
     this.isAuthenticated.next(isAuth);
+    // this.isAuthenticated.next(true);
   }
 }
