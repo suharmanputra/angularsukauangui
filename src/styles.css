@@ -44,7 +44,7 @@ body {
 .myFooter {
   position: fixed;
   bottom: 0px;
-  left: 10px;
+  left: 0px;
   z-index: 2;
   text-align: center;
   width: 100%;
