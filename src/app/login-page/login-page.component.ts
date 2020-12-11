@@ -34,12 +34,13 @@ export class LoginPageComponent implements OnInit {
 
   checkLogin(username: string, password: string) {
     this.aknutman.getLogin(username, password).subscribe(resp => {
-      if (resp.IsAuthenticated === true) {
+      if (resp.isAuthenticated === true) {
         this.router.navigateByUrl("/dashboard");
         this.menuBarService.setIsAuthenticated(true);
       } else {
         this.openSnackBar();
       }
+      console.log(resp);
     });
   }
 

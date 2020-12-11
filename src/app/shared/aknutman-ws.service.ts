@@ -20,8 +20,8 @@ export class AknutmanWsService {
     return this.http.post<string>(url, body);
   }
 
-  regist() {
-    const url =
-      "https://us-central1-sukauang-backend.cloudfunctions.net/Register";
-  }
+  // regist() {
+  //   const url =
+  //     "https://us-central1-sukauang-backend.cloudfunctions.net/Register";
+  // }
 }
