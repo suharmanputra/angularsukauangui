@@ -1,19 +1,8 @@
-<!-- <mat-form-field class="example-form-field">
-	<mat-label>Clearable input</mat-label>
-	<input matInput type="text" [(ngModel)]="value">
-	<button mat-button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
-    <mat-icon>close</mat-icon>
-  </button>
-</mat-form-field> -->
-
 <!-- <form> -->
 <div class="pagecontainer">
 	<mat-card>Pendaftaran Anggota Baru
 	</mat-card>
 	<mat-divider></mat-divider>
-
-
-
 	<mat-card>
 		<mat-form-field class="full-width">
 			<mat-label>Kode Referal</mat-label>
@@ -21,36 +10,37 @@
       </mat-form-field>
 			<mat-form-field class="full-width">
 				<mat-label>User Id</mat-label>
-				<input matInput placeholder="User Id Anda" #useridInput autocomplete="disable" required>
+				<input matInput placeholder="User Id Anda" [(ngModel)]="txtUserID" #useridInput autocomplete="disable" required>
        </mat-form-field>
 				<mat-form-field class="full-width">
 					<mat-label>Nama</mat-label>
-					<input matInput placeholder="Nama Panjang" #namapanjangInput autocomplete="disable" required>
+					<input matInput placeholder="Nama Panjang"  [(ngModel)]="txtNama" #namapanjangInput autocomplete="disable" required>
        </mat-form-field>
 					<mat-form-field class="full-width">
 						<mat-label>Nomor HP</mat-label>
-						<input matInput placeholder="Nomor HP yang terhubung dengan whatsapp" #noHpInput autocomplete="disable" required>
+						<input matInput placeholder="Nomor HP yang terhubung dengan whatsapp"  [(ngModel)]="txtNoHP" #noHpInput autocomplete="disable" required>
       </mat-form-field>
 						<mat-form-field class="full-width">
 							<mat-label>Alamat</mat-label>
-							<input matInput placeholder="Alamat Lengkap Anda" #alamatInput autocomplete="disable" required>
+							<input matInput placeholder="Alamat Lengkap Anda"  [(ngModel)]="txtAlamat" #alamatInput autocomplete="disable" required>
       </mat-form-field>
 							<mat-form-field class="full-width">
 								<mat-label>Nomor Rekening/E-Wallet</mat-label>
-								<input matInput placeholder="Nomor Rekening/E-Wallet Anda" #norekInput autocomplete="disable" required>
+								<input matInput placeholder="Nomor Rekening/E-Wallet Anda"  [(ngModel)]="txtNorek" #norekInput autocomplete="disable" required>
       </mat-form-field>
 								<mat-form-field class="full-width">
 									<mat-label>Nama Bank/E-Wallet</mat-label>
-									<input matInput placeholder="Nama Bank/E-Wallet Anda" #namaBankInput autocomplete="disable" required>
+									<input matInput placeholder="Nama Bank/E-Wallet Anda"  [(ngModel)]="txtNamaBank" #namaBankInput autocomplete="disable" required>
       </mat-form-field>
 									<mat-form-field class="full-width">
 										<mat-label>Nama Rekening Bank/E-Wallet</mat-label>
-										<input matInput placeholder="Nama Rekening Bank/E-Wallet Anda" #namaRekInput autocomplete="disable" required>
+										<input matInput placeholder="Nama Rekening Bank/E-Wallet Anda"  [(ngModel)]="txtNamaRek" #namaRekInput autocomplete="disable" required>
       </mat-form-field>
 	</mat-card>
 	<br>
 	<div style="text-align:center;">
-		<button style="display:inline-block;" mat-raised-button (click)="regist(); >Daftar</button>
+		<button style="display:inline-block;" mat-raised-button
+    (click)="regist()">Daftar</button>
 	</div>
 </div>
 <!-- </form> -->

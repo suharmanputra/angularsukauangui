@@ -11,11 +11,17 @@ export class AknutmanWsService {
   constructor(private http: HttpClient) {}
 
   getLogin(username: string, password: string) {
-    const url = "https://us-central1-sb-sukauang.cloudfunctions.net/UserLogin";
+    const url =
+      "https://us-central1-sukauang-backend.cloudfunctions.net/UserLogin";
     const body = {
       Username: username,
       Password: password
     };
     return this.http.post<string>(url, body);
+  }
+
+  regist() {
+    const url =
+      "https://us-central1-sukauang-backend.cloudfunctions.net/Register";
   }
 }
