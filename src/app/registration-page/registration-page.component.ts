@@ -10,7 +10,7 @@ export class RegistrationPageComponent implements OnInit {
   constructor(
     private menuBarService: MenuBarService,
     private router: Router,
-    private txtReferal: string
+    private route: ActivatedRoute
   ) {}
 
   ngOnInit() {
@@ -18,12 +18,19 @@ export class RegistrationPageComponent implements OnInit {
 
     //debug mode
     // this.menuBarService.setIsAuthenticated(false);
-    const urlParams = new URLSearchParams(window.location.search);
-    const referalCode = urlParams.get("reff");
-    if (referalCode != "") {
-      this.txtReferal = referalCode;
-    } else {
-      this.txtReferal = "SUKAUANG";
-    }
+
+    // const urlParams = new URLSearchParams(window.location.search);
+    // const referalCode = urlParams.get("reff");
+    this.route.queryParams.subscribe(params => {
+      if (params["reff"] != null) {
+        // this.txtReferal = referalCode;
+        console.log(params["reff"]);
+      } else {
+        // this.txtReferal = "SUKAUANG";
+        console.log("SUKAUANG");
+      }
+    });
+
+    // console.log(referalCode);
   }
 }
