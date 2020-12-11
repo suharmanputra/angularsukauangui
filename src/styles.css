@@ -18,6 +18,13 @@ body {
   margin-right: auto;
   /* background-color: #efefef; */
 }
+.bgLogin {
+  top: 0;
+  position: fixed;
+  height: 100%;
+  background-image: url("./media/bgweb.JPG");
+}
+
 .mybutton {
   display: inline-block;
 }
