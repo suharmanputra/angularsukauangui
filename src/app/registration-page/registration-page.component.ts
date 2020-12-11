@@ -9,7 +9,6 @@ import { FormsModule } from "@angular/forms";
   styleUrls: ["./registration-page.component.css"]
 })
 export class RegistrationPageComponent implements OnInit {
-  // txtReff = this.refftext;
   constructor(
     private menuBarService: MenuBarService,
     private router: Router,
@@ -18,25 +17,13 @@ export class RegistrationPageComponent implements OnInit {
 
   ngOnInit() {
     this.menuBarService.setMenuVisible(false);
-
-    //debug mode
-    // this.menuBarService.setIsAuthenticated(false);
-
-    // const urlParams = new URLSearchParams(window.location.search);
-    // const referalCode = urlParams.get("reff");
     this.route.queryParams.subscribe(params => {
       if (params["reff"] != null) {
-        // this.txtReferal = referalCode;
         console.log(params["reff"]);
         this.txtReff = params["reff"];
       } else {
-        // this.txtReferal = "SUKAUANG";
-        // console.log("SUKAUANG");
-        // txtReff = "SUKAUANG";
         this.txtReff = "SUKAUANG";
       }
     });
-
-    // console.log(referalCode);
   }
 }

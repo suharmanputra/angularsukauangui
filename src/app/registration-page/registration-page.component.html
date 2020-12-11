@@ -17,35 +17,35 @@
 	<mat-card>
 		<mat-form-field class="full-width">
 			<mat-label>Kode Referal</mat-label>
-			<input matInput [(ngModel)]="txtReff" placeholder="kode Referal Anda" autocomplete="disable">
+			<input matInput [(ngModel)]="txtReff" #reffInput placeholder="kode Referal Anda" autocomplete="disable">
       </mat-form-field>
 			<mat-form-field class="full-width">
 				<mat-label>User Id</mat-label>
-				<input matInput placeholder="User Id Anda" autocomplete="disable">
+				<input matInput placeholder="User Id Anda" #useridInput autocomplete="disable" required>
        </mat-form-field>
 				<mat-form-field class="full-width">
 					<mat-label>Nama</mat-label>
-					<input matInput placeholder="Nama Panjang" autocomplete="disable">
+					<input matInput placeholder="Nama Panjang" #namapanjangInput autocomplete="disable" required>
        </mat-form-field>
 					<mat-form-field class="full-width">
 						<mat-label>Nomor HP</mat-label>
-						<input matInput placeholder="Nomor HP yang terhubung dengan whatsapp" autocomplete="disable">
+						<input matInput placeholder="Nomor HP yang terhubung dengan whatsapp" #noHpInput autocomplete="disable" required>
       </mat-form-field>
 						<mat-form-field class="full-width">
 							<mat-label>Alamat</mat-label>
-							<input matInput placeholder="Alamat Lengkap Anda" autocomplete="disable">
+							<input matInput placeholder="Alamat Lengkap Anda" #alamatInput autocomplete="disable" required>
       </mat-form-field>
 							<mat-form-field class="full-width">
 								<mat-label>Nomor Rekening/E-Wallet</mat-label>
-								<input matInput placeholder="Nomor Rekening/E-Wallet Anda" autocomplete="disable">
+								<input matInput placeholder="Nomor Rekening/E-Wallet Anda" #norekInput autocomplete="disable" required>
       </mat-form-field>
 								<mat-form-field class="full-width">
 									<mat-label>Nama Bank/E-Wallet</mat-label>
-									<input matInput placeholder="Nama Bank/E-Wallet Anda" autocomplete="disable">
+									<input matInput placeholder="Nama Bank/E-Wallet Anda" #namaBankInput autocomplete="disable" required>
       </mat-form-field>
 									<mat-form-field class="full-width">
 										<mat-label>Nama Rekening Bank/E-Wallet</mat-label>
-										<input matInput placeholder="Nama Rekening Bank/E-Wallet Anda" autocomplete="disable">
+										<input matInput placeholder="Nama Rekening Bank/E-Wallet Anda" #namaRekInput autocomplete="disable" required>
       </mat-form-field>
 	</mat-card>
 	<br>
