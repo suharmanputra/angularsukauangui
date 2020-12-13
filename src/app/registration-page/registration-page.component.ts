@@ -19,7 +19,8 @@ export class RegistrationPageComponent implements OnInit {
   constructor(
     private menuBarService: MenuBarService,
     private router: Router,
-    private route: ActivatedRoute // private refftext: string
+    private route: ActivatedRoute,
+    private aknutman: AknutmanWsService
   ) {}
 
   ngOnInit() {

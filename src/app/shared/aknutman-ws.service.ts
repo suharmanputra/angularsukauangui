@@ -20,8 +20,27 @@ export class AknutmanWsService {
     return this.http.post<string>(url, body);
   }
 
-  // regist() {
-  //   const url =
-  //     "https://us-central1-sukauang-backend.cloudfunctions.net/Register";
-  // }
-}
+  regist(reff: string,
+    userid: string,
+    nama: string,
+    pass: string,
+    nomorhp: string,
+    alamat: string,
+    norek: string,
+    namarek: string,
+    namabank: string) {
+    const url =
+      "https://us-central1-sukauang-backend.cloudfunctions.net/Register";
+    const body = {
+    SponsorCode:reff,
+    FullName:userid,
+    Username:nama,
+    Password:pass,
+    WhatsAppNumber:nomorhp,
+    PostAddress:alamat,
+    BankName:namabank,
+    BankAccountNumber:norek
+    };
+    return this.http.post<string>(url, body);
+  }
+
