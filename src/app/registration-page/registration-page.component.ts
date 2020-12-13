@@ -26,5 +26,14 @@ export class RegistrationPageComponent implements OnInit {
       }
     });
   }
-  regis() {}
+  regis(
+    reff: string,
+    userid: string,
+    nama: string,
+    nomorhp: string,
+    alamat: string,
+    norek: string,
+    namarek: string,
+    namabank: string
+  ) {}
 }
