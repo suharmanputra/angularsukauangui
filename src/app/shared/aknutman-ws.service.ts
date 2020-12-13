@@ -43,4 +43,4 @@ export class AknutmanWsService {
     };
     return this.http.post<string>(url, body);
   }
-
+}
