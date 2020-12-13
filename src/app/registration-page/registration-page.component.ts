@@ -2,6 +2,13 @@ import { Component, OnInit } from "@angular/core";
 import { MenuBarService } from "../shared/menu-bar.service";
 import { ActivatedRoute, Router, RoutesRecognized } from "@angular/router";
 import { FormsModule } from "@angular/forms";
+import { AknutmanWsService } from "../shared/aknutman-ws.service";
+
+export interface wsResponseType {
+  status: string;
+  message: string;
+  referall: string;
+}
 
 @Component({
   selector: "app-registration-page",
