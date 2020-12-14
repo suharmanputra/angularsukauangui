@@ -108,7 +108,7 @@ export class RegistrationPageComponent implements OnInit {
             // } else {
             //   this.openSnackBar();
           }
-          // console.log(resp);
+          console.log(resp);
         });
     }
   }
