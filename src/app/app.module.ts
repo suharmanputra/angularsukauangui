@@ -62,6 +62,7 @@ import { MemberPageComponent } from "./member-page/member-page.component";
 import { MenuBarService } from "./shared/menu-bar.service";
 import { AknutmanWsService } from "./shared/aknutman-ws.service";
 import { TermConditionDialogComponent } from "./term-condition-dialog/term-condition-dialog.component";
+import { GlobalSnackbarcomponentComponent } from './global-snackbarcomponent/global-snackbarcomponent.component';
 
 @NgModule({
   imports: [
@@ -126,7 +127,8 @@ import { TermConditionDialogComponent } from "./term-condition-dialog/term-condi
     AboutPageComponent,
     ProfilPageComponent,
     MemberPageComponent,
-    TermConditionDialogComponent
+    TermConditionDialogComponent,
+    GlobalSnackbarcomponentComponent
   ],
   bootstrap: [AppComponent],
   entryComponents: [

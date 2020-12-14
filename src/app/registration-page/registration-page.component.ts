@@ -34,14 +34,37 @@ export class RegistrationPageComponent implements OnInit {
       }
     });
   }
-  regis(
+  regist(
     reff: string,
     userid: string,
     nama: string,
+    pass: string,
     nomorhp: string,
     alamat: string,
     norek: string,
     namarek: string,
     namabank: string
-  ) {}
+  ) {
+    this.aknutman
+      .regist(
+        reff,
+        userid,
+        nama,
+        pass,
+        nomorhp,
+        alamat,
+        norek,
+        namarek,
+        namabank
+      )
+      .subscribe(resp => {
+        // if (resp.isAuthenticated === true) {
+        //   this.router.navigateByUrl("/dashboard");
+        //   this.menuBarService.setIsAuthenticated(true);
+        // } else {
+        //   this.openSnackBar();
+        // }
+        console.log(resp);
+      });
+  }
 }
