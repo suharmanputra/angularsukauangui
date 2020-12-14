@@ -93,12 +93,19 @@ export class RegistrationPageComponent implements OnInit {
           namarek
         )
         .subscribe(resp => {
-          // if (resp.isAuthenticated === true) {
-          //   this.router.navigateByUrl("/dashboard");
-          //   this.menuBarService.setIsAuthenticated(true);
-          // } else {
-          //   this.openSnackBar();
-          // }
+          if (resp.status == "201") {
+            this.snackBar.open(
+              "Registrasi berhasil, silahkan login dan aktivasi akun anda.",
+              "Ok",
+              {
+                duration: 3000
+              }
+            );
+            //   this.router.navigateByUrl("/dashboard");
+            //   this.menuBarService.setIsAuthenticated(true);
+            // } else {
+            //   this.openSnackBar();
+          }
           console.log(resp);
         });
     }
