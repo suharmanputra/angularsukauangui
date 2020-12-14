@@ -103,23 +103,11 @@ export class RegistrationPageComponent implements OnInit {
             );
 
             this.router.navigateByUrl("/login");
-            //   this.router.navigateByUrl("/dashboard");
-            //   this.menuBarService.setIsAuthenticated(true);
-            // } else {
-            //   this.openSnackBar();
+          } else {
+            this.snackBar.open(resp.message, "Ok", {
+              duration: 3000
+            });
           }
-          // console.log(
-          //   reff,
-          //   userid,
-          //   pass,
-          //   nama,
-          //   nomorhp,
-          //   alamat,
-          //   norek,
-          //   namabank,
-          //   namarek
-          // );
-          // console.log(resp);
         });
     }
   }
