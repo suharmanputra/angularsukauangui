@@ -23,8 +23,8 @@ export class AknutmanWsService {
   regist(
     reff: string,
     userid: string,
-    nama: string,
     pass: string,
+    nama: string,
     nomorhp: string,
     alamat: string,
     norek: string,
@@ -36,8 +36,8 @@ export class AknutmanWsService {
     const body = {
       SponsorCode: reff,
       FullName: userid,
-      Username: nama,
       Password: pass,
+      Username: nama,
       WhatsAppNumber: nomorhp,
       PostAddress: alamat,
       BankAccountNumber: norek,
