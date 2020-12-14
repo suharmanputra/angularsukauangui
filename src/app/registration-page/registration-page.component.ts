@@ -101,12 +101,14 @@ export class RegistrationPageComponent implements OnInit {
                 duration: 3000
               }
             );
+
+            this.router.navigateByUrl("/login");
             //   this.router.navigateByUrl("/dashboard");
             //   this.menuBarService.setIsAuthenticated(true);
             // } else {
             //   this.openSnackBar();
           }
-          console.log(resp);
+          // console.log(resp);
         });
     }
   }
