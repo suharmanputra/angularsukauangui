@@ -8,10 +8,10 @@ export class MenuBarService {
 
   private isAuthenticated = new BehaviorSubject(false);
 
-  // globalIsAuthenticated = this.isAuthenticated;
+  globalIsAuthenticated = this.isAuthenticated;
 
   //debug mode
-  globalIsAuthenticated = true;
+  // globalIsAuthenticated = true;
 
   constructor(private router: Router) {}
 

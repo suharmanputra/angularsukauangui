@@ -38,25 +38,25 @@ export class LoginPageComponent implements OnInit {
         this.router.navigateByUrl("/dashboard");
         this.menuBarService.setIsAuthenticated(true);
       } else {
-        this.openSnackBar();
+        // this.openSnackBar();
+        this.snackBar.open("Username/Password Salah!", "Ok", {
+          duration: 3000
+        });
       }
       console.log(resp);
     });
   }
 
-  openSnackBar() {
-    this.snackBar.openFromComponent(LoginWarningSnackbarComponent, {
-      duration: this.durationInSeconds * 1000
-    });
-  }
+  // openSnackBar() {
+  //   // this.snackBar.openFromComponent(LoginWarningSnackbarComponent, {
+  //   //   duration: this.durationInSeconds * 1000
+  //   // });
+  //   this.snackBar.open("Username/Password Salah!", "Ok", {
+  //     duration: 2000
+  //   });
+  // }
   redirect_register() {
     this.router.navigateByUrl("/registration");
   }
 }
 
-@Component({
-  selector: "app-login-warning",
-  templateUrl: "login-warning-snackbar.component.html",
-  styleUrls: ["./login-page.component.css"]
-})
-export class LoginWarningSnackbarComponent {}

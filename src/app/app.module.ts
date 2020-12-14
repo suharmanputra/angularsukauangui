@@ -49,10 +49,7 @@ import { MatTabsModule } from "@angular/material/tabs";
 import { MatToolbarModule } from "@angular/material/toolbar";
 import { MatTooltipModule } from "@angular/material/tooltip";
 import { MatTreeModule } from "@angular/material/tree";
-import {
-  LoginPageComponent,
-  LoginWarningSnackbarComponent
-} from "./login-page/login-page.component";
+import { LoginPageComponent } from "./login-page/login-page.component";
 import { DashboardPageComponent } from "./dashboard-page/dashboard-page.component";
 import { RegistrationPageComponent } from "./registration-page/registration-page.component";
 import { TopBarComponent } from "./top-bar/top-bar.component";
@@ -62,7 +59,6 @@ import { MemberPageComponent } from "./member-page/member-page.component";
 import { MenuBarService } from "./shared/menu-bar.service";
 import { AknutmanWsService } from "./shared/aknutman-ws.service";
 import { TermConditionDialogComponent } from "./term-condition-dialog/term-condition-dialog.component";
-import { GlobalSnackbarcomponentComponent } from './global-snackbarcomponent/global-snackbarcomponent.component';
 
 @NgModule({
   imports: [
@@ -120,21 +116,17 @@ import { GlobalSnackbarcomponentComponent } from './global-snackbarcomponent/glo
   declarations: [
     AppComponent,
     LoginPageComponent,
-    LoginWarningSnackbarComponent,
+
     DashboardPageComponent,
     RegistrationPageComponent,
     TopBarComponent,
     AboutPageComponent,
     ProfilPageComponent,
     MemberPageComponent,
-    TermConditionDialogComponent,
-    GlobalSnackbarcomponentComponent
-  ],
-  bootstrap: [AppComponent],
-  entryComponents: [
-    LoginWarningSnackbarComponent,
     TermConditionDialogComponent
   ],
+  bootstrap: [AppComponent],
+  entryComponents: [TermConditionDialogComponent],
   providers: [MenuBarService, AknutmanWsService]
 })
 export class AppModule {}
