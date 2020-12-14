@@ -28,8 +28,8 @@ export class AknutmanWsService {
     nomorhp: string,
     alamat: string,
     norek: string,
-    namarek: string,
-    namabank: string
+    namabank: string,
+    namarek: string
   ) {
     const url =
       "https://us-central1-sukauang-backend.cloudfunctions.net/Register";
@@ -40,8 +40,8 @@ export class AknutmanWsService {
       Password: pass,
       WhatsAppNumber: nomorhp,
       PostAddress: alamat,
-      BankName: namabank,
-      BankAccountNumber: norek
+           BankAccountNumber: norek,
+           BankName: namabank
     };
     return this.http.post<string>(url, body);
   }
