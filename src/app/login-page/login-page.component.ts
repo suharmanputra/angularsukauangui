@@ -43,7 +43,7 @@ export class LoginPageComponent implements OnInit {
           duration: 3000
         });
       }
-      console.log(resp);
+      // console.log(resp);
     });
   }
 

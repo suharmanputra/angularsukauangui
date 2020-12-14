@@ -39,8 +39,8 @@ export class RegistrationPageComponent implements OnInit {
   regist(
     reff: string,
     userid: string,
-    nama: string,
     pass: string,
+    nama: string,
     nomorhp: string,
     alamat: string,
     norek: string,
@@ -108,7 +108,18 @@ export class RegistrationPageComponent implements OnInit {
             // } else {
             //   this.openSnackBar();
           }
-          console.log(resp);
+          // console.log(
+          //   reff,
+          //   userid,
+          //   pass,
+          //   nama,
+          //   nomorhp,
+          //   alamat,
+          //   norek,
+          //   namabank,
+          //   namarek
+          // );
+          // console.log(resp);
         });
     }
   }
