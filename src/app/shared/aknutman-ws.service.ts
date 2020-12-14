@@ -35,9 +35,9 @@ export class AknutmanWsService {
       "https://us-central1-sukauang-backend.cloudfunctions.net/Register";
     const body = {
       SponsorCode: reff,
-      FullName: userid,
+      Username: userid,
       Password: pass,
-      Username: nama,
+      FullName: nama,
       WhatsAppNumber: nomorhp,
       PostAddress: alamat,
       BankAccountNumber: norek,
