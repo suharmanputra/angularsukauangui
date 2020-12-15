@@ -20,7 +20,10 @@ export class DashboardPageComponent implements OnInit {
     this.menuBarService.globalIsAuthenticated.subscribe(result => {
       if (result === false) {
         this.router.navigateByUrl("/");
+      } else {
+        
       }
+      // console.log(localStorage.getItem("userID"));
     });
   }
   checkin() {
