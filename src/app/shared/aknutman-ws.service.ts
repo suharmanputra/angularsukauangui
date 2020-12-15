@@ -41,7 +41,8 @@ export class AknutmanWsService {
       WhatsAppNumber: nomorhp,
       PostAddress: alamat,
       BankAccountNumber: norek,
-      BankName: namabank
+      BankName: namabank,
+      BankAccountName: namarek
     };
     return this.http.post<string>(url, body);
   }
