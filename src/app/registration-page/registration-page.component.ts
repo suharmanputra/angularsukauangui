@@ -103,6 +103,7 @@ export class RegistrationPageComponent implements OnInit {
             );
 
             this.router.navigateByUrl("/login");
+            // console.log(resp);
           } else {
             this.snackBar.open(resp.message, "Ok", {
               duration: 3000

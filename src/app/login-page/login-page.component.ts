@@ -28,7 +28,7 @@ export class LoginPageComponent implements OnInit {
 
   ngOnInit() {
     this.menuBarService.setMenuVisible(false);
-
+    localStorage.clear();
     //debug mode
     // this.menuBarService.setIsAuthenticated(false);
   }
