@@ -17,6 +17,7 @@ export interface wsResponseType {
   styleUrls: ["./registration-page.component.css"]
 })
 export class RegistrationPageComponent implements OnInit {
+  hide = true;
   constructor(
     private menuBarService: MenuBarService,
     private snackBar: MatSnackBar,
@@ -26,6 +27,7 @@ export class RegistrationPageComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    // this.menuBarService.setLoadingAnimation(true);
     this.menuBarService.setMenuVisible(false);
     this.route.queryParams.subscribe(params => {
       if (params["reff"] != null) {
@@ -80,6 +82,7 @@ export class RegistrationPageComponent implements OnInit {
         duration: 3000
       });
     } else {
+      this.menuBarService.setLoadingAnimation(true);
       this.aknutman
         .regist(
           reff,
@@ -108,6 +111,7 @@ export class RegistrationPageComponent implements OnInit {
             this.snackBar.open(resp.message, "Ok", {
               duration: 3000
             });
+            this.menuBarService.setLoadingAnimation(false);
           }
         });
     }

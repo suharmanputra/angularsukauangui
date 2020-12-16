@@ -27,10 +27,10 @@ export class LoginPageComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.menuBarService.setLoadingAnimation(true);
+    // this.menuBarService.setLoadingAnimation(true);
     this.menuBarService.setMenuVisible(false);
     localStorage.clear();
-    this.menuBarService.setLoadingAnimation(false);
+    // this.menuBarService.setLoadingAnimation(false);
     //debug mode
     // this.menuBarService.setIsAuthenticated(false);
   }
@@ -48,10 +48,10 @@ export class LoginPageComponent implements OnInit {
         this.snackBar.open("Username/Password Salah!", "Ok", {
           duration: 3000
         });
+        this.menuBarService.setLoadingAnimation(false);
       }
       // console.log(resp);
     });
-    this.menuBarService.setLoadingAnimation(false);
   }
 
   // openSnackBar() {
