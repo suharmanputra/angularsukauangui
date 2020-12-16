@@ -47,9 +47,18 @@ export class AknutmanWsService {
     return this.http.post<string>(url, body);
   }
 
-  getDetail(userid: string) {
+  getdetail(userid: string) {
     const url =
       "https://us-central1-sukauang-backend.cloudfunctions.net/UserDetail";
+    const body = {
+      PersonId: userid
+    };
+    return this.http.post<string>(url, body);
+  }
+
+  getactivationmessage(userid: string) {
+    const url =
+      "https://us-central1-sukauang-backend.cloudfunctions.net/UserGetActivationMessage";
     const body = {
       PersonId: userid
     };

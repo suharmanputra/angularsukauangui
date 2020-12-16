@@ -35,7 +35,7 @@ export class DashboardPageComponent implements OnInit {
       } else {
         this.menuBarService.setLoadingAnimation(true);
         this.aknutman
-          .getDetail(localStorage.getItem("userid"))
+          .getdetail(localStorage.getItem("userid"))
           .subscribe(resp => {
             // console.log(localStorage.getItem("userID"));
             // console.log(resp);
@@ -50,7 +50,8 @@ export class DashboardPageComponent implements OnInit {
               this.username = localStorage.getItem("username");
               this.referral =
                 "https://sukauang.com/#/registration?reff=" +
-                resp.data.ReferralCode;
+                resp.data.ReferralCode +
+                "";
               if ((resp.data.IsActivated = "false")) {
                 this.statusakun = "Belum Aktif";
                 this.masaaktif = "0";
