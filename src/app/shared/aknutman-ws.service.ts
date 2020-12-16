@@ -1,10 +1,10 @@
 import { Injectable } from "@angular/core";
 import { HttpClient, HttpEvent } from "@angular/common/http";
 
-export interface wsResponseType {
-  Status: string;
-  IsAuthenticated: boolean;
-}
+// export interface wsResponseType {
+//   Status: string;
+//   IsAuthenticated: boolean;
+// }
 
 @Injectable()
 export class AknutmanWsService {
@@ -43,6 +43,15 @@ export class AknutmanWsService {
       BankAccountNumber: norek,
       BankName: namabank,
       BankAccountName: namarek
+    };
+    return this.http.post<string>(url, body);
+  }
+
+  getDetail(userid: string) {
+    const url =
+      "https://us-central1-sukauang-backend.cloudfunctions.net/UserDetail";
+    const body = {
+      PersonId: userid
     };
     return this.http.post<string>(url, body);
   }

@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { MatDialog } from "@angular/material/dialog";
 import { MenuBarService } from "../shared/menu-bar.service";
+import { AknutmanWsService } from "../shared/aknutman-ws.service";
 import { ActivatedRoute, Router, RoutesRecognized } from "@angular/router";
 import { TermConditionDialogComponent } from "../term-condition-dialog/term-condition-dialog.component";
 @Component({
@@ -9,8 +10,18 @@ import { TermConditionDialogComponent } from "../term-condition-dialog/term-cond
   styleUrls: ["./dashboard-page.component.css"]
 })
 export class DashboardPageComponent implements OnInit {
+  username: string;
+  referral: string;
+  statusakun: string;
+  masaaktif: string;
+  level: string;
+  jmlmember: string;
+  bonus: string;
+  total: string;
+
   constructor(
     private menuBarService: MenuBarService,
+    private aknutman: AknutmanWsService,
     private router: Router,
     public dialog: MatDialog
   ) {}
@@ -21,9 +32,31 @@ export class DashboardPageComponent implements OnInit {
       if (result === false) {
         this.router.navigateByUrl("/");
       } else {
-        
+        this.aknutman
+          .getDetail(localStorage.getItem("userid"))
+          .subscribe(resp => {
+            // console.log(localStorage.getItem("userID"));
+            // console.log(resp);
+
+            if (resp.status == "200") {
+              this.username = localStorage.getItem("username");
+              this.referral =
+                "https://sukauang.com/#/registration?reff=" +
+                resp.data.ReferralCode;
+              if ((resp.data.IsActivated = "false")) {
+                this.statusakun = "Belum Aktif";
+                this.masaaktif = "0";
+              } else {
+                this.statusakun = "Aktif";
+                this.masaaktif = resp.data.ActivatedDayCount;
+              }
+              this.level = resp.data.Level;
+              this.jmlmember = resp.data.MemberCount;
+              this.bonus = resp.data.PayableBonus;
+              this.total = resp.data.TotalBonus;
+            }
+          });
       }
-      // console.log(localStorage.getItem("userID"));
     });
   }
   checkin() {

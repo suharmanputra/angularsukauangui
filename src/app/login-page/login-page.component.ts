@@ -4,11 +4,11 @@ import { MatSnackBar } from "@angular/material/snack-bar";
 import { MenuBarService } from "../shared/menu-bar.service";
 import { AknutmanWsService } from "../shared/aknutman-ws.service";
 
-export interface wsResponseType {
-  Status: string;
-  IsAuthenticated: boolean;
-  personId: string;
-}
+// export interface wsResponseType {
+//   Status: string;
+//   IsAuthenticated: boolean;
+//   personId: string;
+// }
 
 @Component({
   selector: "app-login-page",
@@ -38,7 +38,8 @@ export class LoginPageComponent implements OnInit {
       if (resp.isAuthenticated === true) {
         this.router.navigateByUrl("/dashboard");
         this.menuBarService.setIsAuthenticated(true);
-        localStorage.setItem("userID", resp.personId);
+        localStorage.setItem("username", username);
+        localStorage.setItem("userid", resp.personId);
       } else {
         // this.openSnackBar();
         this.snackBar.open("Username/Password Salah!", "Ok", {
