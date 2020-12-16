@@ -107,6 +107,7 @@ export class RegistrationPageComponent implements OnInit {
 
             this.router.navigateByUrl("/login");
             // console.log(resp);
+            this.menuBarService.setLoadingAnimation(false);
           } else {
             this.snackBar.open(resp.message, "Ok", {
               duration: 3000
