@@ -9,6 +9,7 @@ import { MenuBarService } from "../shared/menu-bar.service";
 })
 export class TopBarComponent implements OnInit {
   btnmenu: string;
+  showProgressBar: boolean;
 
   constructor(
     private actRouter: ActivatedRoute,

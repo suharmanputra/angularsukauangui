@@ -27,13 +27,16 @@ export class LoginPageComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    this.menuBarService.setLoadingAnimation(true);
     this.menuBarService.setMenuVisible(false);
     localStorage.clear();
+    // this.menuBarService.setLoadingAnimation(false);
     //debug mode
     // this.menuBarService.setIsAuthenticated(false);
   }
 
   checkLogin(username: string, password: string) {
+    this.menuBarService.setLoadingAnimation(true);
     this.aknutman.getLogin(username, password).subscribe(resp => {
       if (resp.isAuthenticated === true) {
         this.router.navigateByUrl("/dashboard");
@@ -48,6 +51,7 @@ export class LoginPageComponent implements OnInit {
       }
       // console.log(resp);
     });
+    this.menuBarService.setLoadingAnimation(false);
   }
 
   // openSnackBar() {

@@ -13,6 +13,9 @@ export class MenuBarService {
   //debug mode
   // globalIsAuthenticated = true;
 
+  private loadingAnimation = new BehaviorSubject(false);
+  sharedLoadingAnimation = this.loadingAnimation;
+
   constructor(private router: Router) {}
 
   setMenuVisible(isonloginpage: boolean) {
@@ -26,5 +29,8 @@ export class MenuBarService {
   setIsAuthenticated(isAuth: boolean) {
     this.isAuthenticated.next(isAuth);
     // this.isAuthenticated.next(true);
+  }
+  setLoadingAnimation(isDisplay: boolean) {
+    this.loadingAnimation.next(isDisplay);
   }
 }

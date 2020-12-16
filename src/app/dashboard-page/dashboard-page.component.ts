@@ -27,6 +27,7 @@ export class DashboardPageComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    this.menuBarService.setLoadingAnimation(true);
     this.menuBarService.setMenuVisible(true);
     this.menuBarService.globalIsAuthenticated.subscribe(result => {
       if (result === false) {
@@ -64,6 +65,8 @@ export class DashboardPageComponent implements OnInit {
           });
       }
     });
+
+    this.menuBarService.setLoadingAnimation(false);
   }
   checkin() {
     alert("Check In berhasil");
