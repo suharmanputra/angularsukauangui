@@ -18,7 +18,8 @@ export class DashboardPageComponent implements OnInit {
   jmlmember: string;
   bonus: string;
   total: string;
-
+  checkinButtonVisible: boolean;
+  witdhawButtonVisible: boolean;
   constructor(
     private menuBarService: MenuBarService,
     private aknutman: AknutmanWsService,
@@ -53,13 +54,21 @@ export class DashboardPageComponent implements OnInit {
               if ((resp.data.IsActivated = "false")) {
                 this.statusakun = "Belum Aktif";
                 this.masaaktif = "0";
+                this.checkinButtonVisible = false;
               } else {
                 this.statusakun = "Aktif";
                 this.masaaktif = resp.data.ActivatedDayCount;
+                this.checkinButtonVisible = true;
               }
               this.level = resp.data.Level;
               this.jmlmember = resp.data.MemberCount;
+
               this.bonus = formatter.format(resp.data.PayableBonus);
+              if (parseFloat(resp.data.PayableBonus) >= 20000) {
+                this.witdhawButtonVisible = true;
+              } else {
+                this.witdhawButtonVisible = false;
+              }
               this.total = formatter.format(resp.data.TotalBonus);
               this.menuBarService.setLoadingAnimation(false);
             }
