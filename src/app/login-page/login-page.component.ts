@@ -30,7 +30,7 @@ export class LoginPageComponent implements OnInit {
     this.menuBarService.setLoadingAnimation(true);
     this.menuBarService.setMenuVisible(false);
     localStorage.clear();
-    // this.menuBarService.setLoadingAnimation(false);
+    this.menuBarService.setLoadingAnimation(false);
     //debug mode
     // this.menuBarService.setIsAuthenticated(false);
   }

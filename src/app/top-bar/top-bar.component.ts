@@ -21,6 +21,10 @@ export class TopBarComponent implements OnInit {
     this.menuBarService.globalBtnMenu.subscribe(result => {
       this.btnmenu = result;
     });
+
+    this.menuBarService.sharedLoadingAnimation.subscribe(isdisplayed => {
+      this.showProgressBar = isdisplayed;
+    });
   }
   redirect_home() {
     this.router.navigateByUrl("/dashboard");
