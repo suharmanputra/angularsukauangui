@@ -39,6 +39,12 @@ export class DashboardPageComponent implements OnInit {
             // console.log(resp);
 
             if (resp.status == "200") {
+              const formatter = new Intl.NumberFormat("in-ID", {
+                style: "currency",
+                currency: "IDR",
+                minimumFractionDigits: 2
+              });
+
               this.username = localStorage.getItem("username");
               this.referral =
                 "https://sukauang.com/#/registration?reff=" +
@@ -52,8 +58,8 @@ export class DashboardPageComponent implements OnInit {
               }
               this.level = resp.data.Level;
               this.jmlmember = resp.data.MemberCount;
-              this.bonus = resp.data.PayableBonus;
-              this.total = resp.data.TotalBonus;
+              this.bonus = formatter.format(resp.data.PayableBonus);
+              this.total = formatter.format(resp.data.TotalBonus);
             }
           });
       }
