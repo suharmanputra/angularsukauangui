@@ -27,12 +27,12 @@ export class DashboardPageComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.menuBarService.setLoadingAnimation(true);
     this.menuBarService.setMenuVisible(true);
     this.menuBarService.globalIsAuthenticated.subscribe(result => {
       if (result === false) {
         this.router.navigateByUrl("/");
       } else {
+        this.menuBarService.setLoadingAnimation(true);
         this.aknutman
           .getDetail(localStorage.getItem("userid"))
           .subscribe(resp => {
@@ -61,12 +61,11 @@ export class DashboardPageComponent implements OnInit {
               this.jmlmember = resp.data.MemberCount;
               this.bonus = formatter.format(resp.data.PayableBonus);
               this.total = formatter.format(resp.data.TotalBonus);
+              this.menuBarService.setLoadingAnimation(false);
             }
           });
       }
     });
-
-    this.menuBarService.setLoadingAnimation(false);
   }
   checkin() {
     alert("Check In berhasil");
