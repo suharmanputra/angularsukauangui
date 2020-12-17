@@ -10,7 +10,7 @@ import { MenuBarService } from "../shared/menu-bar.service";
 export class TopBarComponent implements OnInit {
   btnmenu: string;
   showProgressBar: boolean;
-
+  menuAdminPanel: boolean;
   constructor(
     private actRouter: ActivatedRoute,
     private router: Router,
@@ -21,7 +21,12 @@ export class TopBarComponent implements OnInit {
     this.menuBarService.globalBtnMenu.subscribe(result => {
       this.btnmenu = result;
     });
-
+    console.log(this.menuAdminPanel);
+    if (localStorage.getItem("username").toLowerCase() == "superadmin") {
+      this.menuAdminPanel = true;
+    } else {
+      this.menuAdminPanel = false;
+    }
     this.menuBarService.sharedLoadingAnimation.subscribe(isdisplayed => {
       this.showProgressBar = isdisplayed;
     });

@@ -14,7 +14,7 @@
 					<td>Status Akun</td>
 					<td>:</td>
 					<td>{{statusakun}}</td>
-					<td><button style="display:inline-block;width:100%;" mat-raised-button color="accent" (click)="openDialogWithRef(termconditiondialog)">Aktivasi</button>
+					<td><button *ngIf="this.aktivasiButtonVisible" style="display:inline-block;width:100%;" mat-raised-button color="accent" (click)="openDialogWithRef(termconditiondialog)">Aktivasi</button>
 					</td>
 				</tr>
 				<tr>

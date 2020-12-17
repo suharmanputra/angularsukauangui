@@ -22,6 +22,7 @@ export class DashboardPageComponent implements OnInit {
   total: string;
   checkinButtonVisible: boolean;
   witdhawButtonVisible: boolean;
+  aktivasiButtonVisible: boolean;
   activationnote: string;
   fileToUpload: File = null;
   constructor(
@@ -43,9 +44,6 @@ export class DashboardPageComponent implements OnInit {
         this.aknutman
           .getdetail(localStorage.getItem("userid"))
           .subscribe(resp => {
-            // console.log(localStorage.getItem("userID"));
-            // console.log(resp);
-
             if (resp.status == "200") {
               const formatter = new Intl.NumberFormat("in-ID", {
                 style: "currency",
@@ -58,15 +56,31 @@ export class DashboardPageComponent implements OnInit {
                 "https://sukauang.com/#/registration?reff=" +
                 resp.data.ReferralCode +
                 "";
-              if ((resp.data.IsActivated = "false")) {
-                this.statusakun = "Belum Aktif";
-                this.masaaktif = "0";
+
+              if (
+                localStorage.getItem("username").toLowerCase() == "superadmin"
+              ) {
+                this.statusakun = "Aktif";
+                this.masaaktif = "999";
                 this.checkinButtonVisible = false;
               } else {
-                this.statusakun = "Aktif";
-                this.masaaktif = resp.data.ActivatedDayCount;
-                this.checkinButtonVisible = true;
+                if ((resp.data.IsActivated = "false")) {
+                  if (resp.data.PaymentProofStorage == "") {
+                    this.statusakun = "Belum Aktif";
+                    this.aktivasiButtonVisible = true;
+                  } else {
+                    this.statusakun = "Menunggu Konfirmasi Admin";
+                    this.aktivasiButtonVisible = false;
+                  }
+                  this.masaaktif = "0";
+                  this.checkinButtonVisible = false;
+                } else {
+                  this.statusakun = "Aktif";
+                  this.masaaktif = resp.data.ActivatedDayCount;
+                  this.checkinButtonVisible = true;
+                }
               }
+
               this.level = resp.data.Level;
               this.jmlmember = resp.data.MemberCount;
 
@@ -77,6 +91,7 @@ export class DashboardPageComponent implements OnInit {
                 this.witdhawButtonVisible = false;
               }
               this.total = formatter.format(resp.data.TotalBonus);
+
               this.menuBarService.setLoadingAnimation(false);
             }
           });

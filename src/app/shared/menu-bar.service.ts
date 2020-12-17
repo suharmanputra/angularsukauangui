@@ -5,14 +5,8 @@ import { BehaviorSubject } from "rxjs";
 export class MenuBarService {
   private btnMenu = new BehaviorSubject("menu");
   globalBtnMenu = this.btnMenu;
-
   private isAuthenticated = new BehaviorSubject(false);
-
   globalIsAuthenticated = this.isAuthenticated;
-
-  //debug mode
-  // globalIsAuthenticated = true;
-
   private loadingAnimation = new BehaviorSubject(false);
   sharedLoadingAnimation = this.loadingAnimation;
 
@@ -28,7 +22,6 @@ export class MenuBarService {
 
   setIsAuthenticated(isAuth: boolean) {
     this.isAuthenticated.next(isAuth);
-    // this.isAuthenticated.next(true);
   }
   setLoadingAnimation(isDisplay: boolean) {
     this.loadingAnimation.next(isDisplay);
