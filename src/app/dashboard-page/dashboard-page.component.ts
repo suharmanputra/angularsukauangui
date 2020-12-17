@@ -4,7 +4,6 @@ import { MenuBarService } from "../shared/menu-bar.service";
 import { MatSnackBar } from "@angular/material/snack-bar";
 import { AknutmanWsService } from "../shared/aknutman-ws.service";
 import { ActivatedRoute, Router, RoutesRecognized } from "@angular/router";
-import { TermConditionDialogComponent } from "../term-condition-dialog/term-condition-dialog.component";
 import { ViewChild, TemplateRef } from "@angular/core";
 @Component({
   selector: "app-dashboard-page",
@@ -101,30 +100,39 @@ export class DashboardPageComponent implements OnInit {
         }
       });
   }
-
-  handleFileInput(files: FileList) {
+  private setFile(event) {
+    this.fileToUpload = event.target.files[0];
+  }
+  handleFileInput() {
     this.menuBarService.setLoadingAnimation(true);
-    this.fileToUpload = files.item(0);
-    const reader = new FileReader();
-    reader.readAsDataURL(this.fileToUpload);
-    reader.onload = () => {
-      this.aknutman
-        .uploadpaymentproof(
-          localStorage.getItem("userid"),
-          String(reader.result)
-        )
-        .subscribe(resp => {
-          if (resp.status == "200") {
-            this.snackBar.open("Uplaod bukti tansfer berhasil!", "Ok", {
-              duration: 3000
-            });
-          } else {
-            this.snackBar.open(resp.result, "Ok", {
-              duration: 3000
-            });
-          }
-        });
+    if (this.fileToUpload === null) {
       this.menuBarService.setLoadingAnimation(false);
-    };
+      this.snackBar.open("No File to upload", "Ok", {
+        duration: 3000
+      });
+    } else {
+      const reader = new FileReader();
+      reader.readAsDataURL(this.fileToUpload);
+      reader.onload = () => {
+        this.aknutman
+          .uploadpaymentproof(
+            localStorage.getItem("userid"),
+            String(reader.result)
+          )
+          .subscribe(resp => {
+            if (resp.status == "200") {
+              this.snackBar.open("Uplaod bukti tansfer berhasil!", "Ok", {
+                duration: 3000
+              });
+              this.menuBarService.setLoadingAnimation(false);
+            } else {
+              this.snackBar.open(resp.result, "Ok", {
+                duration: 3000
+              });
+              this.menuBarService.setLoadingAnimation(false);
+            }
+          });
+      };
+    }
   }
 }
