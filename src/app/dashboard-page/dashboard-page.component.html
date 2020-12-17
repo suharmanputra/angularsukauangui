@@ -14,7 +14,7 @@
 					<td>Status Akun</td>
 					<td>:</td>
 					<td>{{statusakun}}</td>
-					<td><button style="display:inline-block;width:100%;" mat-raised-button color="accent" (click)="openDialog()">Aktivasi</button>
+					<td><button style="display:inline-block;width:100%;" mat-raised-button color="accent" (click)="openDialogWithRef(termconditiondialog)">Aktivasi</button>
 					</td>
 				</tr>
 				<tr>
@@ -74,5 +74,23 @@
 			</div>
 		</mat-card>
 	</div>
+
+	<ng-template #termconditiondialog>
+		<h2 matDialogTitle>Syarat dan Ketentuan Aktivasi Akun.</h2>
+		<div matDialogContent>
+			<span [innerHTML]="activationnote"></span>
+			<div style="text-align:center">
+				<label for="file">Upload bukti transfer</label>
+				<input type="file"
+           id="file"
+           accept="image/x-png,image/gif,image/jpeg"
+           (change)="handleFileInput($event.target.files)">
+</div>
+			</div>
+			<mat-dialog-actions align="end">
+				<button mat-button matDialogClose>Dismiss</button>
+			</mat-dialog-actions>
+	</ng-template>
+
 
 </form>

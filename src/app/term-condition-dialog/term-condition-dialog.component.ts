@@ -21,38 +21,4 @@ export class TermConditionDialogComponent implements OnInit {
     this.getactivationnote();
     this.menuBarService.setLoadingAnimation(false);
   }
-  getactivationnote() {
-    this.aknutman
-      .getactivationmessage(localStorage.getItem("userid"))
-      .subscribe(resp => {
-        if (resp.status == "200") {
-          this.activationnote = resp.data;
-        }
-      });
-  }
-  handleFileInput(files: FileList) {
-    this.menuBarService.setLoadingAnimation(true);
-    this.fileToUpload = files.item(0);
-    const reader = new FileReader();
-    reader.readAsDataURL(this.fileToUpload);
-    reader.onload = () => {
-      this.aknutman
-        .uploadpaymentproof(
-          localStorage.getItem("userid"),
-          String(reader.result)
-        )
-        .subscribe(resp => {
-          if (resp.status == "200") {
-            this.snackBar.open("Uplaod bukti tansfer berhasil!", "Ok", {
-              duration: 3000
-            });
-          } else {
-            this.snackBar.open(resp.result, "Ok", {
-              duration: 3000
-            });
-          }
-        });
-      this.menuBarService.setLoadingAnimation(false);
-    };
-  }
 }

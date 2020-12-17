@@ -1,15 +1,18 @@
 import { Component, OnInit } from "@angular/core";
 import { MatDialog } from "@angular/material/dialog";
 import { MenuBarService } from "../shared/menu-bar.service";
+import { MatSnackBar } from "@angular/material/snack-bar";
 import { AknutmanWsService } from "../shared/aknutman-ws.service";
 import { ActivatedRoute, Router, RoutesRecognized } from "@angular/router";
 import { TermConditionDialogComponent } from "../term-condition-dialog/term-condition-dialog.component";
+import { ViewChild, TemplateRef } from "@angular/core";
 @Component({
   selector: "app-dashboard-page",
   templateUrl: "./dashboard-page.component.html",
   styleUrls: ["./dashboard-page.component.css"]
 })
 export class DashboardPageComponent implements OnInit {
+  @ViewChild("termconditiondialog") termconditiondialog: TemplateRef<any>;
   username: string;
   referral: string;
   statusakun: string;
@@ -20,11 +23,14 @@ export class DashboardPageComponent implements OnInit {
   total: string;
   checkinButtonVisible: boolean;
   witdhawButtonVisible: boolean;
+  activationnote: string;
+  fileToUpload: File = null;
   constructor(
     private menuBarService: MenuBarService,
     private aknutman: AknutmanWsService,
     private router: Router,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    private snackBar: MatSnackBar
   ) {}
 
   ngOnInit() {
@@ -34,6 +40,7 @@ export class DashboardPageComponent implements OnInit {
         this.router.navigateByUrl("/");
       } else {
         this.menuBarService.setLoadingAnimation(true);
+        this.getactivationnote();
         this.aknutman
           .getdetail(localStorage.getItem("userid"))
           .subscribe(resp => {
@@ -81,10 +88,43 @@ export class DashboardPageComponent implements OnInit {
     alert("Check In berhasil");
   }
 
-  openDialog() {
-    const dialogRef = this.dialog.open(TermConditionDialogComponent);
-    dialogRef.afterClosed().subscribe(result => {
-      // console.log(`Dialog result: ${result}`);
-    });
+  openDialogWithRef(ref: TemplateRef<any>) {
+    this.dialog.open(ref);
+  }
+
+  getactivationnote() {
+    this.aknutman
+      .getactivationmessage(localStorage.getItem("userid"))
+      .subscribe(resp => {
+        if (resp.status == "200") {
+          this.activationnote = resp.data;
+        }
+      });
+  }
+
+  handleFileInput(files: FileList) {
+    this.menuBarService.setLoadingAnimation(true);
+    this.fileToUpload = files.item(0);
+    const reader = new FileReader();
+    reader.readAsDataURL(this.fileToUpload);
+    reader.onload = () => {
+      this.aknutman
+        .uploadpaymentproof(
+          localStorage.getItem("userid"),
+          String(reader.result)
+        )
+        .subscribe(resp => {
+          if (resp.status == "200") {
+            this.snackBar.open("Uplaod bukti tansfer berhasil!", "Ok", {
+              duration: 3000
+            });
+          } else {
+            this.snackBar.open(resp.result, "Ok", {
+              duration: 3000
+            });
+          }
+        });
+      this.menuBarService.setLoadingAnimation(false);
+    };
   }
 }
