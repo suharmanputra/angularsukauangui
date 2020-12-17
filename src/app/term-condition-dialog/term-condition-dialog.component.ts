@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { AknutmanWsService } from "../shared/aknutman-ws.service";
 import { MenuBarService } from "../shared/menu-bar.service";
+import { MatSnackBar } from "@angular/material/snack-bar";
 @Component({
   selector: "app-term-condition-dialog",
   templateUrl: "./term-condition-dialog.component.html",
@@ -11,7 +12,8 @@ export class TermConditionDialogComponent implements OnInit {
   fileToUpload: File = null;
   constructor(
     private aknutman: AknutmanWsService,
-    private menuBarService: MenuBarService
+    private menuBarService: MenuBarService,
+    private snackBar: MatSnackBar
   ) {}
 
   ngOnInit() {
@@ -34,12 +36,22 @@ export class TermConditionDialogComponent implements OnInit {
     const reader = new FileReader();
     reader.readAsDataURL(this.fileToUpload);
     reader.onload = () => {
-      console.log(
-        String(reader.result)
-          .split(";")[0]
-          .split("/")[1]
-      );
-      console.log(String(reader.result).split(",")[1]);
+      this.aknutman
+        .uploadpaymentproof(
+          localStorage.getItem("userid"),
+          String(reader.result)
+        )
+        .subscribe(resp => {
+          if (resp.status == "200") {
+            this.snackBar.open("Uplaod bukti tansfer berhasil!", "Ok", {
+              duration: 3000
+            });
+          } else {
+            this.snackBar.open(resp.result, "Ok", {
+              duration: 3000
+            });
+          }
+        });
       this.menuBarService.setLoadingAnimation(false);
     };
   }

@@ -64,4 +64,15 @@ export class AknutmanWsService {
     };
     return this.http.post<string>(url, body);
   }
+
+  uploadpaymentproof(userid: string, base64img: string) {
+    const url =
+      "https://us-central1-sukauang-backend.cloudfunctions.net/UserUploadPaymentProof";
+    const body = {
+      PersonId: userid,
+      ImageExtension: base64img.split(";")[0].split("/")[1],
+      ImageDataUrl: base64img.split(",")[1]
+    };
+    return this.http.post<string>(url, body);
+  }
 }
