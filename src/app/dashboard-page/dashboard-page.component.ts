@@ -91,6 +91,8 @@ export class DashboardPageComponent implements OnInit {
                   this.statusakun = "Aktif";
                   this.masaaktif = resp.data.ActivatedDayCount;
                   this.checkinButtonVisible = true;
+                  this.buktitrfButtonVisible = false;
+                this.aktivasiButtonVisible = false;
                 }
               }
 
