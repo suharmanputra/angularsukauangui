@@ -5,6 +5,8 @@ import { BehaviorSubject } from "rxjs";
 export class MenuBarService {
   private btnMenu = new BehaviorSubject("menu");
   globalBtnMenu = this.btnMenu;
+  private adminMenu = new BehaviorSubject(false);
+  adminmenuvisible = this.adminMenu;
   private isAuthenticated = new BehaviorSubject(false);
   globalIsAuthenticated = this.isAuthenticated;
   private loadingAnimation = new BehaviorSubject(false);
@@ -17,6 +19,14 @@ export class MenuBarService {
       this.btnMenu.next("myMenu");
     } else {
       this.btnMenu.next("myMenuHide");
+    }
+  }
+
+  setAdminVisible(isAdmin: boolean) {
+    if (isAdmin) {
+      this.adminMenu.next(true);
+    } else {
+      this.adminMenu.next(false);
     }
   }
 
