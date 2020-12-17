@@ -34,7 +34,12 @@ export class TermConditionDialogComponent implements OnInit {
     const reader = new FileReader();
     reader.readAsDataURL(this.fileToUpload);
     reader.onload = () => {
-      console.log(reader.result);
+      console.log(
+        String(reader.result)
+          .split(";")[0]
+          .split("/")[1]
+      );
+      console.log(String(reader.result).split(",")[1]);
       this.menuBarService.setLoadingAnimation(false);
     };
   }
