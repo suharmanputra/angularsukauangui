@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { AknutmanWsService } from "../shared/aknutman-ws.service";
-
+import { MenuBarService } from "../shared/menu-bar.service";
 @Component({
   selector: "app-term-condition-dialog",
   templateUrl: "./term-condition-dialog.component.html",
@@ -8,12 +8,16 @@ import { AknutmanWsService } from "../shared/aknutman-ws.service";
 })
 export class TermConditionDialogComponent implements OnInit {
   activationnote: string;
-
-  constructor(private aknutman: AknutmanWsService) {}
+  fileToUpload: File = null;
+  constructor(
+    private aknutman: AknutmanWsService,
+    private menuBarService: MenuBarService
+  ) {}
 
   ngOnInit() {
+    this.menuBarService.setLoadingAnimation(true);
     this.getactivationnote();
-    console.log("loaded");
+    this.menuBarService.setLoadingAnimation(false);
   }
   getactivationnote() {
     this.aknutman
@@ -23,5 +27,15 @@ export class TermConditionDialogComponent implements OnInit {
           this.activationnote = resp.data;
         }
       });
+  }
+  handleFileInput(files: FileList) {
+    this.menuBarService.setLoadingAnimation(true);
+    this.fileToUpload = files.item(0);
+    const reader = new FileReader();
+    reader.readAsDataURL(this.fileToUpload);
+    reader.onload = () => {
+      console.log(reader.result);
+      this.menuBarService.setLoadingAnimation(false);
+    };
   }
 }

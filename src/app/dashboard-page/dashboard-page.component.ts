@@ -84,7 +84,7 @@ export class DashboardPageComponent implements OnInit {
   openDialog() {
     const dialogRef = this.dialog.open(TermConditionDialogComponent);
     dialogRef.afterClosed().subscribe(result => {
-      console.log(`Dialog result: ${result}`);
+      // console.log(`Dialog result: ${result}`);
     });
   }
 }
