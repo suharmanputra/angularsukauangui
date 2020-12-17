@@ -53,15 +53,6 @@ export class LoginPageComponent implements OnInit {
       // console.log(resp);
     });
   }
-
-  // openSnackBar() {
-  //   // this.snackBar.openFromComponent(LoginWarningSnackbarComponent, {
-  //   //   duration: this.durationInSeconds * 1000
-  //   // });
-  //   this.snackBar.open("Username/Password Salah!", "Ok", {
-  //     duration: 2000
-  //   });
-  // }
   redirect_register() {
     this.router.navigateByUrl("/registration");
   }
