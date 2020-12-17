@@ -35,6 +35,9 @@ export class DashboardPageComponent implements OnInit {
 
   ngOnInit() {
     this.menuBarService.setMenuVisible(true);
+
+    this.menuBarService.me
+
     this.menuBarService.globalIsAuthenticated.subscribe(result => {
       if (result === false) {
         this.router.navigateByUrl("/");
@@ -115,6 +118,7 @@ export class DashboardPageComponent implements OnInit {
         }
       });
   }
+
   private setFile(event) {
     this.fileToUpload = event.target.files[0];
   }

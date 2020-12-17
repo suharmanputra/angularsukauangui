@@ -21,14 +21,10 @@ export class TopBarComponent implements OnInit {
     this.menuBarService.globalBtnMenu.subscribe(result => {
       this.btnmenu = result;
     });
-    console.log(this.menuAdminPanel);
-    if (localStorage.getItem("username").toLowerCase() == "superadmin") {
-      this.menuAdminPanel = true;
-    } else {
-      this.menuAdminPanel = false;
-    }
-    this.menuBarService.sharedLoadingAnimation.subscribe(isdisplayed => {
-      this.showProgressBar = isdisplayed;
+
+    this.menuBarService.adminMenuVisible.subscribe(result => {
+      this.menuAdminPanel = result;
+      console.log(result);
     });
   }
   redirect_home() {

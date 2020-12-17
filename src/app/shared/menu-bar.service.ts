@@ -5,8 +5,8 @@ import { BehaviorSubject } from "rxjs";
 export class MenuBarService {
   private btnMenu = new BehaviorSubject("menu");
   globalBtnMenu = this.btnMenu;
-  private adminMenu = new BehaviorSubject(false);
-  adminmenuvisible = this.adminMenu;
+  private isAdmin = new BehaviorSubject(false);
+  adminMenuVisible = this.isAdmin;
   private isAuthenticated = new BehaviorSubject(false);
   globalIsAuthenticated = this.isAuthenticated;
   private loadingAnimation = new BehaviorSubject(false);
@@ -22,11 +22,12 @@ export class MenuBarService {
     }
   }
 
-  setAdminVisible(isAdmin: boolean) {
-    if (isAdmin) {
-      this.adminMenu.next(true);
+  setAdminVisible(username: string) {
+    console.log(username);
+    if (username.toLowerCase() == "superadmin") {
+      this.isAdmin.next(true);
     } else {
-      this.adminMenu.next(false);
+      this.isAdmin.next(false);
     }
   }
 
