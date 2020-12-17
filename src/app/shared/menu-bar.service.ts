@@ -22,13 +22,8 @@ export class MenuBarService {
     }
   }
 
-  setAdminVisible(username: string) {
-    console.log(username);
-    if (username.toLowerCase() == "superadmin") {
-      this.isAdmin.next(true);
-    } else {
-      this.isAdmin.next(false);
-    }
+  setAdminVisible(admin: boolean) {
+    this.isAdmin.next(admin);
   }
 
   setIsAuthenticated(isAuth: boolean) {

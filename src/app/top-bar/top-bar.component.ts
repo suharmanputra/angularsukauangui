@@ -22,9 +22,12 @@ export class TopBarComponent implements OnInit {
       this.btnmenu = result;
     });
 
+    this.menuBarService.sharedLoadingAnimation.subscribe(isdisplayed => {
+      this.showProgressBar = isdisplayed;
+    });
+
     this.menuBarService.adminMenuVisible.subscribe(result => {
       this.menuAdminPanel = result;
-      console.log(result);
     });
   }
   redirect_home() {

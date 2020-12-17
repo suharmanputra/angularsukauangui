@@ -23,8 +23,10 @@ export class DashboardPageComponent implements OnInit {
   checkinButtonVisible: boolean;
   witdhawButtonVisible: boolean;
   aktivasiButtonVisible: boolean;
+  buktitrfButtonVisible: boolean;
   activationnote: string;
   fileToUpload: File = null;
+  buktitrffile: string;
   constructor(
     private menuBarService: MenuBarService,
     private aknutman: AknutmanWsService,
@@ -34,10 +36,12 @@ export class DashboardPageComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    if (localStorage.getItem("username").toLowerCase() == "superadmin") {
+      this.menuBarService.setAdminVisible(true);
+    } else {
+      this.menuBarService.setAdminVisible(false);
+    }
     this.menuBarService.setMenuVisible(true);
-
-    this.menuBarService.me
-
     this.menuBarService.globalIsAuthenticated.subscribe(result => {
       if (result === false) {
         this.router.navigateByUrl("/");
@@ -66,14 +70,20 @@ export class DashboardPageComponent implements OnInit {
                 this.statusakun = "Aktif";
                 this.masaaktif = "999";
                 this.checkinButtonVisible = false;
+                this.buktitrfButtonVisible = false;
+                this.aktivasiButtonVisible = false;
               } else {
                 if ((resp.data.IsActivated = "false")) {
                   if (resp.data.PaymentProofStorage == "") {
                     this.statusakun = "Belum Aktif";
                     this.aktivasiButtonVisible = true;
+                    this.buktitrfButtonVisible = false;
                   } else {
                     this.statusakun = "Menunggu Konfirmasi Admin";
                     this.aktivasiButtonVisible = false;
+                    this.buktitrfButtonVisible = true;
+                    this.buktitrffile =
+                      `<img src="` + resp.data.PaymentProofStorage + `">`;
                   }
                   this.masaaktif = "0";
                   this.checkinButtonVisible = false;
