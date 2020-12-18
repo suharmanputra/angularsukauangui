@@ -1,15 +1,33 @@
-import { Component, OnInit } from "@angular/core";
 import { AknutmanWsService } from "../shared/aknutman-ws.service";
 import { MenuBarService } from "../shared/menu-bar.service";
 import { ActivatedRoute, Router, RoutesRecognized } from "@angular/router";
 import { MatSnackBar } from "@angular/material/snack-bar";
+import { AfterViewInit, Component, ViewChild } from "@angular/core";
+import { MatPaginator } from "@angular/material/paginator";
+import { MatSort } from "@angular/material/sort";
+import { MatTableDataSource } from "@angular/material/table";
+
+export interface UserData {
+  FullName: string;
+  IsActive: string;
+  WaitForActivation: string;
+  WithdrawalRequest: string;
+}
+
 @Component({
   selector: "app-admin-page",
   templateUrl: "./admin-page.component.html",
   styleUrls: ["./admin-page.component.css"]
 })
-export class AdminPageComponent implements OnInit {
-  listdatauser: any[] = [];
+export class AdminPageComponent implements OnInit, AfterViewInit {
+  displayedColumns: string[] = ["id", "name", "progress", "color"];
+  dataSource: MatTableDataSource<UserData>;
+
+  @ViewChild(MatPaginator) paginator: MatPaginator;
+  @ViewChild(MatSort) sort: MatSort;
+
+  // listdatauser: any[] = [];
+
   constructor(
     private aknutman: AknutmanWsService,
     private menuBarService: MenuBarService,
@@ -33,6 +51,7 @@ export class AdminPageComponent implements OnInit {
     //   }
     // });
   }
+
   tampildata(datefrom: string, dateto: string) {
     if (datefrom == "") {
       this.snackBar.open("Pilih tanggal awal terlebih dahulu!", "Ok", {
@@ -47,12 +66,10 @@ export class AdminPageComponent implements OnInit {
       this.aknutman
         .getuserlist(this.formatDate(datefrom), this.formatDate(dateto))
         .subscribe(resp => {
-          this.listdatauser = resp.persons;
+          this.dataSource = resp.persons;
           this.menuBarService.setLoadingAnimation(false);
         });
     }
-
-    // console.log(this.formatDate(datefrom), this.formatDate(dateto));
   }
 
   formatDate(date: string) {
@@ -65,5 +82,19 @@ export class AdminPageComponent implements OnInit {
     if (day.length < 2) day = "0" + day;
 
     return [year, month, day].join("-");
+  }
+
+  ngAfterViewInit() {
+    this.dataSource.paginator = this.paginator;
+    this.dataSource.sort = this.sort;
+  }
+
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+
+    if (this.dataSource.paginator) {
+      this.dataSource.paginator.firstPage();
+    }
   }
 }
