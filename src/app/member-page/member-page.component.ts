@@ -11,11 +11,19 @@ export class MemberPageComponent implements OnInit {
 
   ngOnInit() {
     this.menuBarService.setMenuVisible(true);
+
     this.menuBarService.globalIsAuthenticated.subscribe(result => {
       if (result === false) {
         this.router.navigateByUrl("/");
       }
-      
+    });
+
+    this.menuBarService.g_username.subscribe(username => {
+      if (username == "superadmin") {
+        this.menuBarService.setAdminVisible(true);
+      } else {
+        this.menuBarService.setAdminVisible(false);
+      }
     });
   }
 }

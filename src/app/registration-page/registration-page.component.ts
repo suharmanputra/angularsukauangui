@@ -27,7 +27,7 @@ export class RegistrationPageComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    // this.menuBarService.setLoadingAnimation(true);
+
     this.menuBarService.setMenuVisible(false);
     this.route.queryParams.subscribe(params => {
       if (params["reff"] != null) {

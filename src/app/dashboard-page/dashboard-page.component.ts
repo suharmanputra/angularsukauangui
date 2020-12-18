@@ -36,90 +36,92 @@ export class DashboardPageComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-
-this.menuBarService.globalIsAuthenticated.subscribe(result => {
-      if (result === false) {
-        this.router.navigateByUrl("/");
-      } else {
-        this.menuBarService.setLoadingAnimation(true);
-        this.getactivationnote();
-        this.aknutman
-          .getdetail(localStorage.getItem("userid"))
-          .subscribe(resp => {
-            if (resp.status == "200") {
-              const formatter = new Intl.NumberFormat("in-ID", {
-                style: "currency",
-                currency: "IDR",
-                minimumFractionDigits: 2
-              });
-
-              this.username = localStorage.getItem("username");
-              this.referral =
-                "https://sukauang.com/#/registration?reff=" +
-                resp.data.ReferralCode +
-                "";
-
-              if (
-                localStorage.getItem("username").toLowerCase() == "superadmin"
-              ) {
-                this.statusakun = "Aktif";
-                this.masaaktif = "999";
-                this.checkinButtonVisible = false;
-                this.buktitrfButtonVisible = false;
-                this.aktivasiButtonVisible = false;
-              } else {
-                if ((resp.data.IsActivated = "false")) {
-                  if (resp.data.PaymentProofStorage == "") {
-                    this.statusakun = "Belum Aktif";
-                    this.aktivasiButtonVisible = true;
-                    this.buktitrfButtonVisible = false;
-                  } else {
-                    this.statusakun = "Menunggu Konfirmasi Admin";
-                    this.aktivasiButtonVisible = false;
-                    this.buktitrfButtonVisible = true;
-                    this.buktitrffile =
-                      `<img src="` + resp.data.PaymentProofStorage + `">`;
-                  }
-                  this.masaaktif = "0";
-                  this.checkinButtonVisible = false;
-                } else {
-                  this.statusakun = "Aktif";
-                  this.masaaktif = resp.data.ActivatedDayCount;
-                  this.checkinButtonVisible = true;
-                  this.buktitrfButtonVisible = false;
-                  this.aktivasiButtonVisible = false;
-                }
-              }
-
-              this.level = resp.data.Level;
-              this.jmlmember = resp.data.MemberCount;
-
-              this.bonus = formatter.format(resp.data.PayableBonus);
-              if (parseFloat(resp.data.PayableBonus) >= 20000) {
-                this.witdhawButtonVisible = true;
-              } else {
-                this.witdhawButtonVisible = false;
-              }
-              this.total = formatter.format(resp.data.TotalBonus);
-
-              this.menuBarService.setLoadingAnimation(false);
-            }
-          });
-      }
-    });
-  }
-
     this.menuBarService.setMenuVisible(true);
 
-    this.menuBarService.g_username.subscribe(result => {
-      if (result == "superadmin") {
+    this.menuBarService.g_username.subscribe(username => {
+      if (username == "superadmin") {
         this.menuBarService.setAdminVisible(true);
       } else {
         this.menuBarService.setAdminVisible(false);
       }
-    });
 
-    
+      this.menuBarService.globalIsAuthenticated.subscribe(result => {
+        if (result === false) {
+          this.router.navigateByUrl("/");
+        } else {
+          this.menuBarService.setLoadingAnimation(true);
+
+          this.menuBarService.g_userid.subscribe(userid => {
+            if (userid !== "") {
+              this.aknutman.getdetail(userid).subscribe(resp => {
+                if (resp.status == "200") {
+                  const formatter = new Intl.NumberFormat("in-ID", {
+                    style: "currency",
+                    currency: "IDR",
+                    minimumFractionDigits: 2
+                  });
+
+                  this.username = username;
+
+                  this.referral =
+                    "https://sukauang.com/#/registration?reff=" +
+                    resp.data.ReferralCode +
+                    "";
+
+                  if (username == "superadmin") {
+                    this.statusakun = "Aktif";
+                    this.masaaktif = "999";
+                    this.checkinButtonVisible = false;
+                    this.buktitrfButtonVisible = false;
+                    this.aktivasiButtonVisible = false;
+                  } else {
+                    if ((resp.data.IsActivated = "false")) {
+                      if (resp.data.PaymentProofStorage == "") {
+                        this.statusakun = "Belum Aktif";
+                        this.aktivasiButtonVisible = true;
+                        this.buktitrfButtonVisible = false;
+                      } else {
+                        this.statusakun = "Menunggu Konfirmasi Admin";
+                        this.aktivasiButtonVisible = false;
+                        this.buktitrfButtonVisible = true;
+                        this.buktitrffile =
+                          `<img src="` + resp.data.PaymentProofStorage + `">`;
+                      }
+                      this.masaaktif = "0";
+                      this.checkinButtonVisible = false;
+                      this.getactivationnote(userid);
+                    } else {
+                      this.statusakun = "Aktif";
+                      this.masaaktif = resp.data.ActivatedDayCount;
+                      this.checkinButtonVisible = true;
+                      this.buktitrfButtonVisible = false;
+                      this.aktivasiButtonVisible = false;
+                    }
+                  }
+
+                  this.level = resp.data.Level;
+                  this.jmlmember = resp.data.MemberCount;
+
+                  this.bonus = formatter.format(resp.data.PayableBonus);
+                  if (parseFloat(resp.data.PayableBonus) >= 20000) {
+                    this.witdhawButtonVisible = true;
+                  } else {
+                    this.witdhawButtonVisible = false;
+                  }
+                  this.total = formatter.format(resp.data.TotalBonus);
+
+                  this.menuBarService.setLoadingAnimation(false);
+                } else {
+                  this.router.navigateByUrl("/");
+                }
+              });
+            }
+          });
+        }
+      });
+    });
+  }
+
   checkin() {
     alert("Check In berhasil");
   }
@@ -128,49 +130,46 @@ this.menuBarService.globalIsAuthenticated.subscribe(result => {
     this.dialog.open(ref);
   }
 
-  getactivationnote() {
-    this.aknutman
-      .getactivationmessage(localStorage.getItem("userid"))
-      .subscribe(resp => {
-        if (resp.status == "200") {
-          this.activationnote = resp.data;
-        }
-      });
+  getactivationnote(userid: string) {
+    this.aknutman.getactivationmessage(userid).subscribe(resp => {
+      if (resp.status == "200") {
+        this.activationnote = resp.data;
+      }
+    });
   }
 
   private setFile(event) {
     this.fileToUpload = event.target.files[0];
   }
   handleFileInput() {
-    this.menuBarService.setLoadingAnimation(true);
-    if (this.fileToUpload === null) {
-      this.menuBarService.setLoadingAnimation(false);
-      this.snackBar.open("No File to upload", "Ok", {
-        duration: 3000
-      });
-    } else {
-      const reader = new FileReader();
-      reader.readAsDataURL(this.fileToUpload);
-      reader.onload = () => {
-        this.aknutman
-          .uploadpaymentproof(
-            localStorage.getItem("userid"),
-            String(reader.result)
-          )
-          .subscribe(resp => {
-            if (resp.status == "200") {
-              this.snackBar.open("Uplaod bukti tansfer berhasil!", "Ok", {
-                duration: 3000
-              });
-              this.menuBarService.setLoadingAnimation(false);
-            } else {
-              this.snackBar.open(resp.result, "Ok", {
-                duration: 3000
-              });
-              this.menuBarService.setLoadingAnimation(false);
-            }
-          });
-      };
-    }
+    this.menuBarService.g_userid.subscribe(userid => {
+      this.menuBarService.setLoadingAnimation(true);
+      if (this.fileToUpload === null) {
+        this.menuBarService.setLoadingAnimation(false);
+        this.snackBar.open("No File to upload", "Ok", {
+          duration: 3000
+        });
+      } else {
+        const reader = new FileReader();
+        reader.readAsDataURL(this.fileToUpload);
+        reader.onload = () => {
+          this.aknutman
+            .uploadpaymentproof(userid, String(reader.result))
+            .subscribe(resp => {
+              if (resp.status == "200") {
+                this.snackBar.open("Uplaod bukti tansfer berhasil!", "Ok", {
+                  duration: 3000
+                });
+                this.menuBarService.setLoadingAnimation(false);
+              } else {
+                this.snackBar.open(resp.result, "Ok", {
+                  duration: 3000
+                });
+                this.menuBarService.setLoadingAnimation(false);
+              }
+            });
+        };
+      }
+    });
   }
 }
