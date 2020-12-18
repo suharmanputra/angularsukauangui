@@ -7,6 +7,9 @@
 				<thead>
 					<tr>
 						<th>
+							<mfDefaultSorter>No</mfDefaultSorter>
+						</th>
+						<th>
 							<mfDefaultSorter>User ID</mfDefaultSorter>
 						</th>
 						<th>
@@ -16,7 +19,7 @@
 							<mfDefaultSorter>Status</mfDefaultSorter>
 						</th>
 						<th>
-							<mfDefaultSorter>Aktivasi</mfDefaultSorter>
+							<mfDefaultSorter>Bukti Transfer</mfDefaultSorter>
 						</th>
 						<th>
 							<mfDefaultSorter>Tarik Dana</mfDefaultSorter>
@@ -25,7 +28,7 @@
 				</thead>
 				<tbody>
 					<tr *ngFor="let item of mf.data; let i=index">
-						<!-- <td>{{i+1}}</td> -->
+						<td>{{i+1}}</td>
 						<td>{{item.PersonId}}</td>
 						<td>{{item.FullName}}</td>
 						<td>{{item.IsActive}}</td>
