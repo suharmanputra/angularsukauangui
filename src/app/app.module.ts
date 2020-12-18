@@ -58,6 +58,7 @@ import { ProfilPageComponent } from "./profil-page/profil-page.component";
 import { MemberPageComponent } from "./member-page/member-page.component";
 import { MenuBarService } from "./shared/menu-bar.service";
 import { AknutmanWsService } from "./shared/aknutman-ws.service";
+import { AdminPageComponent } from './admin-page/admin-page.component';
 
 @NgModule({
   imports: [
@@ -121,7 +122,8 @@ import { AknutmanWsService } from "./shared/aknutman-ws.service";
     TopBarComponent,
     AboutPageComponent,
     ProfilPageComponent,
-    MemberPageComponent
+    MemberPageComponent,
+    AdminPageComponent
   ],
   bootstrap: [AppComponent],
   providers: [MenuBarService, AknutmanWsService]

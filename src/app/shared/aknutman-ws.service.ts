@@ -75,4 +75,11 @@ export class AknutmanWsService {
     };
     return this.http.post<string>(url, body);
   }
+
+  getuserlist(userid: string) {
+    const url =
+      "https://us-central1-sukauang-backend.cloudfunctions.net/AdminGetUserList";
+    const body = { PersonId: userid };
+    return this.http.post<string>(url, body);
+  }
 }
