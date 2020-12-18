@@ -41,8 +41,12 @@ export class LoginPageComponent implements OnInit {
       if (resp.isAuthenticated === true) {
         this.router.navigateByUrl("/dashboard");
         this.menuBarService.setIsAuthenticated(true);
-        localStorage.setItem("username", username);
-        localStorage.setItem("userid", resp.personId);
+        // localStorage.setItem("username", username);
+        // localStorage.setItem("userid", resp.personId);
+        this.menuBarService.setUserIdName(
+          resp.personId.toLowerCase(),
+          username.toLowerCase()
+        );
       } else {
         // this.openSnackBar();
         this.snackBar.open("Username/Password Salah!", "Ok", {

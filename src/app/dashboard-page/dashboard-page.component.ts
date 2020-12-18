@@ -36,6 +36,7 @@ export class DashboardPageComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    // if (localStorage.getItem("username").toLowerCase() == "superadmin") {
     if (localStorage.getItem("username").toLowerCase() == "superadmin") {
       this.menuBarService.setAdminVisible(true);
     } else {
@@ -92,7 +93,7 @@ export class DashboardPageComponent implements OnInit {
                   this.masaaktif = resp.data.ActivatedDayCount;
                   this.checkinButtonVisible = true;
                   this.buktitrfButtonVisible = false;
-                this.aktivasiButtonVisible = false;
+                  this.aktivasiButtonVisible = false;
                 }
               }
 
