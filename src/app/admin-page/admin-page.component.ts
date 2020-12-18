@@ -20,7 +20,12 @@ export interface UserData {
   styleUrls: ["./admin-page.component.css"]
 })
 export class AdminPageComponent implements OnInit, AfterViewInit {
-  displayedColumns: string[] = ["id", "name", "progress", "color"];
+  displayedColumns: string[] = [
+    "FullName",
+    "IsActive",
+    "WaitForActivation",
+    "WithdrawalRequest"
+  ];
   dataSource: MatTableDataSource<UserData>;
 
   @ViewChild(MatPaginator) paginator: MatPaginator;

@@ -75,25 +75,25 @@
 						<!-- ID Column -->
 						<ng-container matColumnDef="FullName">
 							<th mat-header-cell *matHeaderCellDef mat-sort-header>User Name</th>
-							<td mat-cell *matCellDef="let row"> {{row.id}} </td>
+							<td mat-cell *matCellDef="let row"> {{FullName}} </td>
 						</ng-container>
 
 						<!-- Progress Column -->
 						<ng-container matColumnDef="IsActive">
 							<th mat-header-cell *matHeaderCellDef mat-sort-header> Status</th>
-							<td mat-cell *matCellDef="let row"> {{row.progress}}% </td>
+							<td mat-cell *matCellDef="let row"> {{IsActive}}% </td>
 						</ng-container>
 
 						<!-- Name Column -->
 						<ng-container matColumnDef="WaitForActivation">
 							<th mat-header-cell *matHeaderCellDef mat-sort-header>Bukti Transfer</th>
-							<td mat-cell *matCellDef="let row"> {{row.name}} </td>
+							<td mat-cell *matCellDef="let row"> {{rWaitForActivation}} </td>
 						</ng-container>
 
 						<!-- Color Column -->
 						<ng-container matColumnDef="WithdrawalRequest">
 							<th mat-header-cell *matHeaderCellDef mat-sort-header>Tarik Dana</th>
-							<td mat-cell *matCellDef="let row" [style.color]="row.color"> {{row.color}} </td>
+							<td mat-cell *matCellDef="let row"> {{WithdrawalRequest}} </td>
 						</ng-container>
 
 						<tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
