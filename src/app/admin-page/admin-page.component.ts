@@ -28,13 +28,13 @@ export class AdminPageComponent implements OnInit {
     //       if (username !== "superadmin") {
     //         this.router.navigateByUrl("/");
     //       }
-          // this.aknutman.getuserlist(username).subscribe(resp => {
-            this.aknutman.getuserlist("").subscribe(resp => {
-            this.listdatauser = resp.persons;
-            this.menuBarService.setLoadingAnimation(false);
-          });
-//         });
-//       }
-//     });
-//   }
- }
+    // this.aknutman.getuserlist(username).subscribe(resp => {
+    this.aknutman.getuserlist("").subscribe(resp => {
+      this.listdatauser = resp.persons;
+      this.menuBarService.setLoadingAnimation(false);
+    });
+    //         });
+    //       }
+    //     });
+  }
+}
