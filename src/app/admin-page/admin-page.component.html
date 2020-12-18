@@ -20,50 +20,7 @@
 		</mat-card>
 
 		<mat-divider></mat-divider>
-		<mat-card>
-			<!-- <table class="table table-striped" [mfData]="listdatauser" #mf="mfDataTable" [mfRowsOnPage]="10">
-				<thead>
-					<tr>
-						<th>
-							<mfDefaultSorter>No</mfDefaultSorter>
-						</th>
-						<th>
-							<mfDefaultSorter>User ID</mfDefaultSorter>
-						</th>
-						<th>
-							<mfDefaultSorter>User Name</mfDefaultSorter>
-						</th>
-						<th>
-							<mfDefaultSorter>Status</mfDefaultSorter>
-						</th>
-						<th>
-							<mfDefaultSorter>Bukti Transfer</mfDefaultSorter>
-						</th>
-						<th>
-							<mfDefaultSorter>Tarik Dana</mfDefaultSorter>
-						</th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr *ngFor="let item of mf.data; let i=index">
-						<td>{{i+1}}</td>
-						<td>{{item.PersonId}}</td>
-						<td>{{item.FullName}}</td>
-						<td>{{item.IsActive}}</td>
-						<td>{{item.RequestToActivate}}</td>
-						<td>{{item.WithdrawalRequest}}</td>
-					</tr>
-				</tbody>
-				<tfoot>
-					<tr>
-						<td colspan="4">
-							<mfBootstrapPaginator [rowsOnPageSet]="[10,25,50]"></mfBootstrapPaginator>
-						</td>
-					</tr>
-				</tfoot>
-			</table> -->
-
-
+		<mat-card style="overflow-x:scroll;">
 			<mat-form-field>
 				<mat-label>Filter</mat-label>
 				<input matInput (keyup)="applyFilter($event)" placeholder="Cari Data.." #input>
@@ -75,25 +32,26 @@
 						<!-- ID Column -->
 						<ng-container matColumnDef="FullName">
 							<th mat-header-cell *matHeaderCellDef mat-sort-header>User Name</th>
-							<td mat-cell *matCellDef="let row"> {{FullName}} </td>
+							<td mat-cell *matCellDef="let row"> {{row.FullName}} </td>
 						</ng-container>
 
 						<!-- Progress Column -->
 						<ng-container matColumnDef="IsActive">
 							<th mat-header-cell *matHeaderCellDef mat-sort-header> Status</th>
-							<td mat-cell *matCellDef="let row"> {{IsActive}}% </td>
+							<td mat-cell *matCellDef="let row"> {{row.IsActive}} </td>
 						</ng-container>
 
 						<!-- Name Column -->
 						<ng-container matColumnDef="WaitForActivation">
 							<th mat-header-cell *matHeaderCellDef mat-sort-header>Bukti Transfer</th>
-							<td mat-cell *matCellDef="let row"> {{rWaitForActivation}} </td>
+							<td style="text-align:center;" mat-cell *matCellDef="let row">
+								<img style="display:inline-block;" src={{row.WaitForActivation}}> </td>
 						</ng-container>
 
 						<!-- Color Column -->
 						<ng-container matColumnDef="WithdrawalRequest">
 							<th mat-header-cell *matHeaderCellDef mat-sort-header>Tarik Dana</th>
-							<td mat-cell *matCellDef="let row"> {{WithdrawalRequest}} </td>
+							<td mat-cell *matCellDef="let row"> {{row.WithdrawalRequest}} </td>
 						</ng-container>
 
 						<tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
@@ -105,7 +63,7 @@
 						</tr>
 					</table>
 
-					<mat-paginator [pageSizeOptions]="[10, 25, 100]"></mat-paginator>
+					<mat-paginator [pageSizeOptions]="[5,10, 25, 100]"></mat-paginator>
 				</div>
 
 		</mat-card>

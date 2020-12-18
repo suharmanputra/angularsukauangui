@@ -19,13 +19,14 @@ export interface UserData {
   templateUrl: "./admin-page.component.html",
   styleUrls: ["./admin-page.component.css"]
 })
-export class AdminPageComponent implements OnInit, AfterViewInit {
+export class AdminPageComponent implements OnInit {
   displayedColumns: string[] = [
     "FullName",
     "IsActive",
     "WaitForActivation",
     "WithdrawalRequest"
   ];
+
   dataSource: MatTableDataSource<UserData>;
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
@@ -43,18 +44,18 @@ export class AdminPageComponent implements OnInit, AfterViewInit {
   ngOnInit() {
     this.menuBarService.setMenuVisible(true);
 
-    // this.menuBarService.globalIsAuthenticated.subscribe(result => {
-    //   if (result === false) {
-    //     this.router.navigateByUrl("/");
-    //     this.menuBarService.setLoadingAnimation(false);
-    //   } else {
-    //     this.menuBarService.g_username.subscribe(username => {
-    //       if (username !== "superadmin") {
-    //         this.router.navigateByUrl("/");
-    //       }
-    //     });
-    //   }
-    // });
+    this.menuBarService.globalIsAuthenticated.subscribe(result => {
+      if (result === false) {
+        this.router.navigateByUrl("/");
+        this.menuBarService.setLoadingAnimation(false);
+      } else {
+        this.menuBarService.g_username.subscribe(username => {
+          if (username !== "superadmin") {
+            this.router.navigateByUrl("/");
+          }
+        });
+      }
+    });
   }
 
   tampildata(datefrom: string, dateto: string) {
@@ -71,7 +72,9 @@ export class AdminPageComponent implements OnInit, AfterViewInit {
       this.aknutman
         .getuserlist(this.formatDate(datefrom), this.formatDate(dateto))
         .subscribe(resp => {
-          this.dataSource = resp.persons;
+          this.dataSource = new MatTableDataSource(resp.persons);
+          this.dataSource.paginator = this.paginator;
+          this.dataSource.sort = this.sort;
           this.menuBarService.setLoadingAnimation(false);
         });
     }
@@ -87,11 +90,6 @@ export class AdminPageComponent implements OnInit, AfterViewInit {
     if (day.length < 2) day = "0" + day;
 
     return [year, month, day].join("-");
-  }
-
-  ngAfterViewInit() {
-    this.dataSource.paginator = this.paginator;
-    this.dataSource.sort = this.sort;
   }
 
   applyFilter(event: Event) {
