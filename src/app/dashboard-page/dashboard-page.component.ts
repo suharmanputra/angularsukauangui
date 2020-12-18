@@ -5,6 +5,7 @@ import { MatSnackBar } from "@angular/material/snack-bar";
 import { AknutmanWsService } from "../shared/aknutman-ws.service";
 import { ActivatedRoute, Router, RoutesRecognized } from "@angular/router";
 import { ViewChild, TemplateRef } from "@angular/core";
+import { duration } from "moment";
 @Component({
   selector: "app-dashboard-page",
   templateUrl: "./dashboard-page.component.html",
@@ -36,6 +37,7 @@ export class DashboardPageComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    // console.log("on dashboard");
     this.menuBarService.setMenuVisible(true);
 
     this.menuBarService.g_username.subscribe(username => {
@@ -52,70 +54,70 @@ export class DashboardPageComponent implements OnInit {
           this.menuBarService.setLoadingAnimation(true);
 
           this.menuBarService.g_userid.subscribe(userid => {
-            if (userid !== "") {
-              this.aknutman.getdetail(userid).subscribe(resp => {
-                if (resp.status == "200") {
-                  const formatter = new Intl.NumberFormat("in-ID", {
-                    style: "currency",
-                    currency: "IDR",
-                    minimumFractionDigits: 2
-                  });
+            this.aknutman.getdetail(userid).subscribe(resp => {
+              if (resp.status == "200") {
+                const formatter = new Intl.NumberFormat("in-ID", {
+                  style: "currency",
+                  currency: "IDR",
+                  minimumFractionDigits: 2
+                });
 
-                  this.username = username;
+                this.username = username;
 
-                  this.referral =
-                    "https://sukauang.com/#/registration?reff=" +
-                    resp.data.ReferralCode +
-                    "";
+                this.referral =
+                  "https://sukauang.com/#/registration?reff=" +
+                  resp.data.ReferralCode +
+                  "";
 
-                  if (username == "superadmin") {
-                    this.statusakun = "Aktif";
-                    this.masaaktif = "999";
+                if (username == "superadmin") {
+                  this.statusakun = "Aktif";
+                  this.masaaktif = "999";
+                  this.checkinButtonVisible = false;
+                  this.buktitrfButtonVisible = false;
+                  this.aktivasiButtonVisible = false;
+                } else {
+                  if ((resp.data.IsActivated = "false")) {
+                    if (resp.data.PaymentProofStorage == "") {
+                      this.statusakun = "Belum Aktif";
+                      this.aktivasiButtonVisible = true;
+                      this.buktitrfButtonVisible = false;
+                    } else {
+                      this.statusakun = "Menunggu Konfirmasi Admin";
+                      this.aktivasiButtonVisible = false;
+                      this.buktitrfButtonVisible = true;
+                      this.buktitrffile =
+                        `<img src="` + resp.data.PaymentProofStorage + `">`;
+                    }
+                    this.masaaktif = "0";
                     this.checkinButtonVisible = false;
+                    this.getactivationnote(userid);
+                  } else {
+                    this.statusakun = "Aktif";
+                    this.masaaktif = resp.data.ActivatedDayCount;
+                    this.checkinButtonVisible = true;
                     this.buktitrfButtonVisible = false;
                     this.aktivasiButtonVisible = false;
-                  } else {
-                    if ((resp.data.IsActivated = "false")) {
-                      if (resp.data.PaymentProofStorage == "") {
-                        this.statusakun = "Belum Aktif";
-                        this.aktivasiButtonVisible = true;
-                        this.buktitrfButtonVisible = false;
-                      } else {
-                        this.statusakun = "Menunggu Konfirmasi Admin";
-                        this.aktivasiButtonVisible = false;
-                        this.buktitrfButtonVisible = true;
-                        this.buktitrffile =
-                          `<img src="` + resp.data.PaymentProofStorage + `">`;
-                      }
-                      this.masaaktif = "0";
-                      this.checkinButtonVisible = false;
-                      this.getactivationnote(userid);
-                    } else {
-                      this.statusakun = "Aktif";
-                      this.masaaktif = resp.data.ActivatedDayCount;
-                      this.checkinButtonVisible = true;
-                      this.buktitrfButtonVisible = false;
-                      this.aktivasiButtonVisible = false;
-                    }
                   }
-
-                  this.level = resp.data.Level;
-                  this.jmlmember = resp.data.MemberCount;
-
-                  this.bonus = formatter.format(resp.data.PayableBonus);
-                  if (parseFloat(resp.data.PayableBonus) >= 20000) {
-                    this.witdhawButtonVisible = true;
-                  } else {
-                    this.witdhawButtonVisible = false;
-                  }
-                  this.total = formatter.format(resp.data.TotalBonus);
-
-                  this.menuBarService.setLoadingAnimation(false);
-                } else {
-                  this.router.navigateByUrl("/");
                 }
-              });
-            }
+
+                this.level = resp.data.Level;
+                this.jmlmember = resp.data.MemberCount;
+
+                this.bonus = formatter.format(resp.data.PayableBonus);
+                if (parseFloat(resp.data.PayableBonus) >= 20000) {
+                  this.witdhawButtonVisible = true;
+                } else {
+                  this.witdhawButtonVisible = false;
+                }
+                this.total = formatter.format(resp.data.TotalBonus);
+
+                this.menuBarService.setLoadingAnimation(false);
+              } else {
+                this.router.navigateByUrl("/");
+                this.snackBar.open("Server Error", "Ok", { duration: 3000 });
+                this.menuBarService.setLoadingAnimation(false);
+              }
+            });
           });
         }
       });
