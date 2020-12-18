@@ -6,6 +6,8 @@ import { AppRoutingModule } from "./app-routing.module";
 import { HttpClientModule } from "@angular/common/http";
 import { AppComponent } from "./app.component";
 
+import { DataTableModule } from "angular-6-datatable";
+
 import { A11yModule } from "@angular/cdk/a11y";
 import { ClipboardModule } from "@angular/cdk/clipboard";
 import { DragDropModule } from "@angular/cdk/drag-drop";
@@ -58,7 +60,7 @@ import { ProfilPageComponent } from "./profil-page/profil-page.component";
 import { MemberPageComponent } from "./member-page/member-page.component";
 import { MenuBarService } from "./shared/menu-bar.service";
 import { AknutmanWsService } from "./shared/aknutman-ws.service";
-import { AdminPageComponent } from './admin-page/admin-page.component';
+import { AdminPageComponent } from "./admin-page/admin-page.component";
 
 @NgModule({
   imports: [
@@ -75,6 +77,8 @@ import { AdminPageComponent } from './admin-page/admin-page.component';
     DragDropModule,
     AppRoutingModule,
     HttpClientModule,
+
+    DataTableModule,
 
     MatAutocompleteModule,
     MatBadgeModule,

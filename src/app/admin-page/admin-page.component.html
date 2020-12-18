@@ -1,5 +1,46 @@
 <form>
 	<div class="pagecontainer">
 		<mat-card>Member Control Panel</mat-card>
+		<mat-divider></mat-divider>
+		<mat-card class=100%>
+			<table class="table table-striped" [mfData]="listdatauser" #mf="mfDataTable" [mfRowsOnPage]="5">
+				<thead>
+					<tr>
+						<th>
+							<mfDefaultSorter>User ID</mfDefaultSorter>
+						</th>
+						<th>
+							<mfDefaultSorter>User Name</mfDefaultSorter>
+						</th>
+						<th>
+							<mfDefaultSorter>Status</mfDefaultSorter>
+						</th>
+						<th>
+							<mfDefaultSorter>Aktivasi</mfDefaultSorter>
+						</th>
+						<th>
+							<mfDefaultSorter>Tarik Dana</mfDefaultSorter>
+						</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr *ngFor="let item of mf.data; let i=index">
+						<!-- <td>{{i+1}}</td> -->
+						<td>{{item.PersonId}}</td>
+						<td>{{item.FullName}}</td>
+						<td>{{item.IsActive}}</td>
+						<td>{{item.RequestToActivate}}</td>
+						<td>{{item.WithdrawalRequest}}</td>
+					</tr>
+				</tbody>
+				<tfoot>
+					<tr>
+						<td colspan="4">
+							<mfBootstrapPaginator [rowsOnPageSet]="[5,10,25]"></mfBootstrapPaginator>
+						</td>
+					</tr>
+				</tfoot>
+			</table>
+		</mat-card>
 	</div>
 </form>
