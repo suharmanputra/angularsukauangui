@@ -1,6 +1,24 @@
 <form>
 	<div class="pagecontainer">
 		<mat-card>Member Control Panel</mat-card>
+
+		<mat-divider></mat-divider>
+		<mat-card>
+			<table>
+				<tr>
+					<td><input matInput #dateFrom [matDatepicker]="picker" placeholder="Tanggal Awal">
+						<mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+						<mat-datepicker #picker></mat-datepicker>
+					</td>
+					<td><input matInput #dateTo [matDatepicker]="picker2" placeholder="Tanggal Akhir">
+						<mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+						<mat-datepicker #picker2></mat-datepicker>
+					</td>
+				</tr>
+				<button style="display:inline-block;width:100%;" mat-raised-button color="accent" (click)="tampildata(dateFrom.value, dateTo.value)">Tampil Data</button>
+			</table>
+		</mat-card>
+
 		<mat-divider></mat-divider>
 		<mat-card>
 			<table class="table table-striped" [mfData]="listdatauser" #mf="mfDataTable" [mfRowsOnPage]="10">

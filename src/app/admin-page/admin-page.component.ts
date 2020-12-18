@@ -16,7 +16,6 @@ export class AdminPageComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.menuBarService.setLoadingAnimation(true);
     this.menuBarService.setMenuVisible(true);
 
     // this.menuBarService.globalIsAuthenticated.subscribe(result => {
@@ -28,13 +27,16 @@ export class AdminPageComponent implements OnInit {
     //       if (username !== "superadmin") {
     //         this.router.navigateByUrl("/");
     //       }
-    //       this.aknutman.getuserlist(now(), now()).subscribe(resp => {
-    this.aknutman.getuserlist("2020-12-01", "2020-12-18").subscribe(resp => {
-      this.listdatauser = resp.persons;
-      this.menuBarService.setLoadingAnimation(false);
-    });
-    //       });
-    //     }
-    //   });
+    //     });
+    //   }
+    // });
+  }
+  tampildata(datefrom: string, dateto: string) {
+    console.log(datefrom, dateto);
+    // this.menuBarService.setLoadingAnimation(true);
+    // this.aknutman.getuserlist("2020-12-01", "2020-12-18").subscribe(resp => {
+    //   this.listdatauser = resp.persons;
+    //   this.menuBarService.setLoadingAnimation(false);
+    // });
   }
 }
