@@ -19,7 +19,7 @@
     <mat-icon>credit_card</mat-icon>
     <span>List Transaksi</span>
   </button>
-		<button mat-menu-item *ngIf="menuAdminPanel">
+		<button mat-menu-item *ngIf="menuAdminPanel" (click)="redirect_admin()">
     <mat-icon>business_center</mat-icon>
     <span>Admin Panel</span>
   </button>

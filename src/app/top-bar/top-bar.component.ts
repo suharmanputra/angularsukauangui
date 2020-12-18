@@ -39,6 +39,9 @@ export class TopBarComponent implements OnInit {
   redirect_member() {
     this.router.navigateByUrl("/member");
   }
+  redirect_admin() {
+    this.router.navigateByUrl("/admin");
+  }
   redirect_about() {
     this.router.navigateByUrl("/about");
   }
