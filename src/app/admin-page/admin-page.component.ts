@@ -29,7 +29,7 @@ export class AdminPageComponent implements OnInit {
     //         this.router.navigateByUrl("/");
     //       }
     //       this.aknutman.getuserlist(now(), now()).subscribe(resp => {
-    this.aknutman.getuserlist("2020-12-01", Date.now()).subscribe(resp => {
+    this.aknutman.getuserlist("2020-12-01", "2020-12-18").subscribe(resp => {
       this.listdatauser = resp.persons;
       this.menuBarService.setLoadingAnimation(false);
     });
