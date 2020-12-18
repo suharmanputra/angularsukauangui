@@ -16,6 +16,7 @@ export class AdminPageComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    this.menuBarService.setLoadingAnimation(true);
     this.menuBarService.setMenuVisible(true);
 
     this.menuBarService.globalIsAuthenticated.subscribe(result => {
@@ -27,7 +28,7 @@ export class AdminPageComponent implements OnInit {
           }
           this.aknutman.getuserlist(username).subscribe(resp => {
             this.listdatauser = resp.persons;
-            console.log(this.listdatauser);
+            this.menuBarService.setLoadingAnimation(false);
           });
         });
       }
