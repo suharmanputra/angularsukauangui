@@ -21,12 +21,15 @@ export class AdminPageComponent implements OnInit {
 
     this.menuBarService.globalIsAuthenticated.subscribe(result => {
       if (result === false) {
+        this.router.navigateByUrl("/");
+        this.menuBarService.setLoadingAnimation(false);
       } else {
         this.menuBarService.g_username.subscribe(username => {
           if (username !== "superadmin") {
             this.router.navigateByUrl("/");
           }
           this.aknutman.getuserlist(username).subscribe(resp => {
+            // this.aknutman.getuserlist("").subscribe(resp => {
             this.listdatauser = resp.persons;
             this.menuBarService.setLoadingAnimation(false);
           });
