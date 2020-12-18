@@ -1,36 +1,41 @@
-import { Component, OnInit } from "@angular/core";
 
-declare let $: any;
+import { Component, OnInit } from "@angular/core";
+import { AknutmanWsService } from "../shared/aknutman-ws.service";
+import { MenuBarService } from "../shared/menu-bar.service";
+import { ActivatedRoute, Router, RoutesRecognized } from "@angular/router";
 @Component({
   selector: "app-admin-page2",
   templateUrl: "./admin-page2.component.html",
   styleUrls: ["./admin-page2.component.css"]
 })
-export class AdminPage2Component implements OnInit {
-  constructor() {}
+export class AdminPageComponent implements OnInit {
+  listdatauser: any[] = [];
+  constructor(
+    private aknutman: AknutmanWsService,
+    private menuBarService: MenuBarService,
+    private router: Router
+  ) {}
 
   ngOnInit() {
-    let table = $("#example").DataTable({
-      drawCallback: () => {
-        $(".paginate_button.next").on("click", () => {
-          this.nextButtonClickEvent();
+    this.menuBarService.setLoadingAnimation(true);
+    this.menuBarService.setMenuVisible(true);
+
+    this.menuBarService.globalIsAuthenticated.subscribe(result => {
+      if (result === false) {
+        this.router.navigateByUrl("/");
+        this.menuBarService.setLoadingAnimation(false);
+      } else {
+        this.menuBarService.g_username.subscribe(username => {
+          if (username !== "superadmin") {
+            this.router.navigateByUrl("/");
+          }
+          this.aknutman.getuserlist(username).subscribe(resp => {
+            // this.aknutman.getuserlist("").subscribe(resp => {
+            this.listdatauser = resp.persons;
+            this.menuBarService.setLoadingAnimation(false);
+          });
         });
       }
     });
-    // console.log("test");
   }
-
-  buttonInRowClick(event: any): void {
-    event.stopPropagation();
-    console.log("Button in the row clicked.");
-  }
-
-  wholeRowClick(): void {
-    console.log("Whole row clicked.");
-  }
-
-  nextButtonClickEvent(): void {
-    console.log("next clicked");
-  }
-  previousButtonClickEvent(): void {}
 }
