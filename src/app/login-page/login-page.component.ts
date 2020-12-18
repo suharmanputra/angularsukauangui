@@ -29,10 +29,8 @@ export class LoginPageComponent implements OnInit {
   ngOnInit() {
     // this.menuBarService.setLoadingAnimation(true);
     this.menuBarService.setMenuVisible(false);
-    localStorage.clear();
-    // this.menuBarService.setLoadingAnimation(false);
-    //debug mode
-    // this.menuBarService.setIsAuthenticated(false);
+    // localStorage.clear();
+    this.menuBarService.setUserIdName("", "");
   }
 
   checkLogin(username: string, password: string) {
@@ -44,7 +42,7 @@ export class LoginPageComponent implements OnInit {
         // localStorage.setItem("username", username);
         // localStorage.setItem("userid", resp.personId);
         this.menuBarService.setUserIdName(
-          resp.personId.toLowerCase(),
+          resp.personId,
           username.toLowerCase()
         );
       } else {

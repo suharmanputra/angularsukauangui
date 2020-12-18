@@ -36,14 +36,8 @@ export class DashboardPageComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    // if (localStorage.getItem("username").toLowerCase() == "superadmin") {
-    if (localStorage.getItem("username").toLowerCase() == "superadmin") {
-      this.menuBarService.setAdminVisible(true);
-    } else {
-      this.menuBarService.setAdminVisible(false);
-    }
-    this.menuBarService.setMenuVisible(true);
-    this.menuBarService.globalIsAuthenticated.subscribe(result => {
+
+this.menuBarService.globalIsAuthenticated.subscribe(result => {
       if (result === false) {
         this.router.navigateByUrl("/");
       } else {
@@ -114,6 +108,18 @@ export class DashboardPageComponent implements OnInit {
       }
     });
   }
+
+    this.menuBarService.setMenuVisible(true);
+
+    this.menuBarService.g_username.subscribe(result => {
+      if (result == "superadmin") {
+        this.menuBarService.setAdminVisible(true);
+      } else {
+        this.menuBarService.setAdminVisible(false);
+      }
+    });
+
+    
   checkin() {
     alert("Check In berhasil");
   }
