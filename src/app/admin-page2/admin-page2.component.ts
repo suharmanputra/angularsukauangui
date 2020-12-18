@@ -1,4 +1,5 @@
 import { Component, OnInit } from "@angular/core";
+
 declare let $: any;
 @Component({
   selector: "app-admin-page2",
@@ -16,6 +17,7 @@ export class AdminPage2Component implements OnInit {
         });
       }
     });
+    // console.log("test");
   }
 
   buttonInRowClick(event: any): void {
@@ -28,13 +30,7 @@ export class AdminPage2Component implements OnInit {
   }
 
   nextButtonClickEvent(): void {
-    //do next particular records like  101 - 200 rows.
-    //we are calling to api
-
     console.log("next clicked");
   }
-  previousButtonClickEvent(): void {
-    //do previous particular the records like  0 - 100 rows.
-    //we are calling to API
-  }
+  previousButtonClickEvent(): void {}
 }
