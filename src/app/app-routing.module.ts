@@ -7,6 +7,7 @@ import { MemberPageComponent } from "./member-page/member-page.component";
 import { ProfilPageComponent } from "./profil-page/profil-page.component";
 import { RegistrationPageComponent } from "./registration-page/registration-page.component";
 import { AdminPageComponent } from "./admin-page/admin-page.component";
+import { AdminPage2Component } from "./admin-page2/admin-page2.component";
 // import { AdminPageComponent } from "./admin-page/admin-page.component";
 
 const routes: Routes = [
@@ -17,7 +18,8 @@ const routes: Routes = [
   { path: "profil", component: ProfilPageComponent },
   { path: "about", component: AboutPageComponent },
   { path: "member", component: MemberPageComponent },
-  { path: "admin", component: AdminPageComponent }
+  { path: "admin", component: AdminPageComponent },
+  { path: "admin2", component: AdminPage2Component }
   // { path: "admin/:adminCommand", component: AdminPageComponent }
 ];
 
