@@ -37,9 +37,7 @@ export class DashboardPageComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    // console.log("on dashboard");
     this.menuBarService.setMenuVisible(true);
-
     this.menuBarService.g_username.subscribe(username => {
       if (username == "superadmin") {
         this.menuBarService.setAdminVisible(true);
@@ -51,73 +49,78 @@ export class DashboardPageComponent implements OnInit {
         if (result === false) {
           this.router.navigateByUrl("/");
         } else {
-          this.menuBarService.setLoadingAnimation(true);
-
-          this.menuBarService.g_userid.subscribe(userid => {
-            this.aknutman.getdetail(userid).subscribe(resp => {
-              if (resp.status == "200") {
-                this.username = username;
-
-                this.referral =
-                  "https://sukauang.com/#/registration?reff=" +
-                  resp.data.ReferralCode +
-                  "";
-
-                if (username == "superadmin") {
-                  this.statusakun = "Aktif";
-                  this.masaaktif = "999";
-                  this.checkinButtonVisible = false;
-                  this.buktitrfButtonVisible = false;
-                  this.aktivasiButtonVisible = false;
-                } else {
-                  if ((resp.data.IsActivated = "false")) {
-                    if (resp.data.PaymentProofStorage == "") {
-                      this.statusakun = "Belum Aktif";
-                      this.aktivasiButtonVisible = true;
-                      this.buktitrfButtonVisible = false;
-                    } else {
-                      this.statusakun = "Menunggu Konfirmasi Admin";
-                      this.aktivasiButtonVisible = false;
-                      this.buktitrfButtonVisible = true;
-                      this.buktitrffile =
-                        `<a target="_blank"
-									href="` +
-                        resp.data.PaymentProofStorage +
-                        `"><img style="display:inline-block;width:50px;height:50px;" src="` +
-                        resp.data.PaymentProofStorage +
-                        `"></a>`;
-                    }
-                    this.masaaktif = "0";
-                    this.checkinButtonVisible = false;
-                    this.getactivationnote(userid);
-                  } else {
-                    this.statusakun = "Aktif";
-                    this.masaaktif = resp.data.ActivatedDayCount;
-                    this.checkinButtonVisible = true;
-                    this.buktitrfButtonVisible = false;
-                    this.aktivasiButtonVisible = false;
-                  }
-                }
-
-                this.level = resp.data.Level;
-                this.jmlmember = resp.data.MemberCount;
-                this.bonus = this.aknutman.formatmoney(resp.data.PayableBonus);
-                if (parseFloat(resp.data.PayableBonus) >= 20000) {
-                  this.witdhawButtonVisible = true;
-                } else {
-                  this.witdhawButtonVisible = false;
-                }
-                this.total = this.aknutman.formatmoney(resp.data.TotalBonus);
-
-                this.menuBarService.setLoadingAnimation(false);
-              } else {
-                // this.router.navigateByUrl("/");
-                // this.snackBar.open(resp.message, "Ok", { duration: 3000 });
-                this.menuBarService.setLoadingAnimation(false);
-              }
-            });
-          });
+          this.getUserdetail();
         }
+      });
+    });
+  }
+
+  getUserdetail() {
+    this.menuBarService.setLoadingAnimation(true);
+
+    this.menuBarService.g_userid.subscribe(userid => {
+      this.aknutman.getdetail(userid).subscribe(resp => {
+        this.menuBarService.g_username.subscribe(username => {
+          if (resp.status == "200") {
+            this.username = username;
+            this.referral =
+              "https://sukauang.com/#/registration?reff=" +
+              resp.data.ReferralCode +
+              "";
+
+            if (username == "superadmin") {
+              this.statusakun = "Aktif";
+              this.masaaktif = "999";
+              this.checkinButtonVisible = false;
+              this.buktitrfButtonVisible = false;
+              this.aktivasiButtonVisible = false;
+            } else {
+              if ((resp.data.IsActivated = "false")) {
+                if (resp.data.PaymentProofStorage == "") {
+                  this.statusakun = "Belum Aktif";
+                  this.aktivasiButtonVisible = true;
+                  this.buktitrfButtonVisible = false;
+                } else {
+                  this.statusakun = "Menunggu Konfirmasi Admin";
+                  this.aktivasiButtonVisible = false;
+                  this.buktitrfButtonVisible = true;
+                  this.buktitrffile =
+                    `<a target="_blank"
+									href="` +
+                    resp.data.PaymentProofStorage +
+                    `"><img style="display:inline-block;width:50px;height:50px;" src="` +
+                    resp.data.PaymentProofStorage +
+                    `"></a>`;
+                }
+                this.masaaktif = "0";
+                this.checkinButtonVisible = false;
+                this.getactivationnote(userid);
+              } else {
+                this.statusakun = "Aktif";
+                this.masaaktif = resp.data.ActivatedDayCount;
+                this.checkinButtonVisible = true;
+                this.buktitrfButtonVisible = false;
+                this.aktivasiButtonVisible = false;
+              }
+            }
+
+            this.level = resp.data.Level;
+            this.jmlmember = resp.data.MemberCount;
+            this.bonus = this.aknutman.formatmoney(resp.data.PayableBonus);
+            if (parseFloat(resp.data.PayableBonus) >= 20000) {
+              this.witdhawButtonVisible = true;
+            } else {
+              this.witdhawButtonVisible = false;
+            }
+            this.total = this.aknutman.formatmoney(resp.data.TotalBonus);
+
+            this.menuBarService.setLoadingAnimation(false);
+          } else {
+            // this.router.navigateByUrl("/");
+            // this.snackBar.open(resp.message, "Ok", { duration: 3000 });
+            this.menuBarService.setLoadingAnimation(false);
+          }
+        });
       });
     });
   }
@@ -160,6 +163,7 @@ export class DashboardPageComponent implements OnInit {
                 this.snackBar.open("Uplaod bukti tansfer berhasil!", "Ok", {
                   duration: 3000
                 });
+                this.getUserdetail();
                 this.menuBarService.setLoadingAnimation(false);
               } else {
                 this.snackBar.open(resp.result, "Ok", {
@@ -176,13 +180,15 @@ export class DashboardPageComponent implements OnInit {
     this.menuBarService.setLoadingAnimation(true);
     this.menuBarService.g_userid.subscribe(userid => {
       this.aknutman.reqwitdraw(userid, amount).subscribe(resp => {
+        console.log(resp);
         if (resp.status == "200") {
           this.snackBar.open("Request penarikan dana berhasil", "Ok", {
             duration: 3000
           });
+          this.getUserdetail();
           this.menuBarService.setLoadingAnimation(false);
         } else {
-          this.snackBar.open(resp.result, "Ok", {
+          this.snackBar.open(resp.message, "Ok", {
             duration: 3000
           });
           this.menuBarService.setLoadingAnimation(false);

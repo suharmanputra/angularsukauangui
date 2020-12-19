@@ -108,9 +108,9 @@
 		<div matDialogContent>
 			<p>Silahkan masukan nilai penarikan:</p>
 			<p>biaya administrasi penarikan Rp. 6.000,-</p>
-			<input matInput placeholder="Jumlah maksimal {{bonus}}"  [(ngModel)]="txttarikdana" #tarikdanainput autocomplete="disable" required>
+			<input matInput placeholder="Jumlah maksimal {{bonus}}"  #tarikdanainput autocomplete="disable" required>
 			<div style="width:100%;text-align:center">
-				<button mat-button mat-raised-button color="accent"
+				<button mat-button mat-raised-button matDialogClose color="accent"
       style="display:inline-block" (click)="requesttarikdana(tarikdanainput.value)">Request Penarikan</button>
 			</div>
 		</div>
