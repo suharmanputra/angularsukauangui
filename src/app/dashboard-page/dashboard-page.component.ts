@@ -131,7 +131,23 @@ export class DashboardPageComponent implements OnInit {
   }
 
   checkin() {
-    alert("Check In berhasil");
+    this.menuBarService.setLoadingAnimation(true);
+    this.menuBarService.g_userid.subscribe(userid => {
+      this.aknutman.chekin(userid).subscribe(resp => {
+        if (resp.status == 200) {
+          this.snackBar.open("Check In Berhasil!", "Ok", {
+            duration: 3000
+          });
+          this.getUserdetail();
+          this.menuBarService.setLoadingAnimation(false);
+        } else {
+          this.snackBar.open(resp.message, "Ok", {
+            duration: 3000
+          });
+          this.menuBarService.setLoadingAnimation(false);
+        }
+      });
+    });
   }
 
   openDialogWithRef(ref: TemplateRef<any>) {

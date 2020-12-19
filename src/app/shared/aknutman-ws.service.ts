@@ -128,4 +128,14 @@ export class AknutmanWsService {
     const body = { PersonId: userid, WithdrawAmount: amount };
     return this.http.post<string>(url, body);
   }
+
+  chekin(userid: string) {
+    const url =
+      "https://us-central1-sukauang-backend.cloudfunctions.net/UserCheckIn";
+    const body = {
+      PersonId: userid,
+      CheckInDateTime: this.formatDate(new Date().toString())
+    };
+    return this.http.post<string>(url, body);
+  }
 }

@@ -107,14 +107,22 @@ export class AdminPageComponent implements OnInit {
   aktivasiuser(datefrom: string, dateto: string) {
     this.menuBarService.setLoadingAnimation(true);
     this.aknutman
-      .aktivasiuser(this.SelectedUserId, false, Date.now().toString())
+      .aktivasiuser(
+        this.SelectedUserId,
+        false,
+        this.aknutman.formatDate(new Date().toString())
+      )
       .subscribe(resp => {
-        console.log(resp);
         if (resp.status == 200) {
           this.snackBar.open("Aktivasi Berhasil!", "Ok", {
             duration: 3000
           });
           this.tampildata(datefrom, dateto);
+          this.menuBarService.setLoadingAnimation(false);
+        } else {
+          this.snackBar.open(resp.message, "Ok", {
+            duration: 3000
+          });
           this.menuBarService.setLoadingAnimation(false);
         }
       });
