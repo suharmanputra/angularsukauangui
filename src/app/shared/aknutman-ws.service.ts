@@ -82,4 +82,11 @@ export class AknutmanWsService {
     const body = { FromDate: from, ToDate: to };
     return this.http.post<string>(url, body);
   }
+
+  gettransactionhistory(userid: string) {
+    const url =
+      "https://us-central1-sukauang-backend.cloudfunctions.net/GetUserTransaction";
+    const body = { PersonId: userid };
+    return this.http.post<string>(url, body);
+  }
 }
