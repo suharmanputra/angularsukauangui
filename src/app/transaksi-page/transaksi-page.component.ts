@@ -57,6 +57,7 @@ export class TransaksiPageComponent implements OnInit {
   tampildata() {
     this.menuBarService.setLoadingAnimation(true);
     this.menuBarService.g_userid.subscribe(userid => {
+      console.log(userid);
       this.aknutman.gettransactionhistory(userid).subscribe(resp => {
         this.dataSource = new MatTableDataSource(resp.data);
         this.dataSource.paginator = this.paginator;
