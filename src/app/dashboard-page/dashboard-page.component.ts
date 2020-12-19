@@ -113,8 +113,8 @@ export class DashboardPageComponent implements OnInit {
 
                 this.menuBarService.setLoadingAnimation(false);
               } else {
-                this.router.navigateByUrl("/");
-                this.snackBar.open(resp.message, "Ok", { duration: 3000 });
+                // this.router.navigateByUrl("/");
+                // this.snackBar.open(resp.message, "Ok", { duration: 3000 });
                 this.menuBarService.setLoadingAnimation(false);
               }
             });
