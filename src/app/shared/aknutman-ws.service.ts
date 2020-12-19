@@ -113,7 +113,7 @@ export class AknutmanWsService {
 
   aktivasiuser(userid: string, isreactivated: boolean, activationdate: string) {
     const url =
-      "https://us-central1-sukauang-backend.cloudfunctions.net/RequestToWithdraw";
+      "https://us-central1-sukauang-backend.cloudfunctions.net/ActivateUser";
     const body = {
       PersonId: userid,
       IsReActivate: isreactivated,

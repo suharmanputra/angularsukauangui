@@ -109,6 +109,7 @@ export class AdminPageComponent implements OnInit {
     this.aknutman
       .aktivasiuser(this.SelectedUserId, false, Date.now().toString())
       .subscribe(resp => {
+        console.log(resp);
         if (resp.status == 200) {
           this.snackBar.open("Aktivasi Berhasil!", "Ok", {
             duration: 3000
