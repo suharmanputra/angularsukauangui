@@ -138,4 +138,13 @@ export class AknutmanWsService {
     };
     return this.http.post<string>(url, body);
   }
+
+  confirmwithdraw(Idtarikdana: string) {
+    const url =
+      "https://us-central1-sukauang-backend.cloudfunctions.net/ConfirmWithdrawTransfer";
+    const body = {
+      RequestId: Idtarikdana
+    };
+    return this.http.post<string>(url, body);
+  }
 }
