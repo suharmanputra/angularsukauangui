@@ -56,16 +56,26 @@
 							</td>
 						</ng-container>
 
+						<ng-container matColumnDef="WithdrawalRequestId">
+							<th mat-header-cell *matHeaderCellDef mat-sort-header>Tarik Dana</th>
+							<td mat-cell *matCellDef="let row">
+								<div *ngIf="row.WithdrawalRequestId !== ''; then statustarikdana else statustarikdana2">
+								</div>
+								<ng-template #statustarikdana>
+									true
+								</ng-template>
+								<ng-template #statustarikdana2>
+									false
+								</ng-template>
+							</td>
+
+						</ng-container>
+
 						<ng-container matColumnDef="PersonId">
 							<th mat-header-cell *matHeaderCellDef mat-sort-header>Option</th>
 							<td mat-cell *matCellDef="let row">
 								<button mat-raised-button color="accent" (click)="openDialogWithRef(optionuser, row.PersonId)">Command</button>
 							</td>
-						</ng-container>
-
-						<ng-container matColumnDef="WithdrawalRequestId">
-							<th mat-header-cell *matHeaderCellDef mat-sort-header>Tarik Dana</th>
-							<td mat-cell *matCellDef="let row">{{row.WithdrawalRequestId}}</td>
 						</ng-container>
 
 						<tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
