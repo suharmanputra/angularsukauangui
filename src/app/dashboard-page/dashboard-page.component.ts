@@ -172,6 +172,22 @@ export class DashboardPageComponent implements OnInit {
       }
     });
   }
-
-  requesttarikdana() {}
+  requesttarikdana(amount: string) {
+    this.menuBarService.setLoadingAnimation(true);
+    this.menuBarService.g_userid.subscribe(userid => {
+      this.aknutman.reqwitdraw(userid, amount).subscribe(resp => {
+        if (resp.status == "200") {
+          this.snackBar.open("Request penarikan dana berhasil", "Ok", {
+            duration: 3000
+          });
+          this.menuBarService.setLoadingAnimation(false);
+        } else {
+          this.snackBar.open(resp.result, "Ok", {
+            duration: 3000
+          });
+          this.menuBarService.setLoadingAnimation(false);
+        }
+      });
+    });
+  }
 }

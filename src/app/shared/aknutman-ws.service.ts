@@ -111,10 +111,10 @@ export class AknutmanWsService {
     return this.http.post<string>(url, body);
   }
 
-  reqwitdraw(userid: string) {
+  reqwitdraw(userid: string, amount: string) {
     const url =
-      "https://us-central1-sukauang-backend.cloudfunctions.net/GetUserTransaction";
-    const body = { PersonId: userid };
+      "https://us-central1-sukauang-backend.cloudfunctions.net/RequestToWithdraw";
+    const body = { PersonId: userid, WithdrawAmount: amount };
     return this.http.post<string>(url, body);
   }
 }

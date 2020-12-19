@@ -111,7 +111,7 @@
 			<input matInput placeholder="Jumlah maksimal {{bonus}}"  [(ngModel)]="txttarikdana" #tarikdanainput autocomplete="disable" required>
 			<div style="width:100%;text-align:center">
 				<button mat-button mat-raised-button color="accent"
-      style="display:inline-block" (click)="requesttarikdana()">Request Penarikan</button>
+      style="display:inline-block" (click)="requesttarikdana(tarikdanainput.value)">Request Penarikan</button>
 			</div>
 		</div>
 		<!-- <mat-dialog-actions align="end">
