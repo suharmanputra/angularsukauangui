@@ -17,7 +17,7 @@ export interface UserData {
   FullName: string;
   IsActive: string;
   WaitForActivation: string;
-  WithdrawalRequest: string;
+  WithdrawalRequestId: string;
   PersonId: string;
 }
 
@@ -34,7 +34,7 @@ export class AdminPageComponent implements OnInit {
     "FullName",
     "IsActive",
     "WaitForActivation",
-    "WithdrawalRequest",
+    "WithdrawalRequestId",
     "PersonId"
   ];
 
