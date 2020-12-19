@@ -45,10 +45,16 @@
 						<ng-container matColumnDef="WaitForActivation">
 							<th mat-header-cell *matHeaderCellDef mat-sort-header>Bukti Transfer</th>
 							<td style="text-align:center;" mat-cell *matCellDef="let row">
+								<div *ngIf="row.WaitForActivation !== ''; then thenShow"></div>
+								<ng-template #thenShow>
+									<a target=" _blank" href={{row.WaitForActivation}}>
+										<img style="display:inline-block;width:50px;height:50px;" src={{row.WaitForActivation}}>
+                  </a>
+								</ng-template>
 
-
+								<!-- 
 								<a target=" _blank" href={{row.WaitForActivation}}>
-									<img style="display:inline-block;width:50px;height:50px;" src={{row.WaitForActivation}}></a>
+									<img style="display:inline-block;width:50px;height:50px;" src={{row.WaitForActivation}}></a> -->
 
 
 							</td>
