@@ -82,7 +82,8 @@ export class AdminPageComponent implements OnInit {
       this.aknutman
         .getuserlist(
           this.aknutman.formatDate(datefrom),
-          this.aknutman.formatDate(dateto)
+          this.aknutman.formatDate(dateto),
+          ""
         )
         .subscribe(resp => {
           this.dataSource = new MatTableDataSource(resp.persons);
@@ -103,9 +104,20 @@ export class AdminPageComponent implements OnInit {
     }
   }
 
-  // aktivasiUser(userid: string) {
-  //   console.log(userid);
-  // }
+  aktivasiuser(datefrom: string, dateto: string) {
+    this.menuBarService.setLoadingAnimation(true);
+    this.aknutman
+      .aktivasiuser(this.SelectedUserId, false, Date.now().toString())
+      .subscribe(resp => {
+        if (resp.status == 200) {
+          this.snackBar.open("Aktivasi Berhasil!", "Ok", {
+            duration: 3000
+          });
+          this.tampildata(datefrom, dateto);
+          this.menuBarService.setLoadingAnimation(false);
+        }
+      });
+  }
 
   openDialogWithRef(ref: TemplateRef<any>, userid: string) {
     this.SelectedUserId = userid;
