@@ -97,10 +97,10 @@ export class AknutmanWsService {
     return this.http.post<string>(url, body);
   }
 
-  getuserlist(from: string, to: string) {
+  getuserlist(from: string, to: string, userid: string) {
     const url =
       "https://us-central1-sukauang-backend.cloudfunctions.net/AdminGetUserList";
-    const body = { FromDate: from, ToDate: to };
+    const body = { PersonId: userid, FromDate: from, ToDate: to };
     return this.http.post<string>(url, body);
   }
 
