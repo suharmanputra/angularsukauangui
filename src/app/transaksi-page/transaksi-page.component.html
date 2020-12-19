@@ -22,7 +22,8 @@
 
 						<ng-container matColumnDef="PreAmount">
 							<th mat-header-cell *matHeaderCellDef mat-sort-header>Jumlah Awal</th>
-							<td mat-cell *matCellDef="let row"> {{this.aknutman.formatmoney(row.PreAmount)}} </td>
+							<td mat-cell *matCellDef="let row" style="text-align:right">
+								{{this.aknutman.formatmoney(row.PreAmount)}} </td>
 						</ng-container>
 
 						<ng-container matColumnDef="InAmount">
