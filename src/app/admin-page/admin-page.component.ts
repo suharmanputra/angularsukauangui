@@ -2,16 +2,23 @@ import { AknutmanWsService } from "../shared/aknutman-ws.service";
 import { MenuBarService } from "../shared/menu-bar.service";
 import { ActivatedRoute, Router, RoutesRecognized } from "@angular/router";
 import { MatSnackBar } from "@angular/material/snack-bar";
-import { AfterViewInit, Component, ViewChild } from "@angular/core";
+import {
+  AfterViewInit,
+  Component,
+  ViewChild,
+  TemplateRef
+} from "@angular/core";
 import { MatPaginator } from "@angular/material/paginator";
 import { MatSort } from "@angular/material/sort";
 import { MatTableDataSource } from "@angular/material/table";
-
+import { MatDialog } from "@angular/material/dialog";
+import { duration } from "moment";
 export interface UserData {
   FullName: string;
   IsActive: string;
   WaitForActivation: string;
   WithdrawalRequest: string;
+  PersonId: string;
 }
 
 @Component({
@@ -20,11 +27,15 @@ export interface UserData {
   styleUrls: ["./admin-page.component.css"]
 })
 export class AdminPageComponent implements OnInit {
+  @ViewChild("dialog") termconditiondialog: TemplateRef<any>;
+  SelectedUserId: string;
+
   displayedColumns: string[] = [
     "FullName",
     "IsActive",
     "WaitForActivation",
-    "WithdrawalRequest"
+    "WithdrawalRequest",
+    "PersonId"
   ];
 
   dataSource: MatTableDataSource<UserData>;
@@ -32,12 +43,11 @@ export class AdminPageComponent implements OnInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
-  // listdatauser: any[] = [];
-
   constructor(
     private aknutman: AknutmanWsService,
     private menuBarService: MenuBarService,
     private snackBar: MatSnackBar,
+    public dialog: MatDialog,
     private router: Router
   ) {}
 
@@ -93,7 +103,12 @@ export class AdminPageComponent implements OnInit {
     }
   }
 
-  aktivasiUser(userid: string) {
-    console.log(userid);
+  // aktivasiUser(userid: string) {
+  //   console.log(userid);
+  // }
+
+  openDialogWithRef(ref: TemplateRef<any>, userid: string) {
+    this.SelectedUserId = userid;
+    this.dialog.open(ref);
   }
 }

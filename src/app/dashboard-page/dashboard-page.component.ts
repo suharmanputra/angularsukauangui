@@ -12,7 +12,7 @@ import { duration } from "moment";
   styleUrls: ["./dashboard-page.component.css"]
 })
 export class DashboardPageComponent implements OnInit {
-  @ViewChild("termconditiondialog") termconditiondialog: TemplateRef<any>;
+  @ViewChild("dialog") termconditiondialog: TemplateRef<any>;
   username: string;
   referral: string;
   statusakun: string;
