@@ -56,12 +56,6 @@ export class DashboardPageComponent implements OnInit {
           this.menuBarService.g_userid.subscribe(userid => {
             this.aknutman.getdetail(userid).subscribe(resp => {
               if (resp.status == "200") {
-                const formatter = new Intl.NumberFormat("in-ID", {
-                  style: "currency",
-                  currency: "IDR",
-                  minimumFractionDigits: 2
-                });
-
                 this.username = username;
 
                 this.referral =
@@ -107,14 +101,13 @@ export class DashboardPageComponent implements OnInit {
 
                 this.level = resp.data.Level;
                 this.jmlmember = resp.data.MemberCount;
-
-                this.bonus = formatter.format(resp.data.PayableBonus);
+                this.bonus = this.aknutman.formatmoney(resp.data.PayableBonus);
                 if (parseFloat(resp.data.PayableBonus) >= 20000) {
                   this.witdhawButtonVisible = true;
                 } else {
                   this.witdhawButtonVisible = false;
                 }
-                this.total = formatter.format(resp.data.TotalBonus);
+                this.total = this.aknutman.formatmoney(resp.data.TotalBonus);
 
                 this.menuBarService.setLoadingAnimation(false);
               } else {

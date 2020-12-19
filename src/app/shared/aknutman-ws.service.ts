@@ -89,4 +89,25 @@ export class AknutmanWsService {
     const body = { PersonId: userid };
     return this.http.post<string>(url, body);
   }
+
+  formatDate(date: string) {
+    var d = new Date(date),
+      month = "" + (d.getMonth() + 1),
+      day = "" + d.getDate(),
+      year = d.getFullYear();
+
+    if (month.length < 2) month = "0" + month;
+    if (day.length < 2) day = "0" + day;
+
+    return [year, month, day].join("-");
+  }
+
+  formatmoney(money: string) {
+    const formatter = new Intl.NumberFormat("in-ID", {
+      style: "currency",
+      currency: "IDR",
+      minimumFractionDigits: 2
+    });
+    return [formatter.format(money)];
+  }
 }

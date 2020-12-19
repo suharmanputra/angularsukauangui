@@ -13,7 +13,7 @@ export interface transaction {
   InAmount: string;
   FinalAmount: string;
   Source: string;
-  CreatedDateTime: string;
+  CreatedDateTime: Date;
 }
 
 @Component({
@@ -51,7 +51,7 @@ export class TransaksiPageComponent implements OnInit {
         this.router.navigateByUrl("/");
         this.menuBarService.setLoadingAnimation(false);
       }
-      this.tampildata;
+      this.tampildata();
     });
   }
 
