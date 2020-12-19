@@ -2,16 +2,18 @@ import { AknutmanWsService } from "../shared/aknutman-ws.service";
 import { MenuBarService } from "../shared/menu-bar.service";
 import { ActivatedRoute, Router, RoutesRecognized } from "@angular/router";
 import { MatSnackBar } from "@angular/material/snack-bar";
-import { AfterViewInit, Component, ViewChild } from "@angular/core";
+import { Component, ViewChild } from "@angular/core";
 import { MatPaginator } from "@angular/material/paginator";
 import { MatSort } from "@angular/material/sort";
 import { MatTableDataSource } from "@angular/material/table";
 
-export interface UserData {
-  FullName: string;
-  IsActive: string;
-  WaitForActivation: string;
-  WithdrawalRequest: string;
+export interface transaction {
+  SheetNumber: string;
+  PreAmount: string;
+  InAmount: string;
+  FinalAmount: string;
+  Source: string;
+  CreatedDateTime: string;
 }
 
 @Component({
@@ -21,13 +23,15 @@ export interface UserData {
 })
 export class TransaksiPageComponent implements OnInit {
   displayedColumns: string[] = [
-    "FullName",
-    "IsActive",
-    "WaitForActivation",
-    "WithdrawalRequest"
+    "SheetNumber",
+    "PreAmount",
+    "InAmount",
+    "FinalAmount",
+    "Source",
+    "CreatedDateTime"
   ];
 
-  dataSource: MatTableDataSource<UserData>;
+  dataSource: MatTableDataSource<transaction>;
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
@@ -50,26 +54,16 @@ export class TransaksiPageComponent implements OnInit {
     // });
   }
 
-  tampildata(datefrom: string, dateto: string) {
-    if (datefrom == "") {
-      this.snackBar.open("Pilih tanggal awal terlebih dahulu!", "Ok", {
-        duration: 3000
+  tampildata() {
+    this.menuBarService.setLoadingAnimation(true);
+    this.menuBarService.g_userid.subscribe(userid => {
+      this.aknutman.gettransactionhistory(userid).subscribe(resp => {
+        this.dataSource = new MatTableDataSource(resp.data);
+        this.dataSource.paginator = this.paginator;
+        this.dataSource.sort = this.sort;
+        this.menuBarService.setLoadingAnimation(false);
       });
-    } else if (dateto == "") {
-      this.snackBar.open("Pilih tanggal akhir terlebih dahulu!", "Ok", {
-        duration: 3000
-      });
-    } else {
-      this.menuBarService.setLoadingAnimation(true);
-      this.aknutman
-        .getuserlist(this.formatDate(datefrom), this.formatDate(dateto))
-        .subscribe(resp => {
-          this.dataSource = new MatTableDataSource(resp.persons);
-          this.dataSource.paginator = this.paginator;
-          this.dataSource.sort = this.sort;
-          this.menuBarService.setLoadingAnimation(false);
-        });
-    }
+    });
   }
 
   formatDate(date: string) {

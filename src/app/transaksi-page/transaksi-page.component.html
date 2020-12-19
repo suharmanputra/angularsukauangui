@@ -1,23 +1,9 @@
 <form>
 	<div class="pagecontainer">
-		<mat-card>Member Control Panel</mat-card>
-
+		<mat-card>History Transaksi</mat-card>
 		<mat-divider></mat-divider>
 		<mat-card>
-			<!-- <table>
-				<tr>
-					<td><input matInput #dateFrom [matDatepicker]="picker" placeholder="Tanggal Awal">
-						<mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-						<mat-datepicker #picker></mat-datepicker>
-					</td>
-					<td><input matInput #dateTo [matDatepicker]="picker2" placeholder="Tanggal Akhir">
-						<mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
-						<mat-datepicker #picker2></mat-datepicker>
-					</td>
-				</tr>
-				
-			</table> -->
-			<button style="display:inline-block;width:100%;" mat-raised-button color="accent" (click)="tampildata(dateFrom.value, dateTo.value)">Tampil Data</button>
+			<button style="display:inline-block;width:100%;" mat-raised-button color="accent" (click)="tampildata()">Tampil Data</button>
 		</mat-card>
 
 		<mat-divider></mat-divider>
@@ -30,31 +16,35 @@
 				<div class="mat-elevation-z8">
 					<table mat-table [dataSource]="dataSource" matSort>
 
-						<!-- ID Column -->
-						<ng-container matColumnDef="FullName">
-							<th mat-header-cell *matHeaderCellDef mat-sort-header>User Name</th>
-							<td mat-cell *matCellDef="let row"> {{row.FullName}} </td>
+
+						<ng-container matColumnDef="SheetNumber">
+							<th mat-header-cell *matHeaderCellDef mat-sort-header>No</th>
+							<td mat-cell *matCellDef="let row"> {{row.SheetNumber}} </td>
 						</ng-container>
 
-						<!-- Progress Column -->
-						<ng-container matColumnDef="IsActive">
-							<th mat-header-cell *matHeaderCellDef mat-sort-header> Status</th>
-							<td mat-cell *matCellDef="let row"> {{row.IsActive}} </td>
+						<ng-container matColumnDef="PreAmount">
+							<th mat-header-cell *matHeaderCellDef mat-sort-header>Jumlah Awal</th>
+							<td mat-cell *matCellDef="let row"> {{row.PreAmount}} </td>
 						</ng-container>
 
-						<!-- Name Column -->
-						<ng-container matColumnDef="WaitForActivation">
-							<th mat-header-cell *matHeaderCellDef mat-sort-header>Bukti Transfer</th>
-							<td style="text-align:center;" mat-cell *matCellDef="let row">
-								<a target="_blank"
-									href={{row.WaitForActivation}}><img style="display:inline-block;width:50px;height:50px;" src={{row.WaitForActivation}}></a>
-							</td>
+						<ng-container matColumnDef="InAmount">
+							<th mat-header-cell *matHeaderCellDef mat-sort-header>Keluar/Masuk</th>
+							<td mat-cell *matCellDef="let row"> {{row.InAmount}} </td>
 						</ng-container>
 
-						<!-- Color Column -->
-						<ng-container matColumnDef="WithdrawalRequest">
-							<th mat-header-cell *matHeaderCellDef mat-sort-header>Tarik Dana</th>
-							<td mat-cell *matCellDef="let row"> {{row.WithdrawalRequest}} </td>
+						<ng-container matColumnDef="FinalAmount">
+							<th mat-header-cell *matHeaderCellDef mat-sort-header>Balance</th>
+							<td mat-cell *matCellDef="let row"> {{row.FinalAmount}} </td>
+						</ng-container>
+
+						<ng-container matColumnDef="Source">
+							<th mat-header-cell *matHeaderCellDef mat-sort-header>Sumber</th>
+							<td mat-cell *matCellDef="let row"> {{row.Source}} </td>
+						</ng-container>
+
+						<ng-container matColumnDef="CreatedDateTime">
+							<th mat-header-cell *matHeaderCellDef mat-sort-header>Waktu</th>
+							<td mat-cell *matCellDef="let row"> {{row.CreatedDateTime}} </td>
 						</ng-container>
 
 						<tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
