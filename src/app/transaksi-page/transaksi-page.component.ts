@@ -46,18 +46,18 @@ export class TransaksiPageComponent implements OnInit {
   ngOnInit() {
     this.menuBarService.setMenuVisible(true);
 
-    // this.menuBarService.globalIsAuthenticated.subscribe(result => {
-    //   if (result === false) {
-    //     this.router.navigateByUrl("/");
-    //     this.menuBarService.setLoadingAnimation(false);
-    //   }
-    // });
+    this.menuBarService.globalIsAuthenticated.subscribe(result => {
+      if (result === false) {
+        this.router.navigateByUrl("/");
+        this.menuBarService.setLoadingAnimation(false);
+      }
+      this.tampildata;
+    });
   }
 
   tampildata() {
     this.menuBarService.setLoadingAnimation(true);
     this.menuBarService.g_userid.subscribe(userid => {
-      console.log(userid);
       this.aknutman.gettransactionhistory(userid).subscribe(resp => {
         this.dataSource = new MatTableDataSource(resp.data);
         this.dataSource.paginator = this.paginator;

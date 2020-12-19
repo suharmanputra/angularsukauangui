@@ -36,6 +36,11 @@ export class TopBarComponent implements OnInit {
   redirect_profil() {
     this.router.navigateByUrl("/profil");
   }
+
+  redirect_transaksi() {
+    this.router.navigateByUrl("/transaksi");
+  }
+
   redirect_member() {
     this.router.navigateByUrl("/member");
   }
