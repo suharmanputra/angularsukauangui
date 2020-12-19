@@ -112,7 +112,7 @@ export class DashboardPageComponent implements OnInit {
             } else {
               this.witdhawButtonVisible = false;
             }
-            this.total = this.aknutman.formatmoney(resp.data.TotalBonus);
+            this.total = this.aknutman.formatmoney(resp.data.InAmountTotal);
 
             this.menuBarService.setLoadingAnimation(false);
           } else {
