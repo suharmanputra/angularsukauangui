@@ -128,6 +128,8 @@ export class AdminPageComponent implements OnInit {
       });
   }
 
+  confirtarikdana() {}
+
   openDialogWithRef(ref: TemplateRef<any>, userid: string) {
     this.SelectedUserId = userid;
     this.dialog.open(ref);
