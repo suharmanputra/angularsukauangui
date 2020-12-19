@@ -70,17 +70,19 @@ export class AdminPageComponent implements OnInit {
     } else {
       this.menuBarService.setLoadingAnimation(true);
       this.aknutman
-        .getuserlist(this.formatDate(datefrom), this.formatDate(dateto))
+        .getuserlist(
+          this.aknutman.formatDate(datefrom),
+          this.aknutman.formatDate(dateto)
+        )
         .subscribe(resp => {
           this.dataSource = new MatTableDataSource(resp.persons);
           this.dataSource.paginator = this.paginator;
           this.dataSource.sort = this.sort;
           this.menuBarService.setLoadingAnimation(false);
+          // console.log(resp.persons);
         });
     }
   }
-
-
 
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;

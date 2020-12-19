@@ -20,14 +20,14 @@
 		</mat-card>
 
 		<mat-divider></mat-divider>
-		<mat-card style="overflow-x:scroll;">
+		<mat-card>
 			<mat-form-field>
 				<mat-label>Filter</mat-label>
 				<input matInput (keyup)="applyFilter($event)" placeholder="Cari Data.." #input>
 </mat-form-field>
 
-				<div class="mat-elevation-z8">
-					<table mat-table [dataSource]="dataSource" matSort>
+				<div class="mat-elevation-z8" style="overflow-x:scroll;width:100%">
+					<table style="overflow-x:scroll;width:100%" mat-table [dataSource]="dataSource" matSort>
 
 						<!-- ID Column -->
 						<ng-container matColumnDef="FullName">
@@ -44,9 +44,26 @@
 						<!-- Name Column -->
 						<ng-container matColumnDef="WaitForActivation">
 							<th mat-header-cell *matHeaderCellDef mat-sort-header>Bukti Transfer</th>
-							<td style="text-align:center;" mat-cell *matCellDef="let row">
-								<a target="_blank"
-									href={{row.WaitForActivation}}><img style="display:inline-block;width:50px;height:50px;" src={{row.WaitForActivation}}></a>
+							<td style="text-align:center;" mat-cell *matCellDef="let row"
+								*ngif="WaitForActivation === ''; then kosong else gambar">
+
+								<ng-template #kosong>-</ng-template>
+								<ng-template #gambar>
+									<a target=" _blank" href={{row.WaitForActivation}}>
+										<img style="display:inline-block;width:50px;height:50px;" src={{row.WaitForActivation}}></a>
+								</ng-template>
+
+
+
+
+								<!-- 
+								<div *ngIf="condition; then thenBlock else elseBlock"></div>
+								<ng-template #thenBlock>Content to render when condition is true.</ng-template>
+								<ng-template #elseBlock>Content to render when condition is false.</ng-template> -->
+
+								<!-- {{if (row.WaitForActivation !=="" {<a target="_blank"
+									href={{row.WaitForActivation}}><img style="display:inline-block;width:50px;height:50px;" src={{row.WaitForActivation}}></a>}
+								) }} -->
 							</td>
 						</ng-container>
 
