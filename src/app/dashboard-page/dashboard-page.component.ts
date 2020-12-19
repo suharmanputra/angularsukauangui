@@ -68,41 +68,46 @@ export class DashboardPageComponent implements OnInit {
               resp.data.ReferralCode +
               "";
 
-            if (username == "superadmin") {
-              this.statusakun = "Aktif";
-              this.masaaktif = "999";
+            // if (username == "superadmin") {
+            //   this.statusakun = "Aktif";
+            //   this.masaaktif = "999";
+            //   this.checkinButtonVisible = false;
+            //   this.buktitrfButtonVisible = false;
+            //   this.aktivasiButtonVisible = false;
+            // } else {
+            if (resp.data.IsActivated === false) {
+              if (resp.data.PaymentProofStorage == "") {
+                this.statusakun = "Belum Aktif";
+                this.aktivasiButtonVisible = true;
+                this.buktitrfButtonVisible = false;
+              } else {
+                this.statusakun = "Menunggu Konfirmasi Admin";
+                this.aktivasiButtonVisible = false;
+                this.buktitrfButtonVisible = true;
+                this.buktitrffile =
+                  `<a target="_blank"
+									href="` +
+                  resp.data.PaymentProofStorage +
+                  `"><img style="display:inline-block;width:50px;height:50px;" src="` +
+                  resp.data.PaymentProofStorage +
+                  `"></a>`;
+              }
+              this.masaaktif = "0";
               this.checkinButtonVisible = false;
+              this.getactivationnote(userid);
+            } else {
+              this.statusakun = "Aktif";
+              this.masaaktif = resp.data.ActivatedDayCount;
+              if (username == "superadmin") {
+                this.checkinButtonVisible = false;
+              } else {
+                this.checkinButtonVisible = true;
+              }
+
               this.buktitrfButtonVisible = false;
               this.aktivasiButtonVisible = false;
-            } else {
-              if ((resp.data.IsActivated = "false")) {
-                if (resp.data.PaymentProofStorage == "") {
-                  this.statusakun = "Belum Aktif";
-                  this.aktivasiButtonVisible = true;
-                  this.buktitrfButtonVisible = false;
-                } else {
-                  this.statusakun = "Menunggu Konfirmasi Admin";
-                  this.aktivasiButtonVisible = false;
-                  this.buktitrfButtonVisible = true;
-                  this.buktitrffile =
-                    `<a target="_blank"
-									href="` +
-                    resp.data.PaymentProofStorage +
-                    `"><img style="display:inline-block;width:50px;height:50px;" src="` +
-                    resp.data.PaymentProofStorage +
-                    `"></a>`;
-                }
-                this.masaaktif = "0";
-                this.checkinButtonVisible = false;
-                this.getactivationnote(userid);
-              } else {
-                this.statusakun = "Aktif";
-                this.masaaktif = resp.data.ActivatedDayCount;
-                this.checkinButtonVisible = true;
-                this.buktitrfButtonVisible = false;
-                this.aktivasiButtonVisible = false;
-              }
             }
+            // }
 
             this.level = resp.data.Level;
             this.jmlmember = resp.data.MemberCount;
@@ -113,7 +118,7 @@ export class DashboardPageComponent implements OnInit {
               this.witdhawButtonVisible = false;
             }
             this.total = this.aknutman.formatmoney(resp.data.InAmountTotal);
-            console.log(resp);
+            // console.log(resp);
             this.menuBarService.setLoadingAnimation(false);
           } else {
             // this.router.navigateByUrl("/");
@@ -180,7 +185,7 @@ export class DashboardPageComponent implements OnInit {
     this.menuBarService.setLoadingAnimation(true);
     this.menuBarService.g_userid.subscribe(userid => {
       this.aknutman.reqwitdraw(userid, amount).subscribe(resp => {
-        console.log(resp);
+        // console.log(resp);
         if (resp.status == "200") {
           this.snackBar.open("Request penarikan dana berhasil", "Ok", {
             duration: 3000

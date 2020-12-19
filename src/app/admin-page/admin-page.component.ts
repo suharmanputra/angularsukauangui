@@ -92,4 +92,8 @@ export class AdminPageComponent implements OnInit {
       this.dataSource.paginator.firstPage();
     }
   }
+
+  aktivasiUser(userid: string) {
+    console.log(userid);
+  }
 }

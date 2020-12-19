@@ -35,13 +35,12 @@
 						</ng-container>
 
 						<ng-container matColumnDef="IsActive">
-							<th mat-header-cell *matHeaderCellDef mat-sort-header> Status</th>
-							<td mat-cell *matCellDef="let row">
-								<div *ngIf="row.IsActive == false; then activebutton"></div>
+							<th mat-header-cell *matHeaderCellDef mat-sort-header>Status</th>
+							<td mat-cell *matCellDef="let row">{{row.IsActive}}
+								<!-- <div *ngIf="row.IsActive == false; then activebutton"></div>
 								<ng-template #activebutton>
-									<button style="display:inline-block;width:100%;" mat-raised-button color="accent">Aktivasi User</button>
-								</ng-template>
-								{{row.IsActive}}
+									<button mat-raised-button color="accent" (click)="aktivasiUser(row.IsActive)">Aktivasi</button>
+								</ng-template> -->
 							</td>
 						</ng-container>
 
