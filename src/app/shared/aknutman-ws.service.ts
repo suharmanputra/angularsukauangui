@@ -134,7 +134,8 @@ export class AknutmanWsService {
       "https://us-central1-sukauang-backend.cloudfunctions.net/UserCheckIn";
     const body = {
       PersonId: userid,
-      CheckInDateTime: this.formatDate(new Date().toString())
+      // CheckInDateTime: this.formatDate(new Date() .toString()) //
+      CheckInDateTime: new Date().toString()
     };
     return this.http.post<string>(url, body);
   }
