@@ -42,18 +42,12 @@ export class TransaksiPageComponent implements OnInit {
   ngOnInit() {
     this.menuBarService.setMenuVisible(true);
 
-    this.menuBarService.globalIsAuthenticated.subscribe(result => {
-      if (result === false) {
-        this.router.navigateByUrl("/");
-        this.menuBarService.setLoadingAnimation(false);
-      } else {
-        this.menuBarService.g_username.subscribe(username => {
-          if (username !== "superadmin") {
-            this.router.navigateByUrl("/");
-          }
-        });
-      }
-    });
+    // this.menuBarService.globalIsAuthenticated.subscribe(result => {
+    //   if (result === false) {
+    //     this.router.navigateByUrl("/");
+    //     this.menuBarService.setLoadingAnimation(false);
+    //   }
+    // });
   }
 
   tampildata(datefrom: string, dateto: string) {

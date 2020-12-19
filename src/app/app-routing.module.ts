@@ -18,7 +18,7 @@ const routes: Routes = [
   { path: "profil", component: ProfilPageComponent },
   { path: "about", component: AboutPageComponent },
   { path: "member", component: MemberPageComponent },
-  { path: "admin", component: AdminPageComponent }
+  { path: "admin", component: AdminPageComponent },
   { path: "transaksi", component: TransaksiPageComponent }
   // { path: "admin/:adminCommand", component: AdminPageComponent }
 ];
