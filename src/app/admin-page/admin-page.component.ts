@@ -128,7 +128,27 @@ export class AdminPageComponent implements OnInit {
       });
   }
 
-  confirtarikdana() {}
+  confirtarikdana(datefrom: string, dateto: string) {
+    this.menuBarService.setLoadingAnimation(true);
+
+this.aknutman.getuserlist("")
+
+
+    this.aknutman.confirmwithdraw("").subscribe(resp => {
+      if (resp.status == 200) {
+        this.snackBar.open("Tarik Dana dikonfirmasi!", "Ok", {
+          duration: 3000
+        });
+        this.tampildata(datefrom, dateto);
+        this.menuBarService.setLoadingAnimation(false);
+      } else {
+        this.snackBar.open(resp.message, "Ok", {
+          duration: 3000
+        });
+        this.menuBarService.setLoadingAnimation(false);
+      }
+    });
+  }
 
   openDialogWithRef(ref: TemplateRef<any>, userid: string) {
     this.SelectedUserId = userid;
