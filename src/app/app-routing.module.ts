@@ -1,4 +1,5 @@
 import { NgModule } from "@angular/core";
+import { CommonModule } from "@angular/common";
 import { Routes, RouterModule } from "@angular/router";
 import { AboutPageComponent } from "./about-page/about-page.component";
 import { DashboardPageComponent } from "./dashboard-page/dashboard-page.component";
