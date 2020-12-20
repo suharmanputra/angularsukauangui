@@ -22,7 +22,7 @@ export class AknutmanWsService {
     return [year, month, day].join("-");
   }
 
-  formatmoney(money: string) {
+  formatmoney(money: number) {
     const formatter = new Intl.NumberFormat("in-ID", {
       style: "currency",
       currency: "IDR",
