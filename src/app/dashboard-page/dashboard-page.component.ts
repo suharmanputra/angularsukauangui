@@ -67,14 +67,6 @@ export class DashboardPageComponent implements OnInit {
               "https://sukauang.com/#/registration?reff=" +
               resp.data.ReferralCode +
               "";
-
-            // if (username == "superadmin") {
-            //   this.statusakun = "Aktif";
-            //   this.masaaktif = "999";
-            //   this.checkinButtonVisible = false;
-            //   this.buktitrfButtonVisible = false;
-            //   this.aktivasiButtonVisible = false;
-            // } else {
             if (resp.data.IsActivated === false) {
               if (resp.data.PaymentProofStorage == "") {
                 this.statusakun = "Belum Aktif";
@@ -107,7 +99,6 @@ export class DashboardPageComponent implements OnInit {
               this.buktitrfButtonVisible = false;
               this.aktivasiButtonVisible = false;
             }
-            // }
 
             this.level = resp.data.Level;
             this.jmlmember = resp.data.MemberCount;
@@ -118,11 +109,8 @@ export class DashboardPageComponent implements OnInit {
               this.witdhawButtonVisible = false;
             }
             this.total = this.aknutman.formatmoney(resp.data.InAmountTotal);
-            // console.log(resp);
             this.menuBarService.setLoadingAnimation(false);
           } else {
-            // this.router.navigateByUrl("/");
-            // this.snackBar.open(resp.message, "Ok", { duration: 3000 });
             this.menuBarService.setLoadingAnimation(false);
           }
         });
@@ -131,8 +119,6 @@ export class DashboardPageComponent implements OnInit {
   }
 
   checkin() {
-    console.log(new Date().toLocaleString());
-
     this.menuBarService.setLoadingAnimation(true);
     this.menuBarService.g_userid.subscribe(userid => {
       this.aknutman.chekin(userid).subscribe(resp => {
