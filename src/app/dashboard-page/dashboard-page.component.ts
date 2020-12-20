@@ -73,13 +73,13 @@ export class DashboardPageComponent implements OnInit {
               this.statusakun = "Menunggu Konfirmasi Admin";
               this.aktivasiButtonVisible = false;
               this.buktitrfButtonVisible = true;
-              this.buktitrffile =
-                `<a target="_blank"
-									href="` +
-                respdetailuser.data.PaymentProofStorage +
-                `"><img style="display:inline-block;width:50px;height:50px;" src="` +
-                respdetailuser.data.PaymentProofStorage +
-                `"></a>`;
+              this.buktitrffile = respdetailuser.data.PaymentProofStorage;
+              //   `<a target="_blank"
+              // 		href="` +
+              //   respdetailuser.data.PaymentProofStorage +
+              //   `"><img style="display:inline-block;width:50px;height:50px;" src="` +
+              //   respdetailuser.data.PaymentProofStorage +
+              //   `"></a>`;
             }
             this.masaaktif = "0";
             this.checkinButtonVisible = false;

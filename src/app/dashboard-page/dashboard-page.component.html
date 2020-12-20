@@ -96,7 +96,9 @@
 	<ng-template #buktitransferdialog>
 		<h2 matDialogTitle>Bukti Transfer</h2>
 		<div matDialogContent>
-			<span [innerHTML]="buktitrffile"></span>
+			<!-- <span [innerHTML]="buktitrffile"></span> -->
+			<a target="_blank"
+				href=buktitrffile><img style="display:inline-block;width:50px;height:50px;" src=buktitrffile></a>
 		</div>
 		<mat-dialog-actions align="end">
 			<button mat-button matDialogClose>Dismiss</button>
