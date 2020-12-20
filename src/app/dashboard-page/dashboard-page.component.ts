@@ -131,6 +131,8 @@ export class DashboardPageComponent implements OnInit {
   }
 
   checkin() {
+    console.log(new Date(), "yyyy-MM-dd HH:mm:ss");
+
     this.menuBarService.setLoadingAnimation(true);
     this.menuBarService.g_userid.subscribe(userid => {
       this.aknutman.chekin(userid).subscribe(resp => {

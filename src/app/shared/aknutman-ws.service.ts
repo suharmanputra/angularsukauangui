@@ -140,7 +140,6 @@ export class AknutmanWsService {
       Accuracy: 0
     };
     return this.http.post<string>(url, body);
-    console.log(new Date().toString());
   }
 
   confirmwithdraw(Idtarikdana: string) {
