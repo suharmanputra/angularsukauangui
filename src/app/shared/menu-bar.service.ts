@@ -11,10 +11,6 @@ export class MenuBarService {
   globalIsAuthenticated = this.isAuthenticated;
   private loadingAnimation = new BehaviorSubject(false);
   sharedLoadingAnimation = this.loadingAnimation;
-  // private user_id = new BehaviorSubject("");
-  // g_userid = this.user_id;
-  // private user_name = new BehaviorSubject("");
-  // g_username = this.user_name;
 
   constructor(private router: Router) {}
 
@@ -36,9 +32,4 @@ export class MenuBarService {
   setLoadingAnimation(isDisplay: boolean) {
     this.loadingAnimation.next(isDisplay);
   }
-
-  // setUserIdName(userid: string, username: string) {
-  //   this.user_id.next(userid);
-  //   this.user_name.next(username);
-  // }
 }
