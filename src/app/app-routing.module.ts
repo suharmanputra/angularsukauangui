@@ -8,7 +8,6 @@ import { ProfilPageComponent } from "./profil-page/profil-page.component";
 import { RegistrationPageComponent } from "./registration-page/registration-page.component";
 import { AdminPageComponent } from "./admin-page/admin-page.component";
 import { TransaksiPageComponent } from "./transaksi-page/transaksi-page.component";
-// import { AdminPageComponent } from "./admin-page/admin-page.component";
 
 const routes: Routes = [
   { path: "", redirectTo: "/login", pathMatch: "full" },
@@ -20,7 +19,6 @@ const routes: Routes = [
   { path: "member", component: MemberPageComponent },
   { path: "admin", component: AdminPageComponent },
   { path: "transaksi", component: TransaksiPageComponent }
-  // { path: "admin/:adminCommand", component: AdminPageComponent }
 ];
 
 @NgModule({

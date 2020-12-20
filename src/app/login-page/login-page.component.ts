@@ -4,6 +4,12 @@ import { MatSnackBar } from "@angular/material/snack-bar";
 import { MenuBarService } from "../shared/menu-bar.service";
 import { AknutmanWsService } from "../shared/aknutman-ws.service";
 
+export interface resplogin {
+  Status: string;
+  personId: string;
+  isAuthenticated: boolean;
+}
+
 @Component({
   selector: "app-login-page",
   templateUrl: "./login-page.component.html",
@@ -22,21 +28,25 @@ export class LoginPageComponent implements OnInit {
 
   ngOnInit() {
     this.menuBarService.setMenuVisible(false);
-    this.menuBarService.setUserIdName("", "");
+    // this.menuBarService.setUserIdName("", "");
+    localStorage.setItem("userid", "");
+    localStorage.setItem("username", "");
   }
 
   checkLogin(username: string, password: string) {
     // console.log(username, password);
     this.menuBarService.setLoadingAnimation(true);
-    this.aknutman.getLogin(username, password).subscribe(resp => {
+    this.aknutman.getLogin(username, password).subscribe(resplogin => {
       // console.log(resp);
-      if (resp.isAuthenticated === true) {
+      if (resplogin.isAuthenticated === true) {
         this.menuBarService.setIsAuthenticated(true);
         this.router.navigateByUrl("/dashboard");
-        this.menuBarService.setUserIdName(
-          resp.personId,
-          username.toLowerCase()
-        );
+        // this.menuBarService.setUserIdName(
+        //   resplogin.personId,
+        //   username.toLowerCase()
+        // );
+        localStorage.setItem("userid", resplogin.personId);
+        localStorage.setItem("username", username.toLowerCase());
       } else {
         this.snackBar.open("Username/Password Salah!", "Ok", {
           duration: 3000
