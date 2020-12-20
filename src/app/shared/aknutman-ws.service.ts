@@ -134,8 +134,10 @@ export class AknutmanWsService {
       "https://us-central1-sukauang-backend.cloudfunctions.net/UserCheckIn";
     const body = {
       PersonId: userid,
-      // CheckInDateTime: this.formatDate(new Date() .toString()) //
-      CheckInDateTime: new Date().toString()
+      CheckInDateTime: new Date().toString(),
+      Latitude: 0,
+      Longitude: 0,
+      Accuracy: 0
     };
     return this.http.post<string>(url, body);
   }
@@ -144,7 +146,10 @@ export class AknutmanWsService {
     const url =
       "https://us-central1-sukauang-backend.cloudfunctions.net/ConfirmWithdrawTransfer";
     const body = {
-      RequestId: Idtarikdana
+      RequestId: Idtarikdana,
+      RefferenceId: "",
+      ImageExtension: "",
+      ImageDataUrl: ""
     };
     return this.http.post<string>(url, body);
   }
