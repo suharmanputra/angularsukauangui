@@ -131,7 +131,7 @@ export class DashboardPageComponent implements OnInit {
   }
 
   checkin() {
- 
+    console.log(new Date().toLocaleString());
 
     this.menuBarService.setLoadingAnimation(true);
     this.menuBarService.g_userid.subscribe(userid => {
