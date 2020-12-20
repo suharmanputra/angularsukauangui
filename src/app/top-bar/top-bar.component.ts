@@ -51,6 +51,9 @@ export class TopBarComponent implements OnInit {
     this.router.navigateByUrl("/about");
   }
   logout() {
+    this.menuBarService.setMenuVisible(false);
+    this.menuBarService.setUserIdName("", "");
     this.router.navigateByUrl("/login");
+
   }
 }
