@@ -137,6 +137,7 @@ export class AdminPageComponent implements OnInit {
     this.aknutman
       .getuserlist(datefrom, dateto, this.SelectedUserId)
       .subscribe(dataperson => {
+        // console.log(dataperson);
         this.aknutman
           .confirmwithdraw(dataperson.persons.WithdrawalRequestId)
           .subscribe(respconfirtarikdana => {
