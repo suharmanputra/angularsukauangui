@@ -52,6 +52,9 @@ export class AknutmanWsService {
     namabank: string,
     namarek: string
   ) {
+    if (reff === "") {
+      reff = "SUKAUANG";
+    }
     const url =
       "https://us-central1-sukauang-backend.cloudfunctions.net/Register";
     const body = {
