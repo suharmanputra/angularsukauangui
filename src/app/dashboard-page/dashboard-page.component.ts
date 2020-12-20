@@ -5,7 +5,7 @@ import { MatSnackBar } from "@angular/material/snack-bar";
 import { AknutmanWsService } from "../shared/aknutman-ws.service";
 import { ActivatedRoute, Router, RoutesRecognized } from "@angular/router";
 import { ViewChild, TemplateRef } from "@angular/core";
-import { duration } from "moment";
+
 @Component({
   selector: "app-dashboard-page",
   templateUrl: "./dashboard-page.component.html",
