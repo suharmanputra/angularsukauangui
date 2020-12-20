@@ -153,6 +153,7 @@ export class AknutmanWsService {
       RefferenceId: "",
       ImageExtension: "",
       ImageDataUrl: ""
+      
     };
     return this.http.post<string>(url, body);
   }
