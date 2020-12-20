@@ -137,9 +137,8 @@ export class AdminPageComponent implements OnInit {
     this.aknutman
       .getuserlist(datefrom, dateto, this.SelectedUserId)
       .subscribe(dataperson => {
-        // console.log(dataperson);
         this.aknutman
-          .confirmwithdraw(dataperson.persons.WithdrawalRequestId)
+          .confirmwithdraw(dataperson.persons[0].WithdrawalRequestId)
           .subscribe(respconfirtarikdana => {
             if (respconfirtarikdana.status == 200) {
               this.snackBar.open("Tarik Dana dikonfirmasi!", "Ok", {
