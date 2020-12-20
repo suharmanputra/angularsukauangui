@@ -13,6 +13,7 @@ import { MatSort } from "@angular/material/sort";
 import { MatTableDataSource } from "@angular/material/table";
 import { MatDialog } from "@angular/material/dialog";
 import { duration } from "moment";
+
 export interface UserData {
   FullName: string;
   IsActive: string;
