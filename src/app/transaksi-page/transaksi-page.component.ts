@@ -57,14 +57,15 @@ export class TransaksiPageComponent implements OnInit {
 
   tampildata() {
     this.menuBarService.setLoadingAnimation(true);
-    this.menuBarService.g_userid.subscribe(userid => {
-      this.aknutman.gettransactionhistory(userid).subscribe(resp => {
-        this.dataSource = new MatTableDataSource(resp.data);
+
+    this.aknutman
+      .gettransactionhistory(atob(localStorage.getItem("userid")))
+      .subscribe(resptransactionhistory => {
+        this.dataSource = new MatTableDataSource(resptransactionhistory.data);
         this.dataSource.paginator = this.paginator;
         this.dataSource.sort = this.sort;
         this.menuBarService.setLoadingAnimation(false);
       });
-    });
   }
 
   applyFilter(event: Event) {

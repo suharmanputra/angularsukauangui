@@ -27,7 +27,8 @@ export class RegistrationPageComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.menuBarService.setUserIdName("", "");
+    localStorage.setItem("userid", "");
+    localStorage.setItem("username", "");
     this.menuBarService.setMenuVisible(false);
     this.route.queryParams.subscribe(params => {
       if (params["reff"] != null) {
@@ -95,8 +96,8 @@ export class RegistrationPageComponent implements OnInit {
           namabank,
           namarek
         )
-        .subscribe(resp => {
-          if (resp.status == "201") {
+        .subscribe(respregistuser => {
+          if (respregistuser.status == "201") {
             this.snackBar.open(
               "Registrasi berhasil, silahkan login dan aktivasi akun anda.",
               "Ok",
@@ -109,7 +110,7 @@ export class RegistrationPageComponent implements OnInit {
             // console.log(resp);
             this.menuBarService.setLoadingAnimation(false);
           } else {
-            this.snackBar.open(resp.message, "Ok", {
+            this.snackBar.open(respregistuser.message, "Ok", {
               duration: 3000
             });
             this.menuBarService.setLoadingAnimation(false);

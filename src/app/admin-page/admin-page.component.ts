@@ -60,11 +60,9 @@ export class AdminPageComponent implements OnInit {
         this.router.navigateByUrl("/");
         this.menuBarService.setLoadingAnimation(false);
       } else {
-        this.menuBarService.g_username.subscribe(username => {
-          if (username !== "superadmin") {
-            this.router.navigateByUrl("/");
-          }
-        });
+        if (atob(localStorage.getItem("username")) !== "superadmin") {
+          this.router.navigateByUrl("/");
+        }
       }
     });
   }
@@ -86,12 +84,11 @@ export class AdminPageComponent implements OnInit {
           this.aknutman.formatDate(dateto),
           ""
         )
-        .subscribe(resp => {
-          this.dataSource = new MatTableDataSource(resp.persons);
+        .subscribe(respuserlist => {
+          this.dataSource = new MatTableDataSource(respuserlist.persons);
           this.dataSource.paginator = this.paginator;
           this.dataSource.sort = this.sort;
           this.menuBarService.setLoadingAnimation(false);
-          // console.log(resp.persons);
         });
     }
   }
@@ -113,15 +110,15 @@ export class AdminPageComponent implements OnInit {
         false,
         this.aknutman.formatDate(new Date().toString())
       )
-      .subscribe(resp => {
-        if (resp.status == 200) {
+      .subscribe(respaktivasiuser => {
+        if (respaktivasiuser.status == 200) {
           this.snackBar.open("Aktivasi Berhasil!", "Ok", {
             duration: 3000
           });
           this.tampildata(datefrom, dateto);
           this.menuBarService.setLoadingAnimation(false);
         } else {
-          this.snackBar.open(resp.message, "Ok", {
+          this.snackBar.open(respaktivasiuser.message, "Ok", {
             duration: 3000
           });
           this.menuBarService.setLoadingAnimation(false);
@@ -136,15 +133,15 @@ export class AdminPageComponent implements OnInit {
       .subscribe(dataperson => {
         this.aknutman
           .confirmwithdraw(dataperson.persons.WithdrawalRequestId)
-          .subscribe(resp => {
-            if (resp.status == 200) {
+          .subscribe(respconfirtarikdana => {
+            if (respconfirtarikdana.status == 200) {
               this.snackBar.open("Tarik Dana dikonfirmasi!", "Ok", {
                 duration: 3000
               });
               this.tampildata(datefrom, dateto);
               this.menuBarService.setLoadingAnimation(false);
             } else {
-              this.snackBar.open(resp.message, "Ok", {
+              this.snackBar.open(respconfirtarikdana.message, "Ok", {
                 duration: 3000
               });
               this.menuBarService.setLoadingAnimation(false);

@@ -38,104 +38,103 @@ export class DashboardPageComponent implements OnInit {
 
   ngOnInit() {
     this.menuBarService.setMenuVisible(true);
-    this.menuBarService.g_username.subscribe(username => {
-      if (username == "superadmin") {
-        this.menuBarService.setAdminVisible(true);
+    if (atob(localStorage.getItem("username")) == "superadmin") {
+      this.menuBarService.setAdminVisible(true);
+    } else {
+      this.menuBarService.setAdminVisible(false);
+    }
+    this.menuBarService.globalIsAuthenticated.subscribe(result => {
+      if (result === false) {
+        this.router.navigateByUrl("/");
       } else {
-        this.menuBarService.setAdminVisible(false);
+        this.getUserdetail();
       }
-
-      this.menuBarService.globalIsAuthenticated.subscribe(result => {
-        if (result === false) {
-          this.router.navigateByUrl("/");
-        } else {
-          this.getUserdetail();
-        }
-      });
     });
   }
 
   getUserdetail() {
     this.menuBarService.setLoadingAnimation(true);
-
-    this.menuBarService.g_userid.subscribe(userid => {
-      this.aknutman.getdetail(userid).subscribe(resp => {
-        this.menuBarService.g_username.subscribe(username => {
-          if (resp.status == "200") {
-            this.username = username;
-            this.referral =
-              "https://sukauang.com/#/registration?reff=" +
-              resp.data.ReferralCode +
-              "";
-            if (resp.data.IsActivated === false) {
-              if (resp.data.PaymentProofStorage == "") {
-                this.statusakun = "Belum Aktif";
-                this.aktivasiButtonVisible = true;
-                this.buktitrfButtonVisible = false;
-              } else {
-                this.statusakun = "Menunggu Konfirmasi Admin";
-                this.aktivasiButtonVisible = false;
-                this.buktitrfButtonVisible = true;
-                this.buktitrffile =
-                  `<a target="_blank"
-									href="` +
-                  resp.data.PaymentProofStorage +
-                  `"><img style="display:inline-block;width:50px;height:50px;" src="` +
-                  resp.data.PaymentProofStorage +
-                  `"></a>`;
-              }
-              this.masaaktif = "0";
-              this.checkinButtonVisible = false;
-              this.getactivationnote(userid);
-            } else {
-              this.statusakun = "Aktif";
-              this.masaaktif = resp.data.ActivatedDayCount;
-              if (username == "superadmin") {
-                this.checkinButtonVisible = false;
-              } else {
-                this.checkinButtonVisible = true;
-              }
-
+    this.aknutman
+      .getdetail(atob(localStorage.getItem("userid")))
+      .subscribe(respdetailuser => {
+        if (respdetailuser.status == "200") {
+          this.username = atob(localStorage.getItem("username"));
+          this.referral =
+            "https://sukauang.com/#/registration?reff=" +
+            respdetailuser.data.ReferralCode +
+            "";
+          if (respdetailuser.data.IsActivated === false) {
+            if (respdetailuser.data.PaymentProofStorage == "") {
+              this.statusakun = "Belum Aktif";
+              this.aktivasiButtonVisible = true;
               this.buktitrfButtonVisible = false;
+            } else {
+              this.statusakun = "Menunggu Konfirmasi Admin";
               this.aktivasiButtonVisible = false;
+              this.buktitrfButtonVisible = true;
+              this.buktitrffile =
+                `<a target="_blank"
+									href="` +
+                respdetailuser.data.PaymentProofStorage +
+                `"><img style="display:inline-block;width:50px;height:50px;" src="` +
+                respdetailuser.data.PaymentProofStorage +
+                `"></a>`;
+            }
+            this.masaaktif = "0";
+            this.checkinButtonVisible = false;
+            this.getactivationnote(atob(localStorage.getItem("userid")));
+          } else {
+            this.statusakun = "Aktif";
+            this.masaaktif = respdetailuser.data.ActivatedDayCount;
+            if (atob(localStorage.getItem("username")) == "superadmin") {
+              this.checkinButtonVisible = false;
+            } else {
+              this.checkinButtonVisible = true;
             }
 
-            this.level = resp.data.Level;
-            this.jmlmember = resp.data.MemberCount;
-            this.bonus = this.aknutman.formatmoney(resp.data.PayableBonus);
-            if (parseFloat(resp.data.PayableBonus) >= 20000) {
-              this.witdhawButtonVisible = true;
-            } else {
-              this.witdhawButtonVisible = false;
-            }
-            this.total = this.aknutman.formatmoney(resp.data.InAmountTotal);
-            this.menuBarService.setLoadingAnimation(false);
-          } else {
-            this.menuBarService.setLoadingAnimation(false);
+            this.buktitrfButtonVisible = false;
+            this.aktivasiButtonVisible = false;
           }
-        });
+
+          this.level = respdetailuser.data.Level;
+          this.jmlmember = respdetailuser.data.MemberCount;
+          this.bonus = this.aknutman.formatmoney(
+            respdetailuser.data.PayableBonus
+          );
+          if (parseFloat(respdetailuser.data.PayableBonus) >= 20000) {
+            this.witdhawButtonVisible = true;
+          } else {
+            this.witdhawButtonVisible = false;
+          }
+          this.total = this.aknutman.formatmoney(
+            respdetailuser.data.InAmountTotal
+          );
+          this.menuBarService.setLoadingAnimation(false);
+        } else {
+          this.menuBarService.setLoadingAnimation(false);
+        }
       });
-    });
   }
 
   checkin() {
     this.menuBarService.setLoadingAnimation(true);
-    this.menuBarService.g_userid.subscribe(userid => {
-      this.aknutman.chekin(userid).subscribe(resp => {
-        if (resp.status == 200) {
+
+    this.aknutman
+      .chekin(atob(localStorage.getItem("userid")))
+      .subscribe(respcheckin => {
+        if (respcheckin.status == 200) {
           this.snackBar.open("Check In Berhasil!", "Ok", {
             duration: 3000
           });
           this.getUserdetail();
           this.menuBarService.setLoadingAnimation(false);
         } else {
-          this.snackBar.open(resp.message, "Ok", {
+          this.snackBar.open(respcheckin.message, "Ok", {
             duration: 3000
           });
           this.menuBarService.setLoadingAnimation(false);
         }
       });
-    });
   }
 
   openDialogWithRef(ref: TemplateRef<any>) {
@@ -143,9 +142,9 @@ export class DashboardPageComponent implements OnInit {
   }
 
   getactivationnote(userid: string) {
-    this.aknutman.getactivationmessage(userid).subscribe(resp => {
-      if (resp.status == "200") {
-        this.activationnote = resp.data;
+    this.aknutman.getactivationmessage(userid).subscribe(respactivationnote => {
+      if (respactivationnote.status == "200") {
+        this.activationnote = respactivationnote.data;
       }
     });
   }
@@ -153,56 +152,59 @@ export class DashboardPageComponent implements OnInit {
   private setFile(event) {
     this.fileToUpload = event.target.files[0];
   }
+
   handleFileInput() {
-    this.menuBarService.g_userid.subscribe(userid => {
-      this.menuBarService.setLoadingAnimation(true);
-      if (this.fileToUpload === null) {
-        this.menuBarService.setLoadingAnimation(false);
-        this.snackBar.open("No File to upload", "Ok", {
-          duration: 3000
-        });
-      } else {
-        const reader = new FileReader();
-        reader.readAsDataURL(this.fileToUpload);
-        reader.onload = () => {
-          this.aknutman
-            .uploadpaymentproof(userid, String(reader.result))
-            .subscribe(resp => {
-              if (resp.status == "200") {
-                this.snackBar.open("Uplaod bukti tansfer berhasil!", "Ok", {
-                  duration: 3000
-                });
-                this.getUserdetail();
-                this.menuBarService.setLoadingAnimation(false);
-              } else {
-                this.snackBar.open(resp.result, "Ok", {
-                  duration: 3000
-                });
-                this.menuBarService.setLoadingAnimation(false);
-              }
-            });
-        };
-      }
-    });
+    this.menuBarService.setLoadingAnimation(true);
+    if (this.fileToUpload === null) {
+      this.menuBarService.setLoadingAnimation(false);
+      this.snackBar.open("No File to upload", "Ok", {
+        duration: 3000
+      });
+    } else {
+      const reader = new FileReader();
+      reader.readAsDataURL(this.fileToUpload);
+      reader.onload = () => {
+        this.aknutman
+          .uploadpaymentproof(
+            atob(localStorage.getItem("userid")),
+            String(reader.result)
+          )
+          .subscribe(respuploadpayment => {
+            if (respuploadpayment.status == "200") {
+              this.snackBar.open("Uplaod bukti tansfer berhasil!", "Ok", {
+                duration: 3000
+              });
+              this.getUserdetail();
+              this.menuBarService.setLoadingAnimation(false);
+            } else {
+              this.snackBar.open(respuploadpayment.result, "Ok", {
+                duration: 3000
+              });
+              this.menuBarService.setLoadingAnimation(false);
+            }
+          });
+      };
+    }
   }
   requesttarikdana(amount: string) {
     this.menuBarService.setLoadingAnimation(true);
-    this.menuBarService.g_userid.subscribe(userid => {
-      this.aknutman.reqwitdraw(userid, amount).subscribe(resp => {
+
+    this.aknutman
+      .reqwitdraw(atob(localStorage.getItem("userid")), amount)
+      .subscribe(respreqwitdraw => {
         // console.log(resp);
-        if (resp.status == "200") {
+        if (respreqwitdraw.status == "200") {
           this.snackBar.open("Request penarikan dana berhasil", "Ok", {
             duration: 3000
           });
           this.getUserdetail();
           this.menuBarService.setLoadingAnimation(false);
         } else {
-          this.snackBar.open(resp.message, "Ok", {
+          this.snackBar.open(respreqwitdraw.message, "Ok", {
             duration: 3000
           });
           this.menuBarService.setLoadingAnimation(false);
         }
       });
-    });
   }
 }
