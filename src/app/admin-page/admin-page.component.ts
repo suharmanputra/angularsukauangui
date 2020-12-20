@@ -65,6 +65,12 @@ export class AdminPageComponent implements OnInit {
         }
       }
     });
+
+    if (atob(localStorage.getItem("username")) == "superadmin") {
+      this.menuBarService.setAdminVisible(true);
+    } else {
+      this.menuBarService.setAdminVisible(false);
+    }
   }
 
   tampildata(datefrom: string, dateto: string) {

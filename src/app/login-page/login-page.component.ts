@@ -33,10 +33,6 @@ export class LoginPageComponent implements OnInit {
       if (resplogin.isAuthenticated === true) {
         this.menuBarService.setIsAuthenticated(true);
         this.router.navigateByUrl("/dashboard");
-        // this.menuBarService.setUserIdName(
-        //   resplogin.personId,
-        //   username.toLowerCase()
-        // );
         localStorage.setItem("userid", btoa(resplogin.personId));
         localStorage.setItem("username", btoa(username.toLowerCase()));
       } else {

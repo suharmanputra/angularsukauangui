@@ -38,11 +38,6 @@ export class DashboardPageComponent implements OnInit {
 
   ngOnInit() {
     this.menuBarService.setMenuVisible(true);
-    if (atob(localStorage.getItem("username")) == "superadmin") {
-      this.menuBarService.setAdminVisible(true);
-    } else {
-      this.menuBarService.setAdminVisible(false);
-    }
     this.menuBarService.globalIsAuthenticated.subscribe(result => {
       if (result === false) {
         this.router.navigateByUrl("/");
@@ -50,6 +45,12 @@ export class DashboardPageComponent implements OnInit {
         this.getUserdetail();
       }
     });
+
+    if (atob(localStorage.getItem("username")) == "superadmin") {
+      this.menuBarService.setAdminVisible(true);
+    } else {
+      this.menuBarService.setAdminVisible(false);
+    }
   }
 
   getUserdetail() {

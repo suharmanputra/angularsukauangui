@@ -18,12 +18,10 @@ export class AboutPageComponent implements OnInit {
       }
     });
 
-    this.menuBarService.g_username.subscribe(username => {
-      if (username == "superadmin") {
-        this.menuBarService.setAdminVisible(true);
-      } else {
-        this.menuBarService.setAdminVisible(false);
-      }
-    });
+    if (atob(localStorage.getItem("username")) == "superadmin") {
+      this.menuBarService.setAdminVisible(true);
+    } else {
+      this.menuBarService.setAdminVisible(false);
+    }
   }
 }

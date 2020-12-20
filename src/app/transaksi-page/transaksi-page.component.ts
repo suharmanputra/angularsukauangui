@@ -45,7 +45,6 @@ export class TransaksiPageComponent implements OnInit {
 
   ngOnInit() {
     this.menuBarService.setMenuVisible(true);
-
     this.menuBarService.globalIsAuthenticated.subscribe(result => {
       if (result === false) {
         this.router.navigateByUrl("/");
@@ -53,6 +52,12 @@ export class TransaksiPageComponent implements OnInit {
       }
       this.tampildata();
     });
+
+    if (atob(localStorage.getItem("username")) == "superadmin") {
+      this.menuBarService.setAdminVisible(true);
+    } else {
+      this.menuBarService.setAdminVisible(false);
+    }
   }
 
   tampildata() {
