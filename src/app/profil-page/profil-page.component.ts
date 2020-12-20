@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { MenuBarService } from "../shared/menu-bar.service";
-import { ActivatedRoute, Router, RoutesRecognized } from "@angular/router";
+import { ActivatedRoute, Router } from "@angular/router";
 @Component({
   selector: "app-profil-page",
   templateUrl: "./profil-page.component.html",

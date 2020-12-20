@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { ActivatedRoute, Router, RoutesRecognized } from "@angular/router";
+import { ActivatedRoute, Router } from "@angular/router";
 import { MenuBarService } from "../shared/menu-bar.service";
 
 @Component({

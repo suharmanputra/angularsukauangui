@@ -1,7 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { MenuBarService } from "../shared/menu-bar.service";
-import { ActivatedRoute, Router, RoutesRecognized } from "@angular/router";
-import { FormsModule } from "@angular/forms";
+import { ActivatedRoute, Router } from "@angular/router";
 import { AknutmanWsService } from "../shared/aknutman-ws.service";
 import { MatSnackBar } from "@angular/material/snack-bar";
 

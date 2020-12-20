@@ -3,7 +3,7 @@ import { MatDialog } from "@angular/material/dialog";
 import { MenuBarService } from "../shared/menu-bar.service";
 import { MatSnackBar } from "@angular/material/snack-bar";
 import { AknutmanWsService } from "../shared/aknutman-ws.service";
-import { ActivatedRoute, Router, RoutesRecognized } from "@angular/router";
+import { ActivatedRoute, Router } from "@angular/router";
 import { ViewChild, TemplateRef } from "@angular/core";
 
 @Component({
