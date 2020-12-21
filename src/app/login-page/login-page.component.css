@@ -1,0 +1,48 @@
+ul.icon-set {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  height: auto;
+  width: auto;
+}
+ul.icon-set li {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+/* Font Awesome icons */
+a.icon {
+  font-size: 40px;
+  line-height: 40px;
+  padding: 10px;
+  background: #670081;
+  color: rgb(255, 187, 0);
+  width: 80px;
+  height: 80px;
+  border-radius: 50px;
+  margin-right: 10px;
+  margin-bottom: 10px !important;
+  padding-bottom: 10px !important;
+}
+a.icon:hover,
+a.icon:focus {
+  background: #6d8785;
+}

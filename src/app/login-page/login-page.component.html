@@ -1,22 +1,83 @@
 <div>
-	<section class="social">
-		<ul class="social-set">
-			<li><a class="sociali" href="#" target="_blank" aria-label="Twitter">
-					<i class="fa fa-twitter fa-fw" title="Twitter"></i></a></li>
-			<li><a class="sociali" href="#" target="_blank" aria-label="GitHub">
-					<i class="fa fa-github-square fa-fw" title="GitHub"></i></a></li>
-			<li><a class="sociali" href="#" target="_blank" aria-label="YouTube">
-					<i class="fa fa-youtube fa-fw" title="YouTube"></i></a></li>
-			<li><a class="sociali" href="#" target="_blank" aria-label="Medium">
-					<i class="fa fa-medium fa-fw" title="Medium"></i></a></li>
-			<li><a class="sociali" href="#" target="_blank" aria-label="Instagram">
-					<i class="fa fa-instagram fa-fw" title="Instagram"></i></a></li>
-			<li><a class="sociali" href="#" target="_blank" aria-label="Facebook">
-					<i class="fa fa-facebook-square fa-fw" title="Facebook"></i></a></li>
-			<li><a class="sociali" href="#" target="_blank" aria-label="Flickr">
-					<i class="fa fa-flickr fa-fw" title="Flickr"></i></a></li>
-			<li><a class="sociali" href="#" target="_blank" aria-label="LinkedIn">
-					<i class="fa fa-linkedin fa-fw" title="LinkedIn"></i></a></li>
+
+
+	<section class="icon">
+
+
+		<table>
+			<tr>
+				<td>
+					<mat-icon aria-hidden="false">account_circle</mat-icon>
+				</td>
+				<td>Status Akun</td>
+				<td>:</td>
+				<td>{{statusakun}}</td>
+				<td><button *ngIf="this.aktivasiButtonVisible" style="display:inline-block;width:100%;" mat-raised-button color="accent" (click)="openDialogWithRef(termconditiondialog)">Aktivasi</button>
+					<button *ngIf="this.buktitrfButtonVisible" style="display:inline-block;width:100%;" mat-raised-button color="accent" (click)="openDialogWithRef(buktitransferdialog)">Lihat Bukti Transfer</button>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<mat-icon aria-hidden="false">calendar_today</mat-icon>
+				</td>
+				<td>Masa Aktif</td>
+				<td>:</td>
+				<td>{{masaaktif}} Hari</td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>
+					<mat-icon aria-hidden="false">how_to_reg</mat-icon>
+				</td>
+				<td>Level</td>
+				<td>:</td>
+				<td>{{level}}</td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>
+					<mat-icon aria-hidden="false">people</mat-icon>
+				</td>
+				<td>Member</td>
+				<td>:</td>
+				<td>{{jmlmember}}</td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>
+					<mat-icon aria-hidden="false">monetization_on</mat-icon>
+				</td>
+				<td>Bonus yang dapat diambil</td>
+				<td>:</td>
+				<td>{{bonus}}</td>
+				<td><button style="display:inline-block;width:100%;" mat-raised-button *ngIf="this.witdhawButtonVisible" color="accent" (click)="openDialogWithRef(tarikdanadialog)">Tarik dana</button>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<mat-icon aria-hidden="false">monetization_on</mat-icon>
+				</td>
+				<td>Total Bonus</td>
+				<td>:</td>
+				<td>{{total}}</td>
+				<td></td>
+			</tr>
+		</table>
+
+		<ul class="icon-set">
+			{{statusakun}}
+
+
+			<li class="center">
+				<div>
+					<a class="icon" href="#" target="_blank" aria-label="YouTube">
+						<i class="fa fa-youtube fa-fw" title="YouTube"></i></a>
+					<br><br>
+					test test test
+				</div>
+
+			</li>
+
 		</ul>
 	</section>
 </div>
