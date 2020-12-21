@@ -1,8 +1,43 @@
+<div>
+	<section class="social">
+		<ul class="social-set">
+			<li><a class="sociali" href="#" target="_blank" aria-label="Twitter">
+					<i class="fa fa-twitter fa-fw" title="Twitter"></i></a></li>
+			<li><a class="sociali" href="#" target="_blank" aria-label="GitHub">
+					<i class="fa fa-github-square fa-fw" title="GitHub"></i></a></li>
+			<li><a class="sociali" href="#" target="_blank" aria-label="YouTube">
+					<i class="fa fa-youtube fa-fw" title="YouTube"></i></a></li>
+			<li><a class="sociali" href="#" target="_blank" aria-label="Medium">
+					<i class="fa fa-medium fa-fw" title="Medium"></i></a></li>
+			<li><a class="sociali" href="#" target="_blank" aria-label="Instagram">
+					<i class="fa fa-instagram fa-fw" title="Instagram"></i></a></li>
+			<li><a class="sociali" href="#" target="_blank" aria-label="Facebook">
+					<i class="fa fa-facebook-square fa-fw" title="Facebook"></i></a></li>
+			<li><a class="sociali" href="#" target="_blank" aria-label="Flickr">
+					<i class="fa fa-flickr fa-fw" title="Flickr"></i></a></li>
+			<li><a class="sociali" href="#" target="_blank" aria-label="LinkedIn">
+					<i class="fa fa-linkedin fa-fw" title="LinkedIn"></i></a></li>
+		</ul>
+	</section>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
 <form>
-	<div class="pagecontainer">
-		<mat-card>
+	<div class="pagecontainer" matRipple>
+		<mat-card class="shadow">
 			<div style="text-align:center;">
-				<img scr="https://firebasestorage.googleapis.com/v0/b/sukauang-backend.appspot.com/o/logo.png?alt=media&token=cffec969-9d19-4a78-afff-db2f2c14d1dd">
+				<img style="height:100px;width:100px;" src="https://firebasestorage.googleapis.com/v0/b/sukauang-backend.appspot.com/o/logo.png?alt=media&token=cffec969-9d19-4a78-afff-db2f2c14d1dd">
 				<p>Selamat datang di Platform Kami</p>
 				<p>Mari wujudkan mimpi bersama!</p>
 			</div>
@@ -18,14 +53,12 @@
     </button>
 				</mat-form-field>
 
-		</mat-card>
-		<mat-card>
-			<div class="center">
-				<button  mat-raised-button color="primary"
+				<div class="center">
+					<button  mat-raised-button color="accent"
         (click)="checkLogin(usernameInput.value, passwordInput.value);">Login</button>
-				<p>Belum punya akun? silahkan daftar di <a style="cursor:pointer"
-						(click)="redirect_register()"><b>sini</b></a>.</p>
-			</div>
+					<p>Belum punya akun? silahkan daftar di <a style="cursor:pointer"
+							(click)="redirect_register()"><b>sini</b></a>.</p>
+				</div>
 		</mat-card>
 
 	</div>
