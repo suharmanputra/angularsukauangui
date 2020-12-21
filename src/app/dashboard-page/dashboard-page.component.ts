@@ -60,11 +60,13 @@ export class DashboardPageComponent implements OnInit {
       .subscribe(respdetailuser => {
         if (respdetailuser.status == "200") {
           this.username = atob(localStorage.getItem("username"));
+
           this.referral =
             "https://sukauang.com/#/registration?reff=" +
             respdetailuser.data.ReferralCode +
             "";
           if (respdetailuser.data.IsActivated === false) {
+            this.referral = "";
             if (respdetailuser.data.PaymentProofStorage == "") {
               this.statusakun = "Belum Aktif";
               this.aktivasiButtonVisible = true;
@@ -75,10 +77,15 @@ export class DashboardPageComponent implements OnInit {
               this.buktitrfButtonVisible = true;
               this.buktitrffile = respdetailuser.data.PaymentProofStorage;
             }
+
             this.masaaktif = "0";
             this.checkinButtonVisible = false;
             this.getactivationnote(atob(localStorage.getItem("userid")));
           } else {
+            this.referral =
+              "https://sukauang.com/#/registration?reff=" +
+              respdetailuser.data.ReferralCode +
+              "";
             this.statusakun = "Aktif";
             this.masaaktif = respdetailuser.data.ActivatedDayCount;
             if (atob(localStorage.getItem("username")) == "superadmin") {
