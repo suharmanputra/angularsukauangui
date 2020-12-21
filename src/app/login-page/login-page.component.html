@@ -16,12 +16,14 @@
     <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
     </button>
 				</mat-form-field>
-				<div style="text-align:center;">
-					<button style="display:inline-block;" mat-raised-button
-        (click)="checkLogin(usernameInput.value, passwordInput.value);">Login</button>
-					<p>Belum punya akun? silahkan daftar di <a style="cursor:pointer"
-							(click)="redirect_register()"><b>sini</b></a>.</p>
-				</div>
+
 		</mat-card>
+		<mat-card>
+			<button  mat-raised-button color="primary"
+        (click)="checkLogin(usernameInput.value, passwordInput.value);">Login</button>
+			<p>Belum punya akun? silahkan daftar di <a style="cursor:pointer"
+					(click)="redirect_register()"><b>sini</b></a>.</p>
+		</mat-card>
+
 	</div>
 </form>
