@@ -2,10 +2,8 @@
 	<div class="pagecontainer">
 		<mat-card>
 			<div style="text-align:center;">
-				<img mat-card-image src="assets/img/logo.png" >
-				<img mat-card-image src="/assets/img/logo.png" >
-				<img mat-card-image src="./assets/img/logo.png" >
-				<img mat-card-image src="../assets/img/logo.png" >
+				<img style="width:100px;height:100px;" src="a">
+
 				<p>Selamat datang di Platform Kami</p>
 				<p>Mari wujudkan mimpi bersama!</p>
 			</div>
@@ -23,10 +21,12 @@
 
 		</mat-card>
 		<mat-card>
-			<button  mat-raised-button color="primary"
+			<div class="center">
+				<button  mat-raised-button color="primary"
         (click)="checkLogin(usernameInput.value, passwordInput.value);">Login</button>
-			<p>Belum punya akun? silahkan daftar di <a style="cursor:pointer"
-					(click)="redirect_register()"><b>sini</b></a>.</p>
+				<p>Belum punya akun? silahkan daftar di <a style="cursor:pointer"
+						(click)="redirect_register()"><b>sini</b></a>.</p>
+			</div>
 		</mat-card>
 
 	</div>
