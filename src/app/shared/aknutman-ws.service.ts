@@ -153,7 +153,15 @@ export class AknutmanWsService {
       RefferenceId: "",
       ImageExtension: "",
       ImageDataUrl: ""
-      
+    };
+    return this.http.post<string>(url, body);
+  }
+
+  getuserdownline(userid: string) {
+    const url =
+      "https://us-central1-sukauang-backend.cloudfunctions.net/UserGetDownline";
+    const body = {
+      PersonId: userid
     };
     return this.http.post<string>(url, body);
   }

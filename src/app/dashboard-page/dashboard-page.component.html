@@ -35,8 +35,8 @@
 					</li>
 					<li class="center">
 						<div>
-							<a class="icon" aria-label="Member">
-								<i class="fa fa-users fa-fw" title="Member"></i></a>
+							<a class="icon" aria-label="Member" (click)="redirect_member()">
+								<i class=" fa fa-users fa-fw" title="Member"></i></a>
 							<br>
 			Member {{jmlmember}}
 				</div>
@@ -60,65 +60,7 @@
 
 				</ul>
 			</section>
-			<!-- <table>
-				<tr>
-					<td>
-						<mat-icon aria-hidden="false">account_circle</mat-icon>
-					</td>
-					<td>Status Akun</td>
-					<td>:</td>
-					<td>{{statusakun}}</td>
-					<td><button *ngIf="this.aktivasiButtonVisible" style="display:inline-block;width:100%;" mat-raised-button color="accent" (click)="openDialogWithRef(termconditiondialog)">Aktivasi</button>
-						<button *ngIf="this.buktitrfButtonVisible" style="display:inline-block;width:100%;" mat-raised-button color="accent" (click)="openDialogWithRef(buktitransferdialog)">Lihat Bukti Transfer</button>
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<mat-icon aria-hidden="false">calendar_today</mat-icon>
-					</td>
-					<td>Masa Aktif</td>
-					<td>:</td>
-					<td>{{masaaktif}} Hari</td>
-					<td></td>
-				</tr>
-				<tr>
-					<td>
-						<mat-icon aria-hidden="false">how_to_reg</mat-icon>
-					</td>
-					<td>Level</td>
-					<td>:</td>
-					<td>{{level}}</td>
-					<td></td>
-				</tr>
-				<tr>
-					<td>
-						<mat-icon aria-hidden="false">people</mat-icon>
-					</td>
-					<td>Member</td>
-					<td>:</td>
-					<td>{{jmlmember}}</td>
-					<td></td>
-				</tr>
-				<tr>
-					<td>
-						<mat-icon aria-hidden="false">monetization_on</mat-icon>
-					</td>
-					<td>Bonus yang dapat diambil</td>
-					<td>:</td>
-					<td>{{bonus}}</td>
-					<td><button style="display:inline-block;width:100%;" mat-raised-button *ngIf="this.witdhawButtonVisible" color="accent" (click)="openDialogWithRef(tarikdanadialog)">Tarik dana</button>
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<mat-icon aria-hidden="false">monetization_on</mat-icon>
-					</td>
-					<td>Total Bonus</td>
-					<td>:</td>
-					<td>{{total}}</td>
-					<td></td>
-				</tr>
-			</table> -->
+
 		</mat-card>
 		<mat-divider></mat-divider>
 		<mat-card>

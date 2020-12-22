@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { MenuBarService } from "../shared/menu-bar.service";
-import { ActivatedRoute, Router } from "@angular/router";
+import { Router } from "@angular/router";
+import { AknutmanWsService } from "../shared/aknutman-ws.service";
 @Component({
   selector: "app-member-page",
   templateUrl: "./member-page.component.html",
@@ -39,7 +40,11 @@ export class MemberPageComponent implements OnInit {
   member30: string;
   member31: string;
 
-  constructor(private menuBarService: MenuBarService, private router: Router) {}
+  constructor(
+    private router: Router,
+    private menuBarService: MenuBarService,
+    private aknutman: AknutmanWsService
+  ) {}
 
   ngOnInit() {
     this.menuBarService.setMenuVisible(true);
@@ -55,7 +60,110 @@ export class MemberPageComponent implements OnInit {
     } else {
       this.menuBarService.setAdminVisible(false);
     }
+
+    this.getdownlinelist();
   }
 
-  getdownlinelist() {}
+  getdownlinelist() {
+    this.aknutman
+      .getuserdownline(atob(localStorage.getItem("userid")))
+      .subscribe(respdownline => {
+        if (respdownline.status == "200") {
+          this.member1 = atob(localStorage.getItem("username")).toUpperCase();
+          var i;
+          for (i = 0; i < respdownline.data.length; i++) {
+            if (respdownline.data[i].ChildIndex == 1) {
+              this.member2 = respdownline.data[i].FullName.toUpperCase();
+            }
+            if (respdownline.data[i].ChildIndex == 2) {
+              this.member3 = respdownline.data[i].FullName.toUpperCase();
+            }
+            if (respdownline.data[i].ChildIndex == 3) {
+              this.member4 = respdownline.data[i].FullName.toUpperCase();
+            }
+            if (respdownline.data[i].ChildIndex == 4) {
+              this.member5 = respdownline.data[i].FullName.toUpperCase();
+            }
+            if (respdownline.data[i].ChildIndex == 5) {
+              this.member6 = respdownline.data[i].FullName.toUpperCase();
+            }
+            if (respdownline.data[i].ChildIndex == 6) {
+              this.member7 = respdownline.data[i].FullName.toUpperCase();
+            }
+            if (respdownline.data[i].ChildIndex == 7) {
+              this.member8 = respdownline.data[i].FullName.toUpperCase();
+            }
+            if (respdownline.data[i].ChildIndex == 8) {
+              this.member9 = respdownline.data[i].FullName.toUpperCase();
+            }
+            if (respdownline.data[i].ChildIndex == 9) {
+              this.member10 = respdownline.data[i].FullName.toUpperCase();
+            }
+            if (respdownline.data[i].ChildIndex == 10) {
+              this.member11 = respdownline.data[i].FullName.toUpperCase();
+            }
+            if (respdownline.data[i].ChildIndex == 11) {
+              this.member12 = respdownline.data[i].FullName.toUpperCase();
+            }
+            if (respdownline.data[i].ChildIndex == 12) {
+              this.member13 = respdownline.data[i].FullName.toUpperCase();
+            }
+            if (respdownline.data[i].ChildIndex == 13) {
+              this.member14 = respdownline.data[i].FullName.toUpperCase();
+            }
+            if (respdownline.data[i].ChildIndex == 14) {
+              this.member15 = respdownline.data[i].FullName.toUpperCase();
+            }
+            if (respdownline.data[i].ChildIndex == 15) {
+              this.member16 = respdownline.data[i].FullName.toUpperCase();
+            }
+            if (respdownline.data[i].ChildIndex == 16) {
+              this.member17 = respdownline.data[i].FullName.toUpperCase();
+            }
+            if (respdownline.data[i].ChildIndex == 17) {
+              this.member18 = respdownline.data[i].FullName.toUpperCase();
+            }
+            if (respdownline.data[i].ChildIndex == 18) {
+              this.member19 = respdownline.data[i].FullName.toUpperCase();
+            }
+            if (respdownline.data[i].ChildIndex == 19) {
+              this.member20 = respdownline.data[i].FullName.toUpperCase();
+            }
+            if (respdownline.data[i].ChildIndex == 20) {
+              this.member21 = respdownline.data[i].FullName.toUpperCase();
+            }
+            if (respdownline.data[i].ChildIndex == 21) {
+              this.member22 = respdownline.data[i].FullName.toUpperCase();
+            }
+            if (respdownline.data[i].ChildIndex == 22) {
+              this.member23 = respdownline.data[i].FullName.toUpperCase();
+            }
+            if (respdownline.data[i].ChildIndex == 23) {
+              this.member24 = respdownline.data[i].FullName.toUpperCase();
+            }
+            if (respdownline.data[i].ChildIndex == 24) {
+              this.member25 = respdownline.data[i].FullName.toUpperCase();
+            }
+            if (respdownline.data[i].ChildIndex == 25) {
+              this.member26 = respdownline.data[i].FullName.toUpperCase();
+            }
+            if (respdownline.data[i].ChildIndex == 26) {
+              this.member27 = respdownline.data[i].FullName.toUpperCase();
+            }
+            if (respdownline.data[i].ChildIndex == 27) {
+              this.member28 = respdownline.data[i].FullName.toUpperCase();
+            }
+            if (respdownline.data[i].ChildIndex == 28) {
+              this.member29 = respdownline.data[i].FullName.toUpperCase();
+            }
+            if (respdownline.data[i].ChildIndex == 29) {
+              this.member30 = respdownline.data[i].FullName.toUpperCase();
+            }
+            if (respdownline.data[i].ChildIndex == 30) {
+              this.member31 = respdownline.data[i].FullName.toUpperCase();
+            }
+          }
+        }
+      });
+  }
 }
