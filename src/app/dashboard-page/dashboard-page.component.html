@@ -10,17 +10,16 @@
 				<ul class="icon-set">
 					<li class="center">
 						<div>
-							<a class="icon" href="" aria-label="Status">
+							<a class="icon" aria-label="Status">
 								<i class="fa fa-user-circle fa-fw" title="Status"></i></a>
 							<br>
 			Status {{statusakun}}
-							<button *ngIf="this.aktivasiButtonVisible" style="display:inline-block;width:100%;" mat-raised-button color="accent" (click)="openDialogWithRef(termconditiondialog)">Aktivasi</button>
-							<button *ngIf="this.buktitrfButtonVisible" style="display:inline-block;width:100%;" mat-raised-button color="accent" (click)="openDialogWithRef(buktitransferdialog)">Lihat Bukti Transfer</button>
+
 						</div>
 					</li>
 					<li class="center">
 						<div>
-							<a class="icon" href="" aria-label="Masa Aktif">
+							<a class="icon" aria-label="Masa Aktif">
 								<i class="fa fa-calendar fa-fw" title="Masa Aktif"></i></a>
 							<br>
 			{{masaaktif}} hari
@@ -28,7 +27,7 @@
 					</li>
 					<li class="center">
 						<div>
-							<a class="icon" href="" aria-label="Level">
+							<a class="icon" aria-label="Level">
 								<i class="fa fa-line-chart fa-fw" title="Level"></i></a>
 							<br>
 			Level {{level}}
@@ -36,7 +35,7 @@
 					</li>
 					<li class="center">
 						<div>
-							<a class="icon" href="" aria-label="Member">
+							<a class="icon" aria-label="Member">
 								<i class="fa fa-users fa-fw" title="Member"></i></a>
 							<br>
 			Member {{jmlmember}}
@@ -44,16 +43,15 @@
 					</li>
 					<li class="center">
 						<div>
-							<a class="icon" aria-label="Bonus" (click)="openDialogWithRef(tarikdanadialog)">
+							<a class="icon" aria-label="Bonus">
 								<i class="fa fa-money fa-fw" title="Bonus"></i></a>
 							<br>
 			Bonus {{bonus}}
-							<!-- <button style="display:inline-block;width:100%;" mat-raised-button *ngIf="this.witdhawButtonVisible" color="accent" (click)="openDialogWithRef(tarikdanadialog)">Tarik dana</button> -->
 						</div>
 					</li>
 					<li class="center">
 						<div>
-							<a class="icon" href="" aria-label="Total">
+							<a class="icon" aria-label="Total">
 								<i class="fa fa-money fa-fw" title="Total"></i></a>
 							<br>
 			Total {{total}}
@@ -125,6 +123,9 @@
 		<mat-divider></mat-divider>
 		<mat-card>
 			<div style="text-align:center;">
+				<button *ngIf="this.aktivasiButtonVisible" style="display:inline-block;width:100%;" mat-raised-button color="accent" (click)="openDialogWithRef(termconditiondialog)">Aktivasi</button>
+				<button *ngIf="this.buktitrfButtonVisible" style="display:inline-block;width:100%;" mat-raised-button color="accent" (click)="openDialogWithRef(buktitransferdialog)">Lihat Bukti Transfer</button>
+				<button style="display:inline-block;width:100%;" mat-raised-button *ngIf="this.witdhawButtonVisible" color="accent" (click)="openDialogWithRef(tarikdanadialog)">Tarik dana</button>
 				<button style="display:inline-block;" mat-raised-button color="accent" *ngIf="this.checkinButtonVisible" (click)="checkin()">Check In</button>
 			</div>
 		</mat-card>

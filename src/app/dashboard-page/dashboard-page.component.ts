@@ -23,6 +23,7 @@ export class DashboardPageComponent implements OnInit {
   total: string;
   checkinButtonVisible: boolean;
   witdhawButtonVisible: boolean;
+  statusdialog: string;
   aktivasiButtonVisible: boolean;
   buktitrfButtonVisible: boolean;
   activationnote: string;
@@ -71,10 +72,12 @@ export class DashboardPageComponent implements OnInit {
               this.statusakun = "Belum Aktif";
               this.aktivasiButtonVisible = true;
               this.buktitrfButtonVisible = false;
+              // this.statusdialog = "termconditiondialog";
             } else {
-              this.statusakun = "Menunggu Konfirmasi Admin";
+              this.statusakun = "Menunggu Konfirmasi";
               this.aktivasiButtonVisible = false;
               this.buktitrfButtonVisible = true;
+              // this.statusdialog = "buktitransferdialog";
               this.buktitrffile = respdetailuser.data.PaymentProofStorage;
             }
 
@@ -93,9 +96,9 @@ export class DashboardPageComponent implements OnInit {
             } else {
               this.checkinButtonVisible = true;
             }
-
-            this.buktitrfButtonVisible = false;
             this.aktivasiButtonVisible = false;
+            this.buktitrfButtonVisible = false;
+            // this.statusdialog = "";
           }
 
           this.level = respdetailuser.data.Level;
@@ -140,7 +143,11 @@ export class DashboardPageComponent implements OnInit {
   }
 
   openDialogWithRef(ref: TemplateRef<any>) {
+    // if (ref == "") {
+    //   this.dialog.open(this.statusdialog);
+    // } else {
     this.dialog.open(ref);
+    // }
   }
 
   getactivationnote(userid: string) {
