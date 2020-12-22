@@ -8,27 +8,35 @@ html,
 body {
   position: relative;
   font-size: 12px;
-  /* min-height: 100%; */
-  /* top: 0;
-  left: 0; */
+  min-height: 100%;
   height: 100%;
+  top: 0;
+  left: 0;
   background-image: linear-gradient(to right, #43e97b 0%, #38f9d7 100%);
-
   /* background-size: auto 100%; */
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center top;
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
+  overflow: auto;
 }
 
 .pagecontainer {
+  background-color: #a500bb4b;
+  -webkit-box-shadow: 0px 9px 22px -2px rgba(0, 0, 0, 0.67);
+  -moz-box-shadow: 0px 9px 22px -2px rgba(0, 0, 0, 0.67);
+  box-shadow: 0px 9px 22px -2px rgba(0, 0, 0, 0.67);
+  position: relative;
   margin-top: 50px;
   margin-left: auto;
   margin-right: auto;
   padding: 20px;
   border-radius: 10px;
   max-width: 1000px;
+  min-height: 90%;
+  overflow-y: auto;
+  margin-bottom: 20px;
 }
 
 .mat-card:not([class*="mat-elevation-z"]) {
@@ -52,6 +60,7 @@ body {
   top: 10px;
   left: 10px;
   z-index: 2;
+  -webkit-text-stroke: 1px white;
 }
 
 .myMenuHide {
