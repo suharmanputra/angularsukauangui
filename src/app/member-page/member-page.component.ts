@@ -56,4 +56,6 @@ export class MemberPageComponent implements OnInit {
       this.menuBarService.setAdminVisible(false);
     }
   }
+
+  getdownlinelist() {}
 }
