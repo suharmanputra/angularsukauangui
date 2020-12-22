@@ -100,7 +100,7 @@ export class DashboardPageComponent implements OnInit {
             this.buktitrfButtonVisible = false;
             // this.statusdialog = "";
           }
-
+          // console.log(respdetailuser);
           this.level = respdetailuser.data.Level;
           this.jmlmember = respdetailuser.data.MemberCount;
           this.bonus = this.aknutman.formatmoney(
@@ -217,7 +217,7 @@ export class DashboardPageComponent implements OnInit {
       });
   }
 
-    redirect_transaksi() {
+  redirect_transaksi() {
     this.router.navigateByUrl("/transaksi");
   }
 }
