@@ -123,9 +123,9 @@
 		<mat-divider></mat-divider>
 		<mat-card>
 			<div style="text-align:center;">
-				<button *ngIf="this.aktivasiButtonVisible" style="display:inline-block;width:100%;" mat-raised-button color="accent" (click)="openDialogWithRef(termconditiondialog)">Aktivasi</button>
-				<button *ngIf="this.buktitrfButtonVisible" style="display:inline-block;width:100%;" mat-raised-button color="accent" (click)="openDialogWithRef(buktitransferdialog)">Lihat Bukti Transfer</button>
-				<button style="display:inline-block;width:100%;" mat-raised-button *ngIf="this.witdhawButtonVisible" color="accent" (click)="openDialogWithRef(tarikdanadialog)">Tarik dana</button>
+				<button *ngIf="this.aktivasiButtonVisible" style="display:inline-block;" mat-raised-button color="accent" (click)="openDialogWithRef(termconditiondialog)">Aktivasi</button>
+				<button *ngIf="this.buktitrfButtonVisible" style="display:inline-block;" mat-raised-button color="accent" (click)="openDialogWithRef(buktitransferdialog)">Lihat Bukti Transfer</button>
+				<button style="display:inline-block;" mat-raised-button *ngIf="this.witdhawButtonVisible" color="accent" (click)="openDialogWithRef(tarikdanadialog)">Tarik dana</button>
 				<button style="display:inline-block;" mat-raised-button color="accent" *ngIf="this.checkinButtonVisible" (click)="checkin()">Check In</button>
 			</div>
 		</mat-card>
