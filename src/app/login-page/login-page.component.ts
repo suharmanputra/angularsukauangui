@@ -22,7 +22,6 @@ export class LoginPageComponent implements OnInit {
 
   ngOnInit() {
     this.menuBarService.setMenuVisible(false);
-    // this.menuBarService.setUserIdName("", "");
     localStorage.setItem("userid", "");
     localStorage.setItem("username", "");
   }
