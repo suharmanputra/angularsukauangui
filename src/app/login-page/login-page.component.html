@@ -1,86 +1,61 @@
-<!-- <div>
-
-
+<mat-card>
 	<section class="icon">
-
-
-		<table>
-			<tr>
-				<td>
-					<mat-icon aria-hidden="false">account_circle</mat-icon>
-				</td>
-				<td>Status Akun</td>
-				<td>:</td>
-				<td>{{statusakun}}</td>
-				<td><button *ngIf="this.aktivasiButtonVisible" style="display:inline-block;width:100%;" mat-raised-button color="accent" (click)="openDialogWithRef(termconditiondialog)">Aktivasi</button>
-					<button *ngIf="this.buktitrfButtonVisible" style="display:inline-block;width:100%;" mat-raised-button color="accent" (click)="openDialogWithRef(buktitransferdialog)">Lihat Bukti Transfer</button>
-				</td>
-			</tr>
-			<tr>
-				<td>
-					<mat-icon aria-hidden="false">calendar_today</mat-icon>
-				</td>
-				<td>Masa Aktif</td>
-				<td>:</td>
-				<td>{{masaaktif}} Hari</td>
-				<td></td>
-			</tr>
-			<tr>
-				<td>
-					<mat-icon aria-hidden="false">how_to_reg</mat-icon>
-				</td>
-				<td>Level</td>
-				<td>:</td>
-				<td>{{level}}</td>
-				<td></td>
-			</tr>
-			<tr>
-				<td>
-					<mat-icon aria-hidden="false">people</mat-icon>
-				</td>
-				<td>Member</td>
-				<td>:</td>
-				<td>{{jmlmember}}</td>
-				<td></td>
-			</tr>
-			<tr>
-				<td>
-					<mat-icon aria-hidden="false">monetization_on</mat-icon>
-				</td>
-				<td>Bonus yang dapat diambil</td>
-				<td>:</td>
-				<td>{{bonus}}</td>
-				<td><button style="display:inline-block;width:100%;" mat-raised-button *ngIf="this.witdhawButtonVisible" color="accent" (click)="openDialogWithRef(tarikdanadialog)">Tarik dana</button>
-				</td>
-			</tr>
-			<tr>
-				<td>
-					<mat-icon aria-hidden="false">monetization_on</mat-icon>
-				</td>
-				<td>Total Bonus</td>
-				<td>:</td>
-				<td>{{total}}</td>
-				<td></td>
-			</tr>
-		</table>
-
 		<ul class="icon-set">
-			{{statusakun}}
-
-
 			<li class="center">
 				<div>
 					<a class="icon" href="#" target="_blank" aria-label="YouTube">
-						<i class="fa fa-youtube fa-fw" title="YouTube"></i></a>
-					<br><br>
-					test test test
+						<i class="fa fa-user-circle fa-fw" title="YouTube"></i></a>
+					<br>
+			Status {{statusakun}}
+					<button *ngIf="this.aktivasiButtonVisible" style="display:inline-block;width:100%;" mat-raised-button color="accent" (click)="openDialogWithRef(termconditiondialog)">Aktivasi</button>
+					<button *ngIf="this.buktitrfButtonVisible" style="display:inline-block;width:100%;" mat-raised-button color="accent" (click)="openDialogWithRef(buktitransferdialog)">Lihat Bukti Transfer</button>
 				</div>
-
+			</li>
+			<li class="center">
+				<div>
+					<a class="icon" href="#" target="_blank" aria-label="YouTube">
+						<i class="fa fa-calendar fa-fw" title="YouTube"></i></a>
+					<br>
+			{{masaaktif}} hari
+				</div>
+			</li>
+			<li class="center">
+				<div>
+					<a class="icon" href="#" target="_blank" aria-label="YouTube">
+						<i class="fa fa-line-chart fa-fw" title="YouTube"></i></a>
+					<br>
+			Level {{level}}
+				</div>
+			</li>
+			<li class="center">
+				<div>
+					<a class="icon" href="#" target="_blank" aria-label="YouTube">
+						<i class="fa fa-users fa-fw" title="YouTube"></i></a>
+					<br>
+			Member {{jmlmember}}
+				</div>
+			</li>
+			<li class="center">
+				<div>
+					<a class="icon" href="#" target="_blank" aria-label="YouTube">
+						<i class="fa fa-money fa-fw" title="YouTube"></i></a>
+					<br>
+			Bonus {{bonus}}
+					<button style="display:inline-block;width:100%;" mat-raised-button *ngIf="this.witdhawButtonVisible" color="accent" (click)="openDialogWithRef(tarikdanadialog)">Tarik dana</button>
+				</div>
+			</li>
+			<li class="center">
+				<div>
+					<a class="icon" href="#" target="_blank" aria-label="YouTube">
+						<i class="fa fa-money fa-fw" title="YouTube"></i></a>
+					<br>
+			Total {{total}}
+				</div>
 			</li>
 
 		</ul>
 	</section>
-</div> -->
+</mat-card>
 
 
 
@@ -96,7 +71,7 @@
 
 <form>
 	<div class="pagecontainer" matRipple>
-		<mat-card class="shadow">
+		<mat-card>
 			<div style="text-align:center;">
 				<img style="height:100px;width:100px;" src="https://firebasestorage.googleapis.com/v0/b/sukauang-backend.appspot.com/o/logo.png?alt=media&token=cffec969-9d19-4a78-afff-db2f2c14d1dd">
 				<p>Selamat datang di Platform Kami</p>

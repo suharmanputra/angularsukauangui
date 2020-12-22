@@ -1,12 +1,68 @@
 <form>
-	<div class="pagecontainer">
+	<div class="pagecontainer" matRipple>
 		<mat-card>Selamat datang {{username}}
 			<br>
 			<p>Kode Referal anda: <a href={{referral}} target="_blank">{{referral}}</a></p>
 		</mat-card>
 		<mat-divider></mat-divider>
 		<mat-card>
-			<table>
+			<section class="icon">
+				<ul class="icon-set">
+					<li class="center">
+						<div>
+							<a class="icon" href="#" target="_blank" aria-label="YouTube">
+								<i class="fa fa-user-circle fa-fw" title="YouTube"></i></a>
+							<br>
+			Status {{statusakun}}
+							<button *ngIf="this.aktivasiButtonVisible" style="display:inline-block;width:100%;" mat-raised-button color="accent" (click)="openDialogWithRef(termconditiondialog)">Aktivasi</button>
+							<button *ngIf="this.buktitrfButtonVisible" style="display:inline-block;width:100%;" mat-raised-button color="accent" (click)="openDialogWithRef(buktitransferdialog)">Lihat Bukti Transfer</button>
+						</div>
+					</li>
+					<li class="center">
+						<div>
+							<a class="icon" href="#" target="_blank" aria-label="YouTube">
+								<i class="fa fa-calendar fa-fw" title="YouTube"></i></a>
+							<br>
+			{{masaaktif}} hari
+				</div>
+					</li>
+					<li class="center">
+						<div>
+							<a class="icon" href="#" target="_blank" aria-label="YouTube">
+								<i class="fa fa-line-chart fa-fw" title="YouTube"></i></a>
+							<br>
+			Level {{level}}
+				</div>
+					</li>
+					<li class="center">
+						<div>
+							<a class="icon" href="#" target="_blank" aria-label="YouTube">
+								<i class="fa fa-users fa-fw" title="YouTube"></i></a>
+							<br>
+			Member {{jmlmember}}
+				</div>
+					</li>
+					<li class="center">
+						<div>
+							<a class="icon" href="#" target="_blank" aria-label="YouTube">
+								<i class="fa fa-money fa-fw" title="YouTube"></i></a>
+							<br>
+			Bonus {{bonus}}
+							<button style="display:inline-block;width:100%;" mat-raised-button *ngIf="this.witdhawButtonVisible" color="accent" (click)="openDialogWithRef(tarikdanadialog)">Tarik dana</button>
+						</div>
+					</li>
+					<li class="center">
+						<div>
+							<a class="icon" href="#" target="_blank" aria-label="YouTube">
+								<i class="fa fa-money fa-fw" title="YouTube"></i></a>
+							<br>
+			Total {{total}}
+				</div>
+					</li>
+
+				</ul>
+			</section>
+			<!-- <table>
 				<tr>
 					<td>
 						<mat-icon aria-hidden="false">account_circle</mat-icon>
@@ -64,7 +120,7 @@
 					<td>{{total}}</td>
 					<td></td>
 				</tr>
-			</table>
+			</table> -->
 		</mat-card>
 		<mat-divider></mat-divider>
 		<mat-card>
