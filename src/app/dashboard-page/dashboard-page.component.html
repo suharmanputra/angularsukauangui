@@ -10,8 +10,8 @@
 				<ul class="icon-set">
 					<li class="center">
 						<div>
-							<a class="icon" href="#" target="_blank" aria-label="YouTube">
-								<i class="fa fa-user-circle fa-fw" title="YouTube"></i></a>
+							<a class="icon" href="" aria-label="Status">
+								<i class="fa fa-user-circle fa-fw" title="Status"></i></a>
 							<br>
 			Status {{statusakun}}
 							<button *ngIf="this.aktivasiButtonVisible" style="display:inline-block;width:100%;" mat-raised-button color="accent" (click)="openDialogWithRef(termconditiondialog)">Aktivasi</button>
@@ -20,41 +20,41 @@
 					</li>
 					<li class="center">
 						<div>
-							<a class="icon" href="#" target="_blank" aria-label="YouTube">
-								<i class="fa fa-calendar fa-fw" title="YouTube"></i></a>
+							<a class="icon" href="" aria-label="Masa Aktif">
+								<i class="fa fa-calendar fa-fw" title="Masa Aktif"></i></a>
 							<br>
 			{{masaaktif}} hari
 				</div>
 					</li>
 					<li class="center">
 						<div>
-							<a class="icon" href="#" target="_blank" aria-label="YouTube">
-								<i class="fa fa-line-chart fa-fw" title="YouTube"></i></a>
+							<a class="icon" href="" aria-label="Level">
+								<i class="fa fa-line-chart fa-fw" title="Level"></i></a>
 							<br>
 			Level {{level}}
 				</div>
 					</li>
 					<li class="center">
 						<div>
-							<a class="icon" href="#" target="_blank" aria-label="YouTube">
-								<i class="fa fa-users fa-fw" title="YouTube"></i></a>
+							<a class="icon" href="" aria-label="Member">
+								<i class="fa fa-users fa-fw" title="Member"></i></a>
 							<br>
 			Member {{jmlmember}}
 				</div>
 					</li>
 					<li class="center">
 						<div>
-							<a class="icon" href="#" target="_blank" aria-label="YouTube">
-								<i class="fa fa-money fa-fw" title="YouTube"></i></a>
+							<a class="icon" aria-label="Bonus" (click)="openDialogWithRef(tarikdanadialog)">
+								<i class="fa fa-money fa-fw" title="Bonus"></i></a>
 							<br>
 			Bonus {{bonus}}
-							<button style="display:inline-block;width:100%;" mat-raised-button *ngIf="this.witdhawButtonVisible" color="accent" (click)="openDialogWithRef(tarikdanadialog)">Tarik dana</button>
+							<!-- <button style="display:inline-block;width:100%;" mat-raised-button *ngIf="this.witdhawButtonVisible" color="accent" (click)="openDialogWithRef(tarikdanadialog)">Tarik dana</button> -->
 						</div>
 					</li>
 					<li class="center">
 						<div>
-							<a class="icon" href="#" target="_blank" aria-label="YouTube">
-								<i class="fa fa-money fa-fw" title="YouTube"></i></a>
+							<a class="icon" href="" aria-label="Total">
+								<i class="fa fa-money fa-fw" title="Total"></i></a>
 							<br>
 			Total {{total}}
 				</div>
@@ -164,7 +164,8 @@
 		<h2 matDialogTitle>Tarik Dana</h2>
 		<div matDialogContent>
 			<p>Silahkan masukan nilai penarikan:</p>
-			<p>biaya administrasi penarikan Rp. 6.000,-</p>
+			<p>Minimal Jumlah Penarikan Rp. 20.000,-</p>
+			<p>Biaya administrasi penarikan Rp. 6.000,-</p>
 			<input matInput placeholder="Jumlah maksimal {{bonus}}"  #tarikdanainput autocomplete="disable" required>
 			<div style="width:100%;text-align:center">
 				<button mat-button mat-raised-button matDialogClose color="accent"
