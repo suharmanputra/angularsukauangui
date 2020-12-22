@@ -216,4 +216,8 @@ export class DashboardPageComponent implements OnInit {
         }
       });
   }
+
+    redirect_transaksi() {
+    this.router.navigateByUrl("/transaksi");
+  }
 }
