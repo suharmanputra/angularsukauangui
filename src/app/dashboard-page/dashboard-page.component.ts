@@ -61,7 +61,7 @@ export class DashboardPageComponent implements OnInit {
       .getdetail(atob(localStorage.getItem("userid")))
       .subscribe(respdetailuser => {
         if (respdetailuser.status == "200") {
-          this.username = atob(localStorage.getItem("username"));
+          this.username = respdetailuser.data.FullName;
           this.sponsor = respdetailuser.data.SponsorName;
           this.referral =
             "https://sukauang.com/#/registration?reff=" +
