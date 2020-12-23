@@ -1,13 +1,8 @@
 import { AknutmanWsService } from "../shared/aknutman-ws.service";
 import { MenuBarService } from "../shared/menu-bar.service";
-import { ActivatedRoute, Router } from "@angular/router";
+import { Router } from "@angular/router";
 import { MatSnackBar } from "@angular/material/snack-bar";
-import {
-  AfterViewInit,
-  Component,
-  ViewChild,
-  TemplateRef
-} from "@angular/core";
+import { Component, ViewChild, TemplateRef } from "@angular/core";
 import { MatPaginator } from "@angular/material/paginator";
 import { MatSort } from "@angular/material/sort";
 import { MatTableDataSource } from "@angular/material/table";
@@ -29,6 +24,11 @@ export interface UserData {
 export class AdminPageComponent implements OnInit {
   @ViewChild("dialog") termconditiondialog: TemplateRef<any>;
   SelectedUserId: string;
+  FullName: string;
+  BankName: string;
+  BankAccountNumber: string;
+  BankAccountName: string;
+  WithdrawRequestAmount: string;
 
   displayedColumns: string[] = [
     "FullName",
@@ -157,6 +157,20 @@ export class AdminPageComponent implements OnInit {
 
   openDialogWithRef(ref: TemplateRef<any>, userid: string) {
     this.SelectedUserId = userid;
+
+    this.aknutman
+      .getuserlist("", "", this.SelectedUserId)
+      .subscribe(datapersondetail => {
+        // datapersondetail.persons[0].WithdrawalRequestId
+        this.FullName = datapersondetail.persons[0].FullName.toUpperCase();
+        this.BankAccountNumber = datapersondetail.persons[0].BankAccountNumber;
+        this.BankName = datapersondetail.persons[0].BankName.toUpperCase();
+        this.BankAccountName = datapersondetail.persons[0].BankAccountName.toUpperCase();
+        this.WithdrawRequestAmount = this.aknutman.formatmoney(
+          datapersondetail.persons[0].WithdrawRequestAmount.toString()
+        );
+      });
+
     this.dialog.open(ref);
   }
 }
