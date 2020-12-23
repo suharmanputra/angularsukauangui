@@ -67,6 +67,7 @@ export class ProfilPageComponent implements OnInit {
     namabank: string,
     namabankrek: string
   ) {
+    this.menuBarService.setLoadingAnimation(true);
     if (pass == "") {
       this.snackBar.open("Password tidak boleh kosong!", "Ok", {
         duration: 3000
