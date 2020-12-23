@@ -123,7 +123,6 @@ export class DashboardPageComponent implements OnInit {
 
   checkin() {
     this.menuBarService.setLoadingAnimation(true);
-
     this.aknutman
       .chekin(atob(localStorage.getItem("userid")))
       .subscribe(respcheckin => {

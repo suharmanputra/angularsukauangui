@@ -133,11 +133,17 @@ export class AknutmanWsService {
   }
 
   chekin(userid: string) {
+    const d = new Date();
+    const ye = new Intl.DateTimeFormat("id", { year: "numeric" }).format(d);
+    const mo = new Intl.DateTimeFormat("id", { month: "2-digit" }).format(d);
+    const da = new Intl.DateTimeFormat("id", { day: "2-digit" }).format(d);
+    const myDt = `${ye}-${mo}-${da} ${d.toTimeString().substring(0, 8)}`;
+
     const url =
       "https://us-central1-sukauang-backend.cloudfunctions.net/UserCheckIn";
     const body = {
       PersonId: userid,
-      CheckInDateTime: new Date().toLocaleString(),
+      CheckInDateTime: myDt,
       Latitude: 0,
       Longitude: 0,
       Accuracy: 0
