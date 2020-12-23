@@ -119,11 +119,14 @@
 							<td>:</td>
 							<td>{{WithdrawRequestAmount}}</td>
 						</tr>
+						<tr *ngIf="this.tarikdanaRowVisible">
+							<td>ID Request</td>
+							<td>:</td>
+							<td>{{WithdrawalRequestId}}</td>
+						</tr>
 					</table>
-				</mat-card>
-				<mat-card>
-					<button mat-button color="accent" (click)="aktivasiuser(dateFrom.value, dateTo.value)"matDialogClose>Aktivasi</button>
-					<button mat-button color="accent" (click)="confirtarikdana()" matDialogClose>Confirm Tarik Dana</button>
+					<button *ngIf="this.aktivasiButtonVisible" mat-button color="accent" (click)="aktivasiuser(dateFrom.value, dateTo.value)"matDialogClose>Aktivasi</button>
+					<button *ngIf="this.tarikdanaButtonVisible" mat-button color="accent" (click)="confirtarikdana()" matDialogClose>Confirm Tarik Dana</button>
 				</mat-card>
 			</div>
 		</ng-template>

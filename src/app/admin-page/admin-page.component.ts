@@ -29,6 +29,10 @@ export class AdminPageComponent implements OnInit {
   BankAccountNumber: string;
   BankAccountName: string;
   WithdrawRequestAmount: string;
+  tarikdanaButtonVisible: boolean;
+  tarikdanaRowVisible: boolean;
+  aktivasiButtonVisible: boolean;
+  WithdrawalRequestId: string;
 
   displayedColumns: string[] = [
     "FullName",
@@ -161,7 +165,8 @@ export class AdminPageComponent implements OnInit {
     this.aknutman
       .getuserlist("", "", this.SelectedUserId)
       .subscribe(datapersondetail => {
-        // datapersondetail.persons[0].WithdrawalRequestId
+        this.WithdrawalRequestId =
+          datapersondetail.persons[0].WithdrawalRequestId;
         this.FullName = datapersondetail.persons[0].FullName.toUpperCase();
         this.BankAccountNumber = datapersondetail.persons[0].BankAccountNumber;
         this.BankName = datapersondetail.persons[0].BankName.toUpperCase();
@@ -169,6 +174,13 @@ export class AdminPageComponent implements OnInit {
         this.WithdrawRequestAmount = this.aknutman.formatmoney(
           datapersondetail.persons[0].WithdrawRequestAmount.toString()
         );
+        if (datapersondetail.persons[0].WithdrawRequestAmount === 0) {
+          tarikdanaButtonVisible = false;
+          tarikdanaRowVisible = false;
+        } else {
+          tarikdanaButtonVisible = true;
+          tarikdanaRowVisible = true;
+        }
       });
 
     this.dialog.open(ref);
