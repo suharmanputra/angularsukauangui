@@ -41,6 +41,7 @@ export class ProfilPageComponent implements OnInit {
       .getuserdata(atob(localStorage.getItem("userid")))
       .subscribe(respuserdata => {
         if (respuserdata.status === 200) {
+          this.txtReff = respuserdata.data.SponsorCode;
           this.txtUserID = atob(localStorage.getItem("username"));
           this.txtPass = respuserdata.data.Password;
           this.txtNama = respuserdata.data.FullName;
@@ -49,13 +50,14 @@ export class ProfilPageComponent implements OnInit {
           this.txtNorek = respuserdata.data.BankAccountNumber;
           this.txtNamaBank = respuserdata.data.BankName;
           this.txtNamaRek = respuserdata.data.BankAccountName;
+          this.menuBarService.setLoadingAnimation(false);
         } else {
           this.snackBar.open(respuserdata.message, "Ok", {
             duration: 3000
           });
+          this.menuBarService.setLoadingAnimation(false);
         }
       });
-    this.menuBarService.setLoadingAnimation(false);
   }
 
   update(
@@ -110,16 +112,6 @@ export class ProfilPageComponent implements OnInit {
           namabankrek
         )
         .subscribe(respupdate => {
-          console.log(
-            pass,
-            alamat,
-            nomorhp,
-            nama,
-            norek,
-            namabank,
-            namabankrek
-          );
-          console.log(respupdate);
           this.snackBar.open(respupdate.message, "Ok", {
             duration: 3000
           });
