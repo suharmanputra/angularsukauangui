@@ -223,4 +223,8 @@ export class DashboardPageComponent implements OnInit {
   redirect_member() {
     this.router.navigateByUrl("/member");
   }
+
+   redirect_profil() {
+    this.router.navigateByUrl("/profil");
+  }
 }
