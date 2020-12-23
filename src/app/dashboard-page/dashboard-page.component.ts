@@ -72,12 +72,12 @@ export class DashboardPageComponent implements OnInit {
               this.statusakun = "Belum Aktif";
               this.aktivasiButtonVisible = true;
               this.buktitrfButtonVisible = false;
-              // this.statusdialog = "termconditiondialog";
+              
             } else {
               this.statusakun = "Menunggu Konfirmasi";
               this.aktivasiButtonVisible = false;
               this.buktitrfButtonVisible = true;
-              // this.statusdialog = "buktitransferdialog";
+              
               this.buktitrffile = respdetailuser.data.PaymentProofStorage;
             }
 

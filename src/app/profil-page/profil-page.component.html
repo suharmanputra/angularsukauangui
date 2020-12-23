@@ -1,45 +1,50 @@
-<form>
-	<div class="pagecontainer">
-		<mat-card>Profil
-		</mat-card>
-		<mat-divider></mat-divider>
-		<mat-card>
-			<mat-form-field class="full-width">
-				<mat-label>Kode Referal</mat-label>
-				<input matInput placeholder="kode Referal Anda" autocomplete="disable" disabled="$1">
+<div class="pagecontainer">
+	<mat-card>Profil
+	</mat-card>
+	<mat-divider></mat-divider>
+	<mat-card>
+		<mat-form-field class="full-width">
+			<mat-label>Kode Referal</mat-label>
+			<input matInput [(ngModel)]="txtReff" #reffInput placeholder="kode Referal Anda" autocomplete="disable" disabled="true">
       </mat-form-field>
+			<mat-form-field class="full-width">
+				<mat-label>User Id</mat-label>
+				<input matInput placeholder="User Id Anda" [(ngModel)]="txtUserID" #useridInput autocomplete="disable"  disabled="true">
+       </mat-form-field>
 				<mat-form-field class="full-width">
-					<mat-label>User Id</mat-label>
-					<input matInput placeholder="User Id Anda" autocomplete="disable" disabled="$1">
+					<mat-label>Password</mat-label>
+					<input matInput #passwordInput [type]="hide ? 'password' : 'text'" [(ngModel)]="txtPass" #passInput autocomplete="disable" required>
+					<button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+    <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+    </button>
+				</mat-form-field>
+				<mat-form-field class="full-width">
+					<mat-label>Nama</mat-label>
+					<input matInput placeholder="Nama Panjang"  [(ngModel)]="txtNama" #namapanjangInput autocomplete="disable" required>
        </mat-form-field>
 					<mat-form-field class="full-width">
-						<mat-label>Nama</mat-label>
-						<input matInput placeholder="Nama Panjang" autocomplete="disable">
-       </mat-form-field>
+						<mat-label>Nomor HP</mat-label>
+						<input matInput placeholder="Nomor HP yang terhubung dengan whatsapp"  [(ngModel)]="txtNoHP" #noHpInput autocomplete="disable" required>
+      </mat-form-field>
 						<mat-form-field class="full-width">
-							<mat-label>Nomor HP</mat-label>
-							<input matInput placeholder="Nomor HP yang terhubung dengan whatsapp" autocomplete="disable">
+							<mat-label>Alamat</mat-label>
+							<input matInput placeholder="Alamat Lengkap Anda"  [(ngModel)]="txtAlamat" #alamatInput autocomplete="disable" required>
       </mat-form-field>
 							<mat-form-field class="full-width">
-								<mat-label>Alamat</mat-label>
-								<input matInput placeholder="Alamat Lengkap Anda" autocomplete="disable">
+								<mat-label>Nomor Rekening/E-Wallet</mat-label>
+								<input matInput placeholder="Nomor Rekening/E-Wallet Anda"  [(ngModel)]="txtNorek" #norekInput autocomplete="disable" required>
       </mat-form-field>
 								<mat-form-field class="full-width">
-									<mat-label>Nomor Rekening/E-Wallet</mat-label>
-									<input matInput placeholder="Nomor Rekening/E-Wallet Anda" autocomplete="disable">
+									<mat-label>Nama Bank/E-Wallet</mat-label>
+									<input matInput placeholder="Nama Bank/E-Wallet Anda"  [(ngModel)]="txtNamaBank" #namaBankInput autocomplete="disable" required>
       </mat-form-field>
 									<mat-form-field class="full-width">
-										<mat-label>Nama Bank/E-Wallet</mat-label>
-										<input matInput placeholder="Nama Bank/E-Wallet Anda" autocomplete="disable">
+										<mat-label>Nama Rekening Bank/E-Wallet</mat-label>
+										<input matInput placeholder="Nama Rekening Bank/E-Wallet Anda"  [(ngModel)]="txtNamaRek" #namaRekInput autocomplete="disable" required>
       </mat-form-field>
-										<mat-form-field class="full-width">
-											<mat-label>Nama Rekening Bank/E-Wallet</mat-label>
-											<input matInput placeholder="Nama Rekening Bank/E-Wallet Anda" autocomplete="disable">
-      </mat-form-field>
-		</mat-card>
-		<br>
-		<div style="text-align:center;">
-			<button style="display:inline-block;" mat-raised-button>Update</button>
-		</div>
+	</mat-card>
+	<br>
+	<div style="text-align:center;">
+		<button style="display:inline-block;" mat-raised-button>Update</button>
 	</div>
-</form>
+</div>

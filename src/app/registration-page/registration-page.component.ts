@@ -31,7 +31,6 @@ export class RegistrationPageComponent implements OnInit {
     this.menuBarService.setMenuVisible(false);
     this.route.queryParams.subscribe(params => {
       if (params["reff"] != null) {
-        console.log(params["reff"]);
         this.txtReff = params["reff"];
       } else {
         this.txtReff = "SUKAUANG";

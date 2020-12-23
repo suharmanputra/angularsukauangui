@@ -171,4 +171,13 @@ export class AknutmanWsService {
     };
     return this.http.post<string>(url, body);
   }
+
+  getuserdata(userid: string) {
+    const url =
+      "https://us-central1-sukauang-backend.cloudfunctions.net/UserGetBasicInfo";
+    const body = {
+      PersonId: userid
+    };
+    return this.http.post<string>(url, body);
+  }
 }
