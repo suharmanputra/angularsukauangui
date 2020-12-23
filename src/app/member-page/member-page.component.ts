@@ -65,6 +65,7 @@ export class MemberPageComponent implements OnInit {
   }
 
   getdownlinelist() {
+    this.menuBarService.setLoadingAnimation(true);
     this.aknutman
       .getuserdownline(atob(localStorage.getItem("userid")))
       .subscribe(respdownline => {
@@ -164,6 +165,7 @@ export class MemberPageComponent implements OnInit {
             }
           }
         }
+        this.menuBarService.setLoadingAnimation(false);
       });
   }
 }
