@@ -175,11 +175,11 @@ export class AdminPageComponent implements OnInit {
           datapersondetail.persons[0].WithdrawRequestAmount.toString()
         );
         if (datapersondetail.persons[0].WithdrawRequestAmount === 0) {
-          tarikdanaButtonVisible = false;
-          tarikdanaRowVisible = false;
+          this.tarikdanaButtonVisible = false;
+          this.tarikdanaRowVisible = false;
         } else {
-          tarikdanaButtonVisible = true;
-          tarikdanaRowVisible = true;
+          this.tarikdanaButtonVisible = true;
+          this.tarikdanaRowVisible = true;
         }
       });
 
