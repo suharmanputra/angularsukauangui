@@ -192,7 +192,7 @@ export class AknutmanWsService {
     namabankrek: string
   ) {
     const url =
-      "https://us-central1-sukauang-backend.cloudfunctions.net/UserGetBasicInfo";
+      "https://us-central1-sukauang-backend.cloudfunctions.net/UserUpdateProfile";
     const body = {
       PersonId: userid,
       Password: pass,

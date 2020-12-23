@@ -59,7 +59,6 @@ export class ProfilPageComponent implements OnInit {
   }
 
   update(
-    userid: string,
     pass: string,
     alamat: string,
     nomorhp: string,
@@ -68,24 +67,20 @@ export class ProfilPageComponent implements OnInit {
     namabank: string,
     namabankrek: string
   ) {
-    if (userid == "") {
-      this.snackBar.open("Userid tidak boleh kosong!", "Ok", {
-        duration: 3000
-      });
-    } else if (pass == "") {
+    if (pass == "") {
       this.snackBar.open("Password tidak boleh kosong!", "Ok", {
         duration: 3000
       });
-    } else if (nama == "") {
-      this.snackBar.open("nama tidak boleh kosong!", "Ok", {
+    } else if (alamat == "") {
+      this.snackBar.open("Alamat tidak boleh kosong!", "Ok", {
         duration: 3000
       });
     } else if (nomorhp == "") {
       this.snackBar.open("Nomor HP tidak boleh kosong!", "Ok", {
         duration: 3000
       });
-    } else if (alamat == "") {
-      this.snackBar.open("Alamat tidak boleh kosong!", "Ok", {
+    } else if (nama == "") {
+      this.snackBar.open("nama tidak boleh kosong!", "Ok", {
         duration: 3000
       });
     } else if (norek == "") {
@@ -104,7 +99,7 @@ export class ProfilPageComponent implements OnInit {
       this.menuBarService.setLoadingAnimation(true);
       this.aknutman
         .updateuserdata(
-          userid,
+          atob(localStorage.getItem("userid")),
           pass,
           alamat,
           nomorhp,
@@ -114,6 +109,16 @@ export class ProfilPageComponent implements OnInit {
           namabankrek
         )
         .subscribe(respupdate => {
+          console.log(
+            pass,
+            alamat,
+            nomorhp,
+            nama,
+            norek,
+            namabank,
+            namabankrek
+          );
+          console.log(respupdate);
           this.snackBar.open(respupdate.message, "Ok", {
             duration: 3000
           });
