@@ -138,24 +138,20 @@ export class AdminPageComponent implements OnInit {
   confirtarikdana(datefrom: string, dateto: string) {
     this.menuBarService.setLoadingAnimation(true);
     this.aknutman
-      .getuserlist(datefrom, dateto, this.SelectedUserId)
-      .subscribe(dataperson => {
-        this.aknutman
-          .confirmwithdraw(dataperson.persons[0].WithdrawalRequestId)
-          .subscribe(respconfirtarikdana => {
-            if (respconfirtarikdana.status == 200) {
-              this.snackBar.open("Tarik Dana dikonfirmasi!", "Ok", {
-                duration: 3000
-              });
-              this.tampildata(datefrom, dateto);
-              this.menuBarService.setLoadingAnimation(false);
-            } else {
-              this.snackBar.open(respconfirtarikdana.message, "Ok", {
-                duration: 3000
-              });
-              this.menuBarService.setLoadingAnimation(false);
-            }
+      .confirmwithdraw(this.WithdrawalRequestId)
+      .subscribe(respconfirtarikdana => {
+        if (respconfirtarikdana.status == 200) {
+          this.snackBar.open("Tarik Dana dikonfirmasi!", "Ok", {
+            duration: 3000
           });
+          this.tampildata(datefrom, dateto);
+          this.menuBarService.setLoadingAnimation(false);
+        } else {
+          this.snackBar.open(respconfirtarikdana.message, "Ok", {
+            duration: 3000
+          });
+          this.menuBarService.setLoadingAnimation(false);
+        }
       });
   }
 
