@@ -14,6 +14,7 @@ import { ViewChild, TemplateRef } from "@angular/core";
 export class DashboardPageComponent implements OnInit {
   @ViewChild("dialog") termconditiondialog: TemplateRef<any>;
   username: string;
+  sponsor: string;
   referral: string;
   statusakun: string;
   masaaktif: string;
@@ -61,7 +62,7 @@ export class DashboardPageComponent implements OnInit {
       .subscribe(respdetailuser => {
         if (respdetailuser.status == "200") {
           this.username = atob(localStorage.getItem("username"));
-
+          this.sponsor = respdetailuser.data.SponsorName;
           this.referral =
             "https://sukauang.com/#/registration?reff=" +
             respdetailuser.data.ReferralCode +
@@ -72,12 +73,11 @@ export class DashboardPageComponent implements OnInit {
               this.statusakun = "Belum Aktif";
               this.aktivasiButtonVisible = true;
               this.buktitrfButtonVisible = false;
-              
             } else {
               this.statusakun = "Menunggu Konfirmasi";
               this.aktivasiButtonVisible = false;
               this.buktitrfButtonVisible = true;
-              
+
               this.buktitrffile = respdetailuser.data.PaymentProofStorage;
             }
 
@@ -224,7 +224,7 @@ export class DashboardPageComponent implements OnInit {
     this.router.navigateByUrl("/member");
   }
 
-   redirect_profil() {
+  redirect_profil() {
     this.router.navigateByUrl("/profil");
   }
 }
