@@ -180,4 +180,30 @@ export class AknutmanWsService {
     };
     return this.http.post<string>(url, body);
   }
+
+  updateuserdata(
+    userid: string,
+    pass: string,
+    alamat: string,
+    nomorhp: string,
+    nama: string,
+    norek: string,
+    namabank: string,
+    namabankrek: string
+  ) {
+    const url =
+      "https://us-central1-sukauang-backend.cloudfunctions.net/UserGetBasicInfo";
+    const body = {
+      PersonId: userid,
+      Password: pass,
+      PostAddress: alamat,
+      WhatsAppNumber: nomorhp,
+      FullName: nama,
+      BankAccountNumber: norek,
+      BankName: namabank,
+      BankAccountName: namabankrek
+    };
+
+    return this.http.post<string>(url, body);
+  }
 }
