@@ -126,7 +126,7 @@
 						</tr>
 					</table>
 					<button *ngIf="this.aktivasiButtonVisible" mat-button color="accent" (click)="aktivasiuser(dateFrom.value, dateTo.value)"matDialogClose>Aktivasi</button>
-					<button *ngIf="this.tarikdanaButtonVisible" mat-button color="accent" (click)="confirtarikdana()" matDialogClose>Confirm Tarik Dana</button>
+					<button *ngIf="this.tarikdanaButtonVisible" mat-button color="accent" (click)="confirtarikdana(dateFrom.value, dateTo.value)" matDialogClose>Confirm Tarik Dana</button>
 				</mat-card>
 			</div>
 		</ng-template>

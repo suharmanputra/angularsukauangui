@@ -156,8 +156,8 @@ export class AdminPageComponent implements OnInit {
   }
 
   openDialogWithRef(ref: TemplateRef<any>, userid: string) {
+    this.menuBarService.setLoadingAnimation(true);
     this.SelectedUserId = userid;
-
     this.aknutman
       .getuserlist("", "", this.SelectedUserId)
       .subscribe(datapersondetail => {
@@ -180,5 +180,6 @@ export class AdminPageComponent implements OnInit {
       });
 
     this.dialog.open(ref);
+    this.menuBarService.setLoadingAnimation(false);
   }
 }
