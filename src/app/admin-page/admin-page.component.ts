@@ -161,8 +161,15 @@ export class AdminPageComponent implements OnInit {
     this.aknutman
       .getuserlist("", "", this.SelectedUserId)
       .subscribe(datapersondetail => {
+        if (datapersondetail.persons[0].IsActive == true) {
+          this.aktivasiButtonVisible = false;
+        } else {
+          this.aktivasiButtonVisible = true;
+        }
+
         this.WithdrawalRequestId =
           datapersondetail.persons[0].WithdrawalRequestId;
+
         this.FullName = datapersondetail.persons[0].FullName.toUpperCase();
         this.BankAccountNumber = datapersondetail.persons[0].BankAccountNumber;
         this.BankName = datapersondetail.persons[0].BankName.toUpperCase();

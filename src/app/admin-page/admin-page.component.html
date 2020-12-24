@@ -92,42 +92,42 @@
 			<!-- <h2 matDialogTitle>Option for {{SelectedUserId}}</h2> -->
 
 			<div matDialogContent>
-				<mat-card>
-					<table>
-						<tr>
-							<td>Nama</td>
-							<td>:</td>
-							<td>{{FullName}}</td>
-						</tr>
-						<tr>
-							<td>Nomor Bank/E-Wallet</td>
-							<td>:</td>
-							<td>{{BankAccountNumber}}</td>
-						</tr>
-						<tr>
-							<td>Nama Bank/E-Wallet</td>
-							<td>:</td>
-							<td>{{BankName}}</td>
-						</tr>
-						<tr>
-							<td>Nama Rekening Bank/E-Wallet</td>
-							<td>:</td>
-							<td>{{BankAccountName}}</td>
-						</tr>
-						<tr>
-							<td>Jumlah Penarikan</td>
-							<td>:</td>
-							<td>{{WithdrawRequestAmount}}</td>
-						</tr>
-						<tr *ngIf="this.tarikdanaRowVisible">
-							<td>ID Request</td>
-							<td>:</td>
-							<td>{{WithdrawalRequestId}}</td>
-						</tr>
-					</table>
-					<button *ngIf="this.aktivasiButtonVisible" mat-button color="accent" (click)="aktivasiuser(dateFrom.value, dateTo.value)"matDialogClose>Aktivasi</button>
-					<button *ngIf="this.tarikdanaButtonVisible" mat-button color="accent" (click)="confirtarikdana(dateFrom.value, dateTo.value)" matDialogClose>Confirm Tarik Dana</button>
-				</mat-card>
+
+				<table>
+					<tr>
+						<td>Nama</td>
+						<td>:</td>
+						<td>{{FullName}}</td>
+					</tr>
+					<tr>
+						<td>Nomor Bank/E-Wallet</td>
+						<td>:</td>
+						<td>{{BankAccountNumber}}</td>
+					</tr>
+					<tr>
+						<td>Nama Bank/E-Wallet</td>
+						<td>:</td>
+						<td>{{BankName}}</td>
+					</tr>
+					<tr>
+						<td>Nama Rekening Bank/E-Wallet</td>
+						<td>:</td>
+						<td>{{BankAccountName}}</td>
+					</tr>
+					<tr>
+						<td>Jumlah Penarikan</td>
+						<td>:</td>
+						<td>{{WithdrawRequestAmount}}</td>
+					</tr>
+					<tr *ngIf="this.tarikdanaRowVisible">
+						<td>ID Request</td>
+						<td>:</td>
+						<td>{{WithdrawalRequestId}}</td>
+					</tr>
+				</table>
+				<button *ngIf="this.aktivasiButtonVisible" mat-button color="accent" (click)="aktivasiuser(dateFrom.value, dateTo.value)"matDialogClose>Aktivasi</button>
+				<button *ngIf="this.tarikdanaButtonVisible" mat-button color="accent" (click)="confirtarikdana(dateFrom.value, dateTo.value)" matDialogClose>Confirm Tarik Dana</button>
+
 			</div>
 		</ng-template>
 
