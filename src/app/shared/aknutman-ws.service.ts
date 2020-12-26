@@ -10,6 +10,8 @@ import { HttpClient, HttpEvent } from "@angular/common/http";
 export class AknutmanWsService {
   constructor(private http: HttpClient) {}
 
+  serviceURL = "https://asia-southeast2-sukauang-backend.cloudfunctions.net";
+
   formatDate(date: string) {
     var d = new Date(date),
       month = "" + (d.getMonth() + 1),
@@ -32,8 +34,7 @@ export class AknutmanWsService {
   }
 
   getLogin(username: string, password: string) {
-    const url =
-      "https://us-central1-sukauang-backend.cloudfunctions.net/UserLogin";
+    const url = this.serviceURL + "/UserLogin";
     const body = {
       Username: username,
       Password: password
@@ -55,8 +56,7 @@ export class AknutmanWsService {
     if (reff === "") {
       reff = "SUKAUANG";
     }
-    const url =
-      "https://us-central1-sukauang-backend.cloudfunctions.net/Register";
+    const url = this.serviceURL + "/Register";
     const body = {
       SponsorCode: reff,
       Username: userid,
@@ -72,8 +72,7 @@ export class AknutmanWsService {
   }
 
   getdetail(userid: string) {
-    const url =
-      "https://us-central1-sukauang-backend.cloudfunctions.net/UserDetail";
+    const url = this.serviceURL + "/UserDetail";
     const body = {
       PersonId: userid
     };
@@ -81,8 +80,7 @@ export class AknutmanWsService {
   }
 
   getactivationmessage(userid: string) {
-    const url =
-      "https://us-central1-sukauang-backend.cloudfunctions.net/UserGetActivationMessage";
+    const url = this.serviceURL + "/UserGetActivationMessage";
     const body = {
       PersonId: userid
     };
@@ -90,8 +88,7 @@ export class AknutmanWsService {
   }
 
   uploadpaymentproof(userid: string, base64img: string) {
-    const url =
-      "https://us-central1-sukauang-backend.cloudfunctions.net/UserUploadPaymentProof";
+    const url = this.serviceURL + "t/UserUploadPaymentProof";
     const body = {
       PersonId: userid,
       ImageExtension: base64img.split(";")[0].split("/")[1],
@@ -101,22 +98,19 @@ export class AknutmanWsService {
   }
 
   getuserlist(from: string, to: string, userid: string) {
-    const url =
-      "https://us-central1-sukauang-backend.cloudfunctions.net/AdminGetUserList";
+    const url = this.serviceURL + "/AdminGetUserList";
     const body = { PersonId: userid, FromDate: from, ToDate: to };
     return this.http.post<string>(url, body);
   }
 
   gettransactionhistory(userid: string) {
-    const url =
-      "https://us-central1-sukauang-backend.cloudfunctions.net/GetUserTransaction";
+    const url = this.serviceURL + "/GetUserTransaction";
     const body = { PersonId: userid };
     return this.http.post<string>(url, body);
   }
 
   aktivasiuser(userid: string, isreactivated: boolean, activationdate: string) {
-    const url =
-      "https://us-central1-sukauang-backend.cloudfunctions.net/ActivateUser";
+    const url = this.serviceURL + "/ActivateUser";
     const body = {
       PersonId: userid,
       IsReActivate: isreactivated,
@@ -126,8 +120,7 @@ export class AknutmanWsService {
   }
 
   reqwitdraw(userid: string, amount: string) {
-    const url =
-      "https://us-central1-sukauang-backend.cloudfunctions.net/RequestToWithdraw";
+    const url = this.serviceURL + "/RequestToWithdraw";
     const body = { PersonId: userid, WithdrawAmount: amount };
     return this.http.post<string>(url, body);
   }
@@ -139,8 +132,7 @@ export class AknutmanWsService {
     const da = new Intl.DateTimeFormat("id", { day: "2-digit" }).format(d);
     const myDt = `${ye}-${mo}-${da} ${d.toTimeString().substring(0, 8)}`;
 
-    const url =
-      "https://us-central1-sukauang-backend.cloudfunctions.net/UserCheckIn";
+    const url = this.serviceURL + "/UserCheckIn";
     const body = {
       PersonId: userid,
       CheckInDateTime: myDt,
@@ -152,8 +144,7 @@ export class AknutmanWsService {
   }
 
   confirmwithdraw(Idtarikdana: string) {
-    const url =
-      "https://us-central1-sukauang-backend.cloudfunctions.net/ConfirmWithdrawTransfer";
+    const url = this.serviceURL + "/ConfirmWithdrawTransfer";
     const body = {
       RequestId: Idtarikdana,
       RefferenceId: "",
@@ -164,8 +155,7 @@ export class AknutmanWsService {
   }
 
   getuserdownline(userid: string) {
-    const url =
-      "https://us-central1-sukauang-backend.cloudfunctions.net/UserGetDownline";
+    const url = this.serviceURL + "/UserGetDownline";
     const body = {
       PersonId: userid
     };
@@ -173,8 +163,7 @@ export class AknutmanWsService {
   }
 
   getuserdata(userid: string) {
-    const url =
-      "https://us-central1-sukauang-backend.cloudfunctions.net/UserGetBasicInfo";
+    const url = this.serviceURL + "/UserGetBasicInfo";
     const body = {
       PersonId: userid
     };
@@ -191,8 +180,7 @@ export class AknutmanWsService {
     namabank: string,
     namabankrek: string
   ) {
-    const url =
-      "https://us-central1-sukauang-backend.cloudfunctions.net/UserUpdateProfile";
+    const url = this.serviceURL + "/UserUpdateProfile";
     const body = {
       PersonId: userid,
       Password: pass,
