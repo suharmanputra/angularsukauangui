@@ -75,155 +75,93 @@ export class MemberPageComponent implements OnInit {
           for (i = 0; i < respdownline.data.length; i++) {
             if (respdownline.data[i].ChildIndex == 1) {
               this.member2 = respdownline.data[i].FullName.toUpperCase();
-            } else {
-              this.member2 = "-";
             }
-
             if (respdownline.data[i].ChildIndex == 2) {
               this.member3 = respdownline.data[i].FullName.toUpperCase();
-            } else {
-              this.member3 = "-";
             }
             if (respdownline.data[i].ChildIndex == 3) {
               this.member4 = respdownline.data[i].FullName.toUpperCase();
-            } else {
-              this.member4 = "-";
             }
-
             if (respdownline.data[i].ChildIndex == 4) {
               this.member5 = respdownline.data[i].FullName.toUpperCase();
-            } else {
-              this.member5 = "-";
             }
             if (respdownline.data[i].ChildIndex == 5) {
               this.member6 = respdownline.data[i].FullName.toUpperCase();
-            } else {
-              this.member6 = "-";
             }
             if (respdownline.data[i].ChildIndex == 6) {
               this.member7 = respdownline.data[i].FullName.toUpperCase();
-            } else {
-              this.member7 = "-";
             }
             if (respdownline.data[i].ChildIndex == 7) {
               this.member8 = respdownline.data[i].FullName.toUpperCase();
-            } else {
-              this.member8 = "-";
             }
             if (respdownline.data[i].ChildIndex == 8) {
               this.member9 = respdownline.data[i].FullName.toUpperCase();
-            } else {
-              this.member9 = "-";
             }
             if (respdownline.data[i].ChildIndex == 9) {
               this.member10 = respdownline.data[i].FullName.toUpperCase();
-            } else {
-              this.member10 = "-";
             }
             if (respdownline.data[i].ChildIndex == 10) {
               this.member11 = respdownline.data[i].FullName.toUpperCase();
-            } else {
-              this.member11 = "-";
             }
             if (respdownline.data[i].ChildIndex == 11) {
               this.member12 = respdownline.data[i].FullName.toUpperCase();
-            } else {
-              this.member12 = "-";
             }
             if (respdownline.data[i].ChildIndex == 12) {
               this.member13 = respdownline.data[i].FullName.toUpperCase();
-            } else {
-              this.member13 = "-";
             }
             if (respdownline.data[i].ChildIndex == 13) {
               this.member14 = respdownline.data[i].FullName.toUpperCase();
-            } else {
-              this.member14 = "-";
             }
             if (respdownline.data[i].ChildIndex == 14) {
               this.member15 = respdownline.data[i].FullName.toUpperCase();
-            } else {
-              this.member15 = "-";
             }
             if (respdownline.data[i].ChildIndex == 15) {
               this.member16 = respdownline.data[i].FullName.toUpperCase();
-            } else {
-              this.member16 = "-";
             }
             if (respdownline.data[i].ChildIndex == 16) {
               this.member17 = respdownline.data[i].FullName.toUpperCase();
-            } else {
-              this.member17 = "-";
             }
             if (respdownline.data[i].ChildIndex == 17) {
               this.member18 = respdownline.data[i].FullName.toUpperCase();
-            } else {
-              this.member18 = "-";
             }
             if (respdownline.data[i].ChildIndex == 18) {
               this.member19 = respdownline.data[i].FullName.toUpperCase();
-            } else {
-              this.member19 = "-";
             }
             if (respdownline.data[i].ChildIndex == 19) {
               this.member20 = respdownline.data[i].FullName.toUpperCase();
-            } else {
-              this.member20 = "-";
             }
             if (respdownline.data[i].ChildIndex == 20) {
               this.member21 = respdownline.data[i].FullName.toUpperCase();
-            } else {
-              this.member21 = "-";
             }
             if (respdownline.data[i].ChildIndex == 21) {
               this.member22 = respdownline.data[i].FullName.toUpperCase();
-            } else {
-              this.member22 = "-";
             }
             if (respdownline.data[i].ChildIndex == 22) {
               this.member23 = respdownline.data[i].FullName.toUpperCase();
-            } else {
-              this.member23 = "-";
             }
             if (respdownline.data[i].ChildIndex == 23) {
               this.member24 = respdownline.data[i].FullName.toUpperCase();
-            } else {
-              this.member24 = "-";
             }
             if (respdownline.data[i].ChildIndex == 24) {
               this.member25 = respdownline.data[i].FullName.toUpperCase();
-            } else {
-              this.member25 = "-";
             }
             if (respdownline.data[i].ChildIndex == 25) {
               this.member26 = respdownline.data[i].FullName.toUpperCase();
-            } else {
-              this.member26 = "-";
             }
             if (respdownline.data[i].ChildIndex == 26) {
               this.member27 = respdownline.data[i].FullName.toUpperCase();
-            } else {
-              this.member27 = "-";
             }
             if (respdownline.data[i].ChildIndex == 27) {
               this.member28 = respdownline.data[i].FullName.toUpperCase();
-            } else {
-              this.member28 = "-";
             }
             if (respdownline.data[i].ChildIndex == 28) {
               this.member29 = respdownline.data[i].FullName.toUpperCase();
-            } else {
-              this.member29 = "-";
             }
             if (respdownline.data[i].ChildIndex == 29) {
               this.member30 = respdownline.data[i].FullName.toUpperCase();
-            } else {
-              this.member30 = "-";
             }
             if (respdownline.data[i].ChildIndex == 30) {
               this.member31 = respdownline.data[i].FullName.toUpperCase();
-            } else {
-              this.member31 = "-";
             }
           }
         }

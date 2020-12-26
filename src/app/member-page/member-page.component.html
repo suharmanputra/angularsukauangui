@@ -56,7 +56,7 @@
 					<ul>
 						<li><a>{{member1}}</a>
 							<ul>
-								<li><a>{{member2}}</a>
+								<li *ngIf="!member2.length"><a>{{member2}}</a>
 									<ul>
 										<li><a>{{member4}}</a>
 											<ul>
@@ -100,7 +100,7 @@
 										</li>
 									</ul>
 								</li>
-								<li><a>{{member3}}</a>
+								<li *ngIf="!member3.length"><a>{{member3}}</a>
 									<ul>
 										<li><a>{{member6}}</a>
 											<ul>
