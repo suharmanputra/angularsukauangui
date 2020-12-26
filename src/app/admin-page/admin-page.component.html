@@ -36,7 +36,16 @@
 
 						<ng-container matColumnDef="IsActive">
 							<th mat-header-cell *matHeaderCellDef mat-sort-header>Status</th>
-							<td mat-cell *matCellDef="let row">{{row.IsActive}}
+							<td mat-cell *matCellDef="let row">
+								<!-- {{row.IsActive}} -->
+								<div *ngIf="row.IsActive == true; then statusaktif else statutsaktif22">
+								</div>
+								<ng-template #statusaktif>
+									Aktif
+								</ng-template>
+								<ng-template #statusaktif2>
+									Tidak Aktif
+								</ng-template>
 							</td>
 						</ng-container>
 
@@ -58,10 +67,10 @@
 								<div *ngIf="row.WithdrawalRequestId !== ''; then statustarikdana else statustarikdana2">
 								</div>
 								<ng-template #statustarikdana>
-									true
+									Ya
 								</ng-template>
 								<ng-template #statustarikdana2>
-									false
+									Tidak
 								</ng-template>
 							</td>
 
