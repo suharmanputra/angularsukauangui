@@ -267,7 +267,7 @@ right connector from last child*/
 .tree li a:hover + ul li a {
   background: #c8e4f8;
   color: #000;
-  border: 1px solid #94a0b4;
+  border: 3px solid #94a0b4;
 }
 
 /*Connector styles on hover*/
