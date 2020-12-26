@@ -97,6 +97,7 @@ body {
   -webkit-hyphens: auto;
   hyphens: auto;
 }
+
 .center {
   text-align: center;
 }
@@ -120,6 +121,7 @@ ul.icon-set {
   height: auto;
   width: auto;
 }
+
 ul.icon-set li {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -142,17 +144,20 @@ a.icon {
   height: 80px;
   border-radius: 40px;
   margin: 30px;
-
-  /* margin-right: 10px;
-  margin-bottom: 10px !important; */
   padding-bottom: 10px !important;
 }
+
 a.icon:hover,
 a.icon:focus {
   background: #6d8785;
 }
 
-* {
+.tree {
+  min-width: 1500px; /* at least the size of the header */
+  width: auto;
+}
+
+.tree * {
   margin: 0;
   padding: 0;
 }
@@ -188,6 +193,7 @@ a.icon:focus {
   width: 50%;
   height: 20px;
 }
+
 .tree li::after {
   right: auto;
   left: 50%;
@@ -212,6 +218,7 @@ right connector from last child*/
 .tree li:last-child::after {
   border: 0 none;
 }
+
 /*Adding back the vertical connector to the last nodes*/
 .tree li:last-child::before {
   border-right: 3px solid black;
@@ -219,6 +226,7 @@ right connector from last child*/
   -webkit-border-radius: 0 5px 0 0;
   -moz-border-radius: 0 5px 0 0;
 }
+
 .tree li:first-child::after {
   border-radius: 5px 0 0 0;
   -webkit-border-radius: 5px 0 0 0;
@@ -245,7 +253,6 @@ right connector from last child*/
   font-family: arial, verdana, tahoma;
   font-size: 14px;
   display: inline-block;
-
   border-radius: 5px;
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
@@ -263,6 +270,7 @@ right connector from last child*/
   color: #000;
   border: 1px solid #94a0b4;
 }
+
 /*Connector styles on hover*/
 .tree li a:hover + ul li::after,
 .tree li a:hover + ul li::before,
