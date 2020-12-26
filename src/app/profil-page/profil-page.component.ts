@@ -103,7 +103,7 @@ export class ProfilPageComponent implements OnInit {
       this.aknutman
         .updateuserdata(
           atob(localStorage.getItem("userid")),
-          pass,
+          atob(pass),
           alamat,
           nomorhp,
           nama,

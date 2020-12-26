@@ -28,7 +28,7 @@ export class LoginPageComponent implements OnInit {
 
   checkLogin(username: string, password: string) {
     this.menuBarService.setLoadingAnimation(true);
-    this.aknutman.getLogin(username, password).subscribe(resplogin => {
+    this.aknutman.getLogin(username, btoa(password)).subscribe(resplogin => {
       if (resplogin.isAuthenticated === true) {
         this.menuBarService.setIsAuthenticated(true);
         this.router.navigateByUrl("/dashboard");
