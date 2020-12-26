@@ -153,8 +153,7 @@ a.icon:focus {
 }
 
 .tree {
-  min-width: 1500px; /* at least the size of the header */
-  width: auto;
+  width: max-content;
 }
 
 .tree * {
