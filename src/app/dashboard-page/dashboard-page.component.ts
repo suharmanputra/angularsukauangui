@@ -26,6 +26,7 @@ export class DashboardPageComponent implements OnInit {
   witdhawButtonVisible: boolean;
   statusdialog: string;
   aktivasiButtonVisible: boolean;
+  reaktivasiButtonVisible: boolean;
   buktitrfButtonVisible: boolean;
   activationnote: string;
   fileToUpload: File = null;
@@ -73,9 +74,14 @@ export class DashboardPageComponent implements OnInit {
               this.statusakun = "Belum Aktif";
               this.aktivasiButtonVisible = true;
               this.buktitrfButtonVisible = false;
+
+              if (respdetailuser.data.AllowedToReActivate === true) {
+                this.reaktivasiButtonVisible = true;
+              }
             } else {
               this.statusakun = "Menunggu Konfirmasi";
               this.aktivasiButtonVisible = false;
+              this.reaktivasiButtonVisible = false;
               this.buktitrfButtonVisible = true;
               this.buktitrffile = respdetailuser.data.PaymentProofStorage;
             }
@@ -96,6 +102,7 @@ export class DashboardPageComponent implements OnInit {
               this.checkinButtonVisible = true;
             }
             this.aktivasiButtonVisible = false;
+            this.reaktivasiButtonVisible = false;
             this.buktitrfButtonVisible = false;
             // this.statusdialog = "";
           }
