@@ -30,6 +30,8 @@ export class AboutPageComponent implements OnInit {
     } else {
       this.menuBarService.setAdminVisible(false);
     }
+
+    this.getAboutContent();
   }
 
   getAboutContent() {
