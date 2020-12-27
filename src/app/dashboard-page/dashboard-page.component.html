@@ -88,7 +88,7 @@
            id="file"
            accept="image/x-png,image/gif,image/jpeg"
            (change)="setFile($event)">
-				<button mat-button matDialogClose (click)="handleFileInput()">Upload</button>
+				<button mat-button matDialogClose mat-raised-button color="accent" (click)="handleFileInput()">Upload</button>
 			</div>
 		</div>
 		<mat-dialog-actions align="end">
