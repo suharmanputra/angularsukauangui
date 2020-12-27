@@ -75,10 +75,11 @@ export class AknutmanWsService {
     return this.http.post<string>(url, body);
   }
 
-  getactivationmessage(userid: string) {
+  getactivationmessage(userid: string, isnext: boolean) {
     const url = this.serviceURL + "/UserGetActivationMessage";
     const body = {
-      PersonId: userid
+      PersonId: userid,
+      IsNext: isnext
     };
     return this.http.post<string>(url, body);
   }

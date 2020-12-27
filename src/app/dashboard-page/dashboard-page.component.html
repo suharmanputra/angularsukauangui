@@ -67,9 +67,9 @@
 		<mat-card>
 			<div style="text-align:center;">
 				<button *ngIf="this.aktivasiButtonVisible" style="display:inline-block;"
-        mat-raised-button color="accent" (click)="openDialogWithRef(termconditiondialog)">Aktivasi</button>
+        mat-raised-button color="accent" (click)="openDialogWithRef(termconditiondialog, false)">Aktivasi</button>
 
-				<button *ngIf="this.reaktivasiButtonVisible" style="display:inline-block;" mat-raised-button color="accent" (click)="openDialogWithRef(termconditiondialog)">Lanjut Level</button>
+				<button *ngIf="this.reaktivasiButtonVisible" style="display:inline-block;" mat-raised-button color="accent" (click)="openDialogWithRef(termconditiondialog, true)">Lanjut Level</button>
 
 				<button *ngIf="this.buktitrfButtonVisible" style="display:inline-block;" mat-raised-button color="accent" (click)="openDialogWithRef(buktitransferdialog)">Lihat Bukti Transfer</button>
 				<button style="display:inline-block;" mat-raised-button *ngIf="this.witdhawButtonVisible" color="accent" (click)="openDialogWithRef(tarikdanadialog)">Tarik dana</button>

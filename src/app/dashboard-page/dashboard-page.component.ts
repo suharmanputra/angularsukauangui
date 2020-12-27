@@ -88,7 +88,6 @@ export class DashboardPageComponent implements OnInit {
 
             this.masaaktif = "0";
             this.checkinButtonVisible = false;
-            this.getactivationnote(atob(localStorage.getItem("userid")));
           } else {
             this.referral =
               "https://sukauang.com/#/registration?reff=" +
@@ -147,16 +146,21 @@ export class DashboardPageComponent implements OnInit {
       });
   }
 
-  openDialogWithRef(ref: TemplateRef<any>) {
+  openDialogWithRef(ref: TemplateRef<any>, isnext: boolean) {
+    this.menuBarService.setLoadingAnimation(true);
+    this.getactivationnote(atob(localStorage.getItem("userid")), isnext);
     this.dialog.open(ref);
+    this.menuBarService.setLoadingAnimation(false);
   }
 
-  getactivationnote(userid: string) {
-    this.aknutman.getactivationmessage(userid).subscribe(respactivationnote => {
-      if (respactivationnote.status == "200") {
-        this.activationnote = respactivationnote.data;
-      }
-    });
+  getactivationnote(userid: string, isnext: boolean) {
+    this.aknutman
+      .getactivationmessage(userid, isnext)
+      .subscribe(respactivationnote => {
+        if (respactivationnote.status == "200") {
+          this.activationnote = respactivationnote.data;
+        }
+      });
   }
 
   private setFile(event) {
