@@ -85,7 +85,7 @@ export class AknutmanWsService {
   }
 
   uploadpaymentproof(userid: string, base64img: string) {
-    const url = this.serviceURL + "t/UserUploadPaymentProof";
+    const url = this.serviceURL + "/UserUploadPaymentProof";
     const body = {
       PersonId: userid,
       ImageExtension: base64img.split(";")[0].split("/")[1],
