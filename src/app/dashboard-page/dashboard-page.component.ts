@@ -99,7 +99,7 @@ export class DashboardPageComponent implements OnInit {
             this.buktitrfButtonVisible = false;
             // this.statusdialog = "";
           }
-          console.log(respdetailuser);
+          // console.log(respdetailuser);
           this.level = respdetailuser.data.Level;
           this.jmlmember = respdetailuser.data.MemberCount;
           this.bonus = this.aknutman.formatmoney(
