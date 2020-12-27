@@ -1,13 +1,20 @@
 import { Component, OnInit } from "@angular/core";
 import { MenuBarService } from "../shared/menu-bar.service";
-import { ActivatedRoute, Router } from "@angular/router";
+import { Router } from "@angular/router";
+import { AknutmanWsService } from "../shared/aknutman-ws.service";
 @Component({
   selector: "app-about-page",
   templateUrl: "./about-page.component.html",
   styleUrls: ["./about-page.component.css"]
 })
 export class AboutPageComponent implements OnInit {
-  constructor(private menuBarService: MenuBarService, private router: Router) {}
+  aboutContent: string;
+
+  constructor(
+    private menuBarService: MenuBarService,
+    private router: Router,
+    private aknutman: AknutmanWsService
+  ) {}
 
   ngOnInit() {
     this.menuBarService.setMenuVisible(true);
@@ -23,5 +30,15 @@ export class AboutPageComponent implements OnInit {
     } else {
       this.menuBarService.setAdminVisible(false);
     }
+  }
+
+  getAboutContent() {
+    this.menuBarService.setLoadingAnimation(true);
+    this.aknutman
+      .getAbout(atob(localStorage.getItem("userid")))
+      .subscribe(respAbout => {
+        this.aboutContent = respAbout.data.Content;
+        this.menuBarService.setLoadingAnimation(false);
+      });
   }
 }

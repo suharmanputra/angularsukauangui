@@ -190,4 +190,12 @@ export class AknutmanWsService {
 
     return this.http.post<string>(url, body);
   }
+
+  getAbout(userid: string) {
+    const url = this.serviceURL + "/UserGetAbout";
+    const body = {
+      PersonId: userid
+    };
+    return this.http.post<string>(url, body);
+  }
 }
