@@ -6,6 +6,7 @@ export class AknutmanWsService {
   constructor(private http: HttpClient) {}
 
   serviceURL = "https://asia-southeast2-sukauang-backend.cloudfunctions.net";
+  // serviceURL = "https://asia-southeast2-sukauang-backend.cloudfunctions.net";
 
   formatDate(date: string) {
     var d = new Date(date),
