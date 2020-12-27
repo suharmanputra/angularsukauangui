@@ -141,11 +141,7 @@ export class DashboardPageComponent implements OnInit {
   }
 
   openDialogWithRef(ref: TemplateRef<any>) {
-    // if (ref == "") {
-    //   this.dialog.open(this.statusdialog);
-    // } else {
     this.dialog.open(ref);
-    // }
   }
 
   getactivationnote(userid: string) {

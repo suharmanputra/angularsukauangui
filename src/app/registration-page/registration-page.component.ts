@@ -86,7 +86,7 @@ export class RegistrationPageComponent implements OnInit {
         .regist(
           reff,
           userid,
-          atob(pass),
+          btoa(pass),
           nama,
           nomorhp,
           alamat,

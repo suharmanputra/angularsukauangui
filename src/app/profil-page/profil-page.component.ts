@@ -43,7 +43,7 @@ export class ProfilPageComponent implements OnInit {
         if (respuserdata.status === 200) {
           this.txtReff = respuserdata.data.SponsorCode;
           this.txtUserID = atob(localStorage.getItem("username"));
-          this.txtPass = respuserdata.data.Password;
+          this.txtPass = atob(respuserdata.data.Password);
           this.txtNama = respuserdata.data.FullName;
           this.txtNoHP = respuserdata.data.WhatsAppNumber;
           this.txtAlamat = respuserdata.data.PostAddress;
@@ -103,7 +103,7 @@ export class ProfilPageComponent implements OnInit {
       this.aknutman
         .updateuserdata(
           atob(localStorage.getItem("userid")),
-          atob(pass),
+          btoa(pass),
           alamat,
           nomorhp,
           nama,
