@@ -77,7 +77,6 @@ export class DashboardPageComponent implements OnInit {
               this.statusakun = "Menunggu Konfirmasi";
               this.aktivasiButtonVisible = false;
               this.buktitrfButtonVisible = true;
-
               this.buktitrffile = respdetailuser.data.PaymentProofStorage;
             }
 
@@ -100,7 +99,7 @@ export class DashboardPageComponent implements OnInit {
             this.buktitrfButtonVisible = false;
             // this.statusdialog = "";
           }
-          // console.log(respdetailuser);
+          console.log(respdetailuser);
           this.level = respdetailuser.data.Level;
           this.jmlmember = respdetailuser.data.MemberCount;
           this.bonus = this.aknutman.formatmoney(
@@ -182,6 +181,7 @@ export class DashboardPageComponent implements OnInit {
               this.snackBar.open("Uplaod bukti tansfer berhasil!", "Ok", {
                 duration: 3000
               });
+
               this.getUserdetail();
               this.menuBarService.setLoadingAnimation(false);
             } else {
