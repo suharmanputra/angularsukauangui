@@ -9,6 +9,7 @@ import { MatTableDataSource } from "@angular/material/table";
 import { MatDialog } from "@angular/material/dialog";
 
 export interface UserData {
+  Username: string;
   FullName: string;
   IsActive: string;
   WaitForActivation: string;
@@ -35,6 +36,7 @@ export class AdminPageComponent implements OnInit {
   WithdrawalRequestId: string;
 
   displayedColumns: string[] = [
+    "Username",
     "FullName",
     "IsActive",
     "WaitForActivation",
