@@ -48,6 +48,8 @@ export class MemberPageComponent implements OnInit {
   member30: string = "";
   member31: string = "";
   downlinedataSource: MatTableDataSource<listDownline>;
+  adminTreeVisible: boolean;
+  personTreeVisible: boolean;
 
   constructor(
     private router: Router,
@@ -66,8 +68,12 @@ export class MemberPageComponent implements OnInit {
 
     if (atob(localStorage.getItem("username")) == "superadmin") {
       this.menuBarService.setAdminVisible(true);
+      this.adminTreeVisible = true;
+      this.personTreeVisible = false;
     } else {
       this.menuBarService.setAdminVisible(false);
+      this.adminTreeVisible = false;
+      this.personTreeVisible = true;
     }
 
     this.getdownlinelist();

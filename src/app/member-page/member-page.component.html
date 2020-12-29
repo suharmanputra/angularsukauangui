@@ -5,11 +5,7 @@
 		</mat-card>
 		<mat-card>
 			<div style="overflow-y:scroll">
-
-				<div>
-
-				</div>
-				<div class="tree">
+				<div *ngIf="this.adminTreeVisible" class="tree">
 					<ul>
 						<li><a>{{member1}}</a>
 							<ul>
@@ -20,7 +16,7 @@
 						</li>
 					</ul>
 				</div>
-				<div class="tree">
+				<div *ngIf="this.personTreeVisible" class="tree">
 					<ul>
 						<li><a>{{member1}}</a>
 							<ul>
