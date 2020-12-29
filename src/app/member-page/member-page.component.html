@@ -6,7 +6,9 @@
 		<mat-card>
 			<div style="overflow-y:scroll">
 
-				<div *ngFor = "let title of fetchData"></div>
+				<div *ngFor="let data of downlinedataSource">
+					{{data.FullName}}
+				</div>
 
 				<div class="tree">
 					<ul>

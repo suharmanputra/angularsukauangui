@@ -80,15 +80,9 @@ export class MemberPageComponent implements OnInit {
       .subscribe(respdownline => {
         if (respdownline.status == "200") {
           this.downlinedataSource = respdownline.data;
-          console.log(this.downlinedataSource);
           this.member1 = atob(localStorage.getItem("username")).toUpperCase();
           var i;
           for (i = 0; i < respdownline.data.length; i++) {
-            // console.log(
-            //   respdownline.data[i].ChildIndex,
-            //   respdownline.data[i].FullName
-            // );
-
             if (respdownline.data[i].ChildIndex == 1) {
               this.member2 = respdownline.data[i].FullName.toUpperCase();
             }
