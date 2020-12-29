@@ -6,15 +6,16 @@
 		<mat-card>
 			<div style="overflow-y:scroll">
 
-				<div *ngFor="let data of downlinedataSource">
-					{{data.FullName}}
+				<div>
+
 				</div>
 				<div class="tree">
 					<ul>
-						<li>1
+						<li><a>{{member1}}</a>
 							<ul>
-								<li>2</li>
-								<li>3</li>
+								<li *ngFor="let data of downlinedataSource"><a>{{data.FullName}}</a></li>
+								<!-- <li>2</li>
+								<li>3</li> -->
 							</ul>
 						</li>
 					</ul>
