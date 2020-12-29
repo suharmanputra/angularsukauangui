@@ -194,7 +194,7 @@ export class AdminPageComponent implements OnInit {
     this.dialog.open(ref);
     this.menuBarService.setLoadingAnimation(false);
   }
-  arsipuser() {
+  arsipuser(datefrom: string, dateto: string) {
     this.menuBarService.setLoadingAnimation(true);
     this.aknutman
       .archieveUser(this.SelectedUserId)
@@ -203,6 +203,7 @@ export class AdminPageComponent implements OnInit {
         this.snackBar.open(resparchieveuser.message, "Ok", {
           duration: 3000
         });
+        this.tampildata(datefrom, dateto);
         this.menuBarService.setLoadingAnimation(false);
       });
   }
