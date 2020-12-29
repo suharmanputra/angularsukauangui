@@ -199,7 +199,6 @@ export class AdminPageComponent implements OnInit {
     this.aknutman
       .archieveUser(this.SelectedUserId)
       .subscribe(resparchieveuser => {
-        console.log(resparchieveuser);
         this.snackBar.open(resparchieveuser.message, "Ok", {
           duration: 3000
         });

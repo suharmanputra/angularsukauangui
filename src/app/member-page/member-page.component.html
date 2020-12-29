@@ -4,54 +4,10 @@
 			<p>Your Member:</p>
 		</mat-card>
 		<mat-card>
-
-			<!-- <table style="border-collapse: collapse; width: 100%;text-align:center;" border=1>
-				<tbody>
-					<tr>
-						<td colspan="16">{{member1}}</td>
-					</tr>
-					<tr>
-						<td colspan="8">{{member2}}</td>
-						<td colspan="8">{{member3}}</td>
-					</tr>
-					<tr>
-						<td colspan="4">{{member4}}</td>
-						<td colspan="4">{{member5}}</td>
-						<td colspan="4">{{member6}}</td>
-						<td colspan="4">{{member7}}</td>
-					</tr>
-					<tr>
-						<td colspan="2">{{member8}}</td>
-						<td colspan="2">{{member9}}</td>
-						<td colspan="2">{{member10}}</td>
-						<td colspan="2">{{member11}}</td>
-						<td colspan="2">{{member12}}</td>
-						<td colspan="2">{{member13}}</td>
-						<td colspan="2">{{member14}}</td>
-						<td colspan="2">{{member15}}</td>
-					</tr>
-					<tr>
-						<td>{{member16}}</td>
-						<td>{{member17}}</td>
-						<td>{{member18}}</td>
-						<td>{{member19}}</td>
-						<td>{{member20}}</td>
-						<td>{{member21}}</td>
-						<td>{{member22}}</td>
-						<td>{{member23}}</td>
-						<td>{{member24}}</td>
-						<td>{{member25}}</td>
-						<td>{{member26}}</td>
-						<td>{{member27}}</td>
-						<td>{{member28}}</td>
-						<td>{{member29}}</td>
-						<td>{{member30}}</td>
-						<td>{{member31}}</td>
-					</tr>
-				</tbody>
-			</table> -->
-
 			<div style="overflow-y:scroll">
+
+				<div *ngFor = "let title of fetchData"></div>
+
 				<div class="tree">
 					<ul>
 						<li><a>{{member1}}</a>
@@ -147,7 +103,6 @@
 					</ul>
 				</div>
 			</div>
-
 		</mat-card>
 	</div>
 </form>
