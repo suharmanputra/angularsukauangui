@@ -2,6 +2,13 @@ import { Component, OnInit } from "@angular/core";
 import { MenuBarService } from "../shared/menu-bar.service";
 import { Router } from "@angular/router";
 import { AknutmanWsService } from "../shared/aknutman-ws.service";
+
+export interface listDownline {
+  PersonID: string;
+  FullName: string;
+  ChildIndex: string;
+}
+
 @Component({
   selector: "app-member-page",
   templateUrl: "./member-page.component.html",
