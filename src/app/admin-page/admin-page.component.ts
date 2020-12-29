@@ -33,6 +33,7 @@ export class AdminPageComponent implements OnInit {
   tarikdanaButtonVisible: boolean;
   tarikdanaRowVisible: boolean;
   aktivasiButtonVisible: boolean;
+  arsipButtonVisible: boolean;
   WithdrawalRequestId: string;
 
   displayedColumns: string[] = [
@@ -165,8 +166,10 @@ export class AdminPageComponent implements OnInit {
       .subscribe(datapersondetail => {
         if (datapersondetail.persons[0].IsActive == true) {
           this.aktivasiButtonVisible = false;
+          this.arsipButtonVisible = false;
         } else {
           this.aktivasiButtonVisible = true;
+          this.arsipButtonVisible = true;
         }
 
         this.WithdrawalRequestId =
@@ -196,10 +199,11 @@ export class AdminPageComponent implements OnInit {
     this.aknutman
       .archieveUser(this.SelectedUserId)
       .subscribe(resparchieveuser => {
+        console.log(resparchieveuser);
         this.snackBar.open(resparchieveuser.message, "Ok", {
           duration: 3000
         });
-        this.menuBarService.setLoadingAnimation(true);
+        this.menuBarService.setLoadingAnimation(false);
       });
   }
 }
