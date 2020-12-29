@@ -2,6 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { MenuBarService } from "../shared/menu-bar.service";
 import { Router } from "@angular/router";
 import { AknutmanWsService } from "../shared/aknutman-ws.service";
+import { MatTableDataSource } from "@angular/material/table";
 
 export interface listDownline {
   PersonID: string;
@@ -46,6 +47,7 @@ export class MemberPageComponent implements OnInit {
   member29: string = "";
   member30: string = "";
   member31: string = "";
+  downlinedataSource: MatTableDataSource<listDownline>;
 
   constructor(
     private router: Router,
@@ -77,6 +79,8 @@ export class MemberPageComponent implements OnInit {
       .getuserdownline(atob(localStorage.getItem("userid")))
       .subscribe(respdownline => {
         if (respdownline.status == "200") {
+          this.downlinedataSource = respdownline.data;
+          console.log(this.downlinedataSource);
           this.member1 = atob(localStorage.getItem("username")).toUpperCase();
           var i;
           for (i = 0; i < respdownline.data.length; i++) {
