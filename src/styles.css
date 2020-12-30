@@ -280,3 +280,13 @@ right connector from last child*/
 .tree li a:hover + ul ul::before {
   border-color: #94a0b4;
 }
+
+.loading {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  min-height: 100vh;
+  background-color: rgba(170, 170, 170, 0.767);
+}
