@@ -22,6 +22,8 @@ export class DashboardPageComponent implements OnInit {
   jmlmember: string;
   bonus: string;
   total: string;
+  minimumtarikdana: string;
+  biayaadmin: string;
   checkinButtonVisible: boolean;
   witdhawButtonVisible: boolean;
   statusdialog: string;
@@ -62,6 +64,13 @@ export class DashboardPageComponent implements OnInit {
       .getdetail(atob(localStorage.getItem("userid")))
       .subscribe(respdetailuser => {
         if (respdetailuser.status == "200") {
+          this.minimumtarikdana = this.aknutman.formatmoney(
+            respdetailuser.data.WithdrawalMinimumAmount
+          );
+          this.biayaadmin = this.aknutman.formatmoney(
+            respdetailuser.data.WithdrawalAdminCost
+          );
+
           this.username = respdetailuser.data.FullName;
           this.sponsor = respdetailuser.data.SponsorName;
           this.referral =
