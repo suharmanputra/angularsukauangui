@@ -111,7 +111,7 @@ export class DashboardPageComponent implements OnInit {
           this.bonus = this.aknutman.formatmoney(
             respdetailuser.data.PayableBonus
           );
-          if (parseFloat(respdetailuser.data.PayableBonus) >= 20000) {
+          if (parseFloat(respdetailuser.data.PayableBonus) >= 30000) {
             this.witdhawButtonVisible = true;
           } else {
             this.witdhawButtonVisible = false;
