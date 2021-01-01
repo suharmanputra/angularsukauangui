@@ -146,9 +146,15 @@ export class DashboardPageComponent implements OnInit {
       });
   }
 
-  openDialogWithRef(ref: TemplateRef<any>, isnext: boolean) {
+  openDialogWithRef(
+    ref: TemplateRef<any>,
+    isgetaktivation: boolean,
+    isnext: boolean
+  ) {
     this.menuBarService.setLoadingAnimation(true);
-    this.getactivationnote(atob(localStorage.getItem("userid")), isnext);
+    if (isgetaktivation === true) {
+      this.getactivationnote(atob(localStorage.getItem("userid")), isnext);
+    }
     this.dialog.open(ref);
     this.menuBarService.setLoadingAnimation(false);
   }
